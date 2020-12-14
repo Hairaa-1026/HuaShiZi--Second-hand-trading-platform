@@ -79,7 +79,7 @@
     <view style="height:40px;line-height: 40px;border-bottom:1px solid #f5f5f5;">
      <view style='float:left;'>评论</view>
      <view style='float:right;margin-left:2px;margin-top:-1px;'>
-        <image src="/img/ico_jt.png" class="ico_img_jt"></image>
+        <image src="/img/touxiang.jpg" class="ico_img_jt"></image>
      </view>
      <view style='float:right;font-size:12px;color:#A2A2A2;'>
         <navigator url="pjList?id={{thingId}}">查看全部</navigator>

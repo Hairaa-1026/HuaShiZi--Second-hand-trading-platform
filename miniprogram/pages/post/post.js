@@ -14,11 +14,14 @@ Page({
 
     //物品发布的数据
     postType:["出售","求购"],
+    postTypeIndex: 0,
     diliveryType:["面交","邮寄","其它"],
+    diliveryTypeIndex: 0,
 
     thingImage: '',
     thingName: '',
     thingType: ["服装", "美妆", "视频", "卡卷", "借用", "教材"],
+    thingTypeIndex: 0,
     thingConditions: ["全新", "几乎全新", "九成新", "八成新", "五成新", "五成新以下"],
     thingConditionIndex: 0,
     thingPrice: '',
@@ -34,7 +37,6 @@ Page({
    */
   onLoad: function() {
 
-    
   },
 
   /**
@@ -132,46 +134,17 @@ Page({
 
 
   //响应事件
-
-  bindJobNameInput: function(e) { //兼职名称
+  bindPostTypeInput: function(e) { //交易类别
     this.setData({
-      jobName: e.detail.value
+      postType: e.detail.value
     })
   },
-  bindJobTimeInput: function(e) { //兼职时间
+  bindDiliveryTypeInput: function(e) { //取货方式
     this.setData({
-      jobTime: e.detail.value
-    })
-  },
-  bindJobPlaceInput: function(e) { //兼职地点
-    this.setData({
-      jobPlace: e.detail.value
-    })
-  },
-  bindJobRequirInput: function(e) { //兼职要求
-    this.setData({
-      jobRequir: e.detail.value
-    })
-  },
-  bindjobSalaryInput: function(e) { //兼职工资
-    this.setData({
-      jobSalary: e.detail.value
-    })
-  },
-  bindJobWayInput: function(e) { //兼职联系方式
-    this.setData({
-      jobWay: e.detail.value
-    })
-  },
-  bindjobDescribeInput: function(e) { //兼职描述
-    this.setData({
-      jobDescribe: e.detail.value
+      diliveryType: e.detail.value
     })
   },
 
-
-  
-  //
   bindThingImageInput: function() { //商品图片选择
     var that = this;
     wx.chooseImage({
@@ -190,7 +163,11 @@ Page({
       thingName: e.detail.value
     })
   },
-                       
+  bindThingTypeInput: function(e) { //商品类型
+    this.setData({
+      thingType: e.detail.value
+    })
+  },                  
   bindThingConditionsInput: function(e) { //商品成色
     this.setData({
       thingConditionIndex: e.detail.value
@@ -216,196 +193,7 @@ Page({
       thingDescribe: e.detail.value
     })
   },
-  //书本信息
-  bindBookPhoneNumberInput: function(e) {
-    this.setData({
-      bookPhoneNumber: e.detail.value
-    })
-  },
-  bindBookNameInput: function(e) {
-    this.setData({
-      bookName: e.detail.value
-    })
-  },
-  bindBookAuthorInput: function(e) {
-    this.setData({
-      bookAuthor: e.detail.value
-    })
-  },
-  bindBookPressInput: function(e) {
-    this.setData({
-      bookPress: e.detail.value
-    })
-  },
 
-  bindNeedCourse: function(e) {
-    this.setData({
-      isTextbook: e.detail.value
-    })
-  },
-
-  bindConditionChange: function(e) { //
-    console.log(e.detail);
-    this.setData({
-      conditionIndex: e.detail.value
-    })
-  },
-
-  bindCampusChange: function(e) {
-    this.setData({
-      campusIndex: e.detail.value
-    })
-  },
-
-  bindCurrentPriceInput: function(e) {
-    this.setData({
-      currentPrice: e.detail.value
-    })
-  },
-
-  bindPostRemarkInput: function(e) {
-    this.setData({
-      postRemark: e.detail.value
-    })
-  },
-  bindBookImageInput: function() {
-    var that = this;
-    wx.chooseImage({
-      count: 1,
-      sourceType: ['album', 'camera'],
-      success: function(res) {
-        // console.log()
-        var bookImg1 = res.tempFilePaths;
-        console.log(bookImg1);
-        that.setData({
-          bookImg: bookImg1
-        })
-      },
-
-    })
-  },
-  bindSubmitBook: function() {
-    var that = this;
-    var studentId = that.data.studentId;
-    if (!studentId) {
-      wx.showModal({
-        title: '提示',
-        content: '请验证您的学生身份',
-        success: function(res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-            wx.navigateTo({
-              url: '../my/mySetting/mySetting',
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-
-          }
-        }
-      })
-    } else {
-      that.setData({
-        buttonLoading: true
-      })
-      var bookName1 = that.data.bookName;
-      var bookAuthor1 = that.data.bookAuthor;
-      var bookPress1 = that.data.bookPress;
-      var isTextbook1 = that.data.isTextbook;
-      var conditionIndex = that.data.conditionIndex;
-      var conditions0 = that.data.conditions[conditionIndex];
-      var campusIndex = that.data.campusIndex;
-      var campus0 = that.data.campus[campusIndex];
-      var currentPrice1 = that.data.currentPrice;
-      var postRemark1 = that.data.postRemark || '无备注或描述';
-      var bookImg1 = that.data.bookImg;
-      var studentId = that.data.studentId;
-      var nickNmae = that.data.nickName;
-      var bookPhoneNumber = that.data.bookPhoneNumber;
-      var url = app.globalData.huanbaoBase + 'bookpost.php';
-      var urlImg = app.globalData.huanbaoBase + 'bookimg.php';
-      wx.request({
-        url,
-        data: {
-          bookName: bookName1, //书名
-          bookAuthor: bookAuthor1, //作者
-          bookPress: bookPress1, //出本社
-          isTextbook: isTextbook1, //是否资料
-          conditions: conditions0, //成色   
-          campus: campus0, //校区
-          currentPrice: currentPrice1, //售价
-          postRemark: postRemark1, // 备注
-          studentId: studentId, //用户的学号
-          nickName: nickNmae, //用户昵称
-          bookPhoneNumber: bookPhoneNumber, //用户电话
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function(res) {
-          console.log(res);//此处控制台打印出来是乱码
-          console.log(url);//此处控制台打印正确URL
-          console.log(urlImg);//此处控制台打印正确URL
-          var currenttime = util.formatTime(new Date());
-          var currentdate = util.formatDate(new Date());
-          var bookId = res.data;
-          wx.uploadFile({
-            url: urlImg,
-            filePath: bookImg1[0],
-            name: 'file',
-            formData: {
-              'date': currentdate,
-              'datetime': currenttime,
-              'bookId': bookId
-            },
-            success: function(res) {
-              console.log(res);
-              wx.showToast({
-                title: '发布成功',
-                icon: 'succes',
-                duration: 2500,
-                mask: true
-              })
-              that.setData({
-                buttonLoading: false,
-                bookName: '', //书名
-                bookAuthor: '', //作者
-                bookPress: '', //出本社
-                isTextbook: false, //是否资料
-                currentPrice: '', //售价
-                postRemark: '', // 备注
-                bookImg: '',   //图片
-                bookPhoneNumber: '', //电话号码
-              })
-            },
-            fail: function(res) {
-              console.log(JSON.stringify(res));
-              wx.showToast({
-                title: '发布失败',
-                icon: 'loading',
-                duration: 2000
-              })
-              that.setData({
-                buttonLoading: false
-              })
-            },
-          })
-        },
-        fail: function(res) {
-          console.log(JSON.stringify(res));
-          wx.showToast({
-            title: '发布失败',
-            icon: 'loading',
-            duration: 2000
-          })
-          that.setData({
-            buttonLoading: false
-          })
-        },
-      })
-    }
-
-  },
   //发布物品的响应事件
   bindSubmitThing: function() {
     var that = this;
@@ -518,91 +306,5 @@ Page({
     }
   },
 
-
-
-
-  //发布兼职的响应事件
-  bindSubmitJob: function() {
-    var that = this;
-    var studentId = that.data.studentId;
-    if (!studentId) {
-      wx.showModal({
-        title: '提示',
-        content: '请验证您的学生身份',
-        success: function(res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-            wx.navigateTo({
-              url: '../my/mySetting/mySetting',
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
-    } else {
-      this.setData({
-        buttonLoadingJob: true
-      })
-      var jobName = that.data.jobName; //工作名称
-      var jobDescribe = that.data.jobDescribe; //职位描述
-      var jobWay = that.data.jobWay; //联系电话
-      var jobSalary = that.data.jobSalary; //资薪福利
-      var jobPlace = that.data.jobPlace; //工作地点
-      var jobTime = that.data.jobTime; //工作时间
-      var jobRequir = that.data.jobRequir; //人员要求
-      var studentId = that.data.studentId;
-      var nickName = that.data.nickName;
-      var url = app.globalData.huanbaoBase + 'jobpost.php'
-      wx.request({
-        url,
-        data: {
-          jobName: jobName,
-          jobRequir: jobRequir,
-          jobTime: jobTime,
-          jobDescribe: jobDescribe,
-          jobWay: jobWay,
-          jobSalary: jobSalary,
-          jobPlace: jobPlace,
-          studentId: studentId,
-          nickName: nickName,
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded '
-        },
-        success: function(res) {
-          console.log(res);
-          wx.showToast({
-            title: '发布成功',
-            icon: 'succes',
-            duration: 2500,
-            mask: true
-          })
-          that.setData({
-            buttonLoadingJob: false,
-            jobName: '',
-            jobRequir: '',
-            jobTime: '',
-            jobDescribe: '',
-            jobWay: '',
-            jobSalary: '',
-            jobPlace: '',  
-          })
-        },
-        fail: function(res) {
-          console.log(JSON.stringify(res));
-          wx.showToast({
-            title: '发布失败',
-            icon: 'loading',
-            duration: 2000
-          })
-          that.setData({
-            buttonLoadingJob: false
-          })
-        },
-      })
-    }
-  }
 
 })

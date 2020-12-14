@@ -14,7 +14,7 @@
   <!-- 图片 -->
   <view class="a_container">
   <view class="a_image" bindtap='bindThingImageInput'>
-      <image src="a_image{{thingImage}}" mode="aspectFit" />
+      <image src=" {{thingImage}}" mode="aspectFit" />
   </view>
 </view>
 
@@ -43,8 +43,8 @@
       <view class="b_bar">
 				<view class="b_name">交易类别</view>
 				<radio-group class="kind-group" bindchange="kindChange">
-					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
-        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+					<picker bindchange="bindPostTypeInput" value="{{postTypeIndex}}" range="{{postType}}">
+        <view class="weui-select weui-select_in-select-after">{{postType[postTypeIndex]}}</view>
       </picker>
 				</radio-group>
       </view>
@@ -63,8 +63,8 @@
       <view class="b_bar">
 				<view class="b_name">所在校区</view>
 				<radio-group class="kind-group" bindchange="kindChange">
-					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
-        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+					<picker bindchange="bindThingCampusInput" value="{{thingCampusIndex}}" range="{{thingCampus}}">
+        <view class="weui-select weui-select_in-select-after">{{thingCampus[thingCampusIndex]}}</view>
       </picker>
 				</radio-group>
       </view>
@@ -73,8 +73,8 @@
       <view class="b_bar">
 				<view class="b_name">物品类型</view>
 				<radio-group class="kind-group" bindchange="kindChange">
-					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
-        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+					<picker bindchange="bindThingTypeInput" value="{{thingTypeIndex}}" range="{{thingType}}">
+        <view class="weui-select weui-select_in-select-after">{{thingType[thingTypeIndex]}}</view>
       </picker>
 				</radio-group>
       </view>
@@ -83,8 +83,8 @@
       <view class="b_bar">
 				<view class="b_name">取货方式</view>
 				<radio-group class="kind-group" bindchange="kindChange">
-					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
-        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+					<picker bindchange="bindDiliveryTypeInput" value="{{diliveryTypeIndex}}" range="{{diliveryType}}">
+        <view class="weui-select weui-select_in-select-after">{{diliveryType[diliveryTypeIndex]}}</view>
       </picker>
 				</radio-group>
       </view>
@@ -99,14 +99,14 @@
 
       <view class="b_bar">
 				<view class="b_name">联系方式</view>
-				<input class="text-input" placeholder="请输入电话/微信" bindinput="bindThingPriceInput" value="{{thingPrice}}" />
+				<input class="text-input" placeholder="请输入电话/微信" bindinput="bindThingPhoneNumber" value="{{thingPhoneNumber}}" />
       </view>
       <view class="b_border"></view>
 		
 			<view class="b_tips">
 				<text>* </text>请认真填写，注意信息安全</view>
 		</view>
-		<view class="b_publish" bindtap="check_pub">马上发布</view>
+		<view class="b_publish" bindtap="bindSubmitThing">马上发布</view>
 	</view>
 
 </view>
