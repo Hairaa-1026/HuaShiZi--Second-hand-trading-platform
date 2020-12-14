@@ -1,0 +1,103 @@
+<!--轮播图-->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}">
+  <block wx:for="{{thingImg}}" wx:key="thingInfo">
+    <swiper-item>
+      <image src="{{imghref}}{{item.img}}" class="slide-image" mode="aspectFill" data-src='{{imghref}}{{item.img}}' bindtap="previewImage"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--物品价钱-->
+<view class="info-price clear">
+  <view class='price'>￥{{thingInfo.thingPrice}} </view>
+</view>
+
+<!--物品描述-->
+<view class="info-title"  style='border-bottom:1px solid #f5f5f5;'>
+    <text>{{thingInfo.thingName}}</text>
+</view>
+<view class='details_box'>
+  <view style='padding:10px 0px'>
+      <view class="wxParse">
+         {{thingInfo.thingDescribe}}
+      </view>
+    </view>
+</view>
+ 
+<view style="border-top:1px solid #F6F6F6;background: #fff; padding:5px 15px;">
+    <view class="clearfix flex grey gridXt">
+
+<view class="b_ccontain">
+		<view class="b_card">
+      <view class="b_bar">
+				<view class="b_name">交易类别</view>
+				<text class="b_name">{{thingInfo.postType}}</text>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">物品类型</view>
+				<text class="b_name">{{thingInfo.thingType}}</text>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">物品成色</view>
+				<text class="b_name">{{thingInfo.thingConditions}}</text>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">运送类型</view>
+				<text class="b_name">{{thingInfo.diliveryType}}</text>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">所在校区</view>
+				<text class="b_name">{{thingInfo.thingCampus}}</text>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">联系方式</view>
+				<text class="b_name">{{thingInfo.thingPhoneNumber}}</text>
+      </view>
+      <view class="b_border"></view>
+    </view>
+    </view>
+
+</view>
+</view>
+
+<block wx:if="{{pjDataList!=''}}">
+  
+
+ 
+<!--物品底部评论-->
+<view class='pj_box'>
+    <view style="height:40px;line-height: 40px;border-bottom:1px solid #f5f5f5;">
+     <view style='float:left;'>评论</view>
+     <view style='float:right;margin-left:2px;margin-top:-1px;'>
+        <image src="/img/ico_jt.png" class="ico_img_jt"></image>
+     </view>
+     <view style='float:right;font-size:12px;color:#A2A2A2;'>
+        <navigator url="pjList?id={{thingId}}">查看全部</navigator>
+     </view>
+     <view class='clear'></view>
+    </view>
+    <block wx:for="{{pjDataList}}" wx:for-item="item" wx:key="pj">
+      <view class="list_item">
+        <view class='pj_u_info clear'>
+          <view class='header_img'><image src="{{item.headpic}}" mode="aspectFit"></image></view>
+          <view class='name'>{{item.author}}</view>
+          <view class='time'>{{item.add_time}}</view>
+        </view>
+        <view class='pj_cont'>
+          {{item.content}}
+        </view>
+      </view>
+    </block>
+</view>
+</block>
+

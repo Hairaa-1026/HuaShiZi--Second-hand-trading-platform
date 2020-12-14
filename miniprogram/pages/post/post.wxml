@@ -1,0 +1,114 @@
+<!--post.wxml-->
+
+<!-- 发布物品 -->
+<view class='box'>
+  <view class='wrapper'>
+    <view class="tab-content {{leave ? 'select' : 'noSelect'}} " bindtap='chooseLeave'></view>
+    <view class="tab-content {{postThing ? 'select' : 'noSelect'}}" bindtap='choosePostThing'>物品发布</view>
+    <view class="tab-content {{thingsList ? 'select' : 'noSelect'}}" bindtap='chooseList'></view>
+  </view>
+</view>
+
+<!-- 发布出售/求购物品 -->
+<view class='weui-panel outside_border' wx:if="{{postThing}}">
+  <!-- 图片 -->
+  <view class="a_container">
+  <view class="a_image" bindtap='bindThingImageInput'>
+      <image src="a_image{{thingImage}}" mode="aspectFit" />
+  </view>
+</view>
+
+  <!-- 标题型号 描述 -->
+<view class="b_container">
+  
+      <view class="b_title" >
+        <textarea bindinput="bindThingNameInput" value="{{thingName}}" maxlength="200" placeholder="物品信息 物品型号"></textarea>
+      </view>
+
+      <view class="b_blank" >
+      </view>
+
+      <view class="b_text">
+        <textarea value="{{thingDescribe}}" bindinput=" bindThingDescribeInput" maxlength="200" placeholder="在这里详细描述出售/求购原因、物品详情、规格尺寸等信息吧~"></textarea>
+        <view class="b_less">{{desc_counts}}/200</view>
+      </view>
+
+    
+</view>
+
+ <!-- 物品及交易选项 -->
+ <view class="b_ccontain">
+		<view class="b_card">
+
+      <view class="b_bar">
+				<view class="b_name">交易类别</view>
+				<radio-group class="kind-group" bindchange="kindChange">
+					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
+        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+      </picker>
+				</radio-group>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">物品成色</view>
+				<radio-group class="kind-group" bindchange="kindChange">
+					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
+        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+      </picker>
+				</radio-group>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">所在校区</view>
+				<radio-group class="kind-group" bindchange="kindChange">
+					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
+        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+      </picker>
+				</radio-group>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">物品类型</view>
+				<radio-group class="kind-group" bindchange="kindChange">
+					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
+        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+      </picker>
+				</radio-group>
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">取货方式</view>
+				<radio-group class="kind-group" bindchange="kindChange">
+					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
+        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+      </picker>
+				</radio-group>
+      </view>
+      <view class="b_border"></view>
+
+
+			<view class="b_bar">
+				<view class="b_name">价格(元)</view>
+				<input class="text-input" placeholder="请输入价格" bindinput="bindThingPriceInput" value="{{thingPrice}}" />
+      </view>
+      <view class="b_border"></view>
+
+      <view class="b_bar">
+				<view class="b_name">联系方式</view>
+				<input class="text-input" placeholder="请输入电话/微信" bindinput="bindThingPriceInput" value="{{thingPrice}}" />
+      </view>
+      <view class="b_border"></view>
+		
+			<view class="b_tips">
+				<text>* </text>请认真填写，注意信息安全</view>
+		</view>
+		<view class="b_publish" bindtap="check_pub">马上发布</view>
+	</view>
+
+</view>
+
+

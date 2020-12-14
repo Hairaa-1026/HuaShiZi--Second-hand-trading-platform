@@ -6,7 +6,9 @@
     "pages/personalCenter/myPost/myPost",
     "pages/personalCenter/myOrder/myOrder",
     "pages/personalCenter/myCollection/myCollection",
-    "pages/personalCenter/mySetting/mySetting"
+    "pages/personalCenter/mySetting/mySetting",
+    "pages/show/show",
+    "pages/post/post"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,7 +32,7 @@
       },
       {
         "text": "我想卖",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/post/post",
         "iconPath": "images/tabBar/release.png",
         "selectedIconPath": "images/tabBar/release.png"
       },
