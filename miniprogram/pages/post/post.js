@@ -20,7 +20,7 @@ Page({
 
     thingImage: '',
     thingName: '',
-    thingType: ["服装", "美妆", "视频", "卡卷", "借用", "教材"],
+    thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材"],
     thingTypeIndex: 0,
     thingConditions: ["全新", "几乎全新", "九成新", "八成新", "五成新", "五成新以下"],
     thingConditionIndex: 0,

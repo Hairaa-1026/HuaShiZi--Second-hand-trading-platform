@@ -1,6 +1,5 @@
 {
   "pages": [
-
     "pages/index/index",
     "pages/logs/logs",
     "pages/personalCenter/personalCenter",
@@ -27,7 +26,7 @@
       },
       {
         "text": "论坛",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/show/show",
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },
@@ -35,7 +34,7 @@
         "text": "我想卖",
         "pagePath": "pages/post/post",
         "iconPath": "images/tabBar/release.png",
-        "selectedIconPath": "images/tabBar/release.png"
+        "selectedIconPath": "images/tabBar/release.fill.png"
       },
       {
         "text": "搜索",
@@ -52,6 +51,9 @@
     ],
     "color": "#000000",
     "selectedColor": "#1E68C9"
+  },
+  "useExtendedLib": {
+    "weui": true
   },
   "debug": true,
   "style": "v2",
