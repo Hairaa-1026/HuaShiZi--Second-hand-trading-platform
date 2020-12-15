@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/forum/forum",
     "pages/index/index",
     "pages/logs/logs",
     "pages/personalCenter/personalCenter",
@@ -24,7 +25,7 @@
       },
       {
         "text": "论坛",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/forum/forum",
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },

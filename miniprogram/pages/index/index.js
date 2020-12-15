@@ -4,51 +4,78 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    navbarActiveIndex: 0,
+    navbarTitle: [
+    "首页",
+    "服装鞋帽",
+    "教材书籍",
+    "美妆护肤",
+    "卡券交易"
+    ]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
+  
+  onNavBarTap: function (event) {
+      // 获取点击的navbar的index
+      let navbarTapIndex = event.currentTarget.dataset.navbarIndex
+      // 设置data属性中的navbarActiveIndex为当前点击的navbar
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+          navbarActiveIndex: navbarTapIndex      
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+   },
+  
+   onBindAnimationFinish: function ({detail}) {
+      // 设置data属性中的navbarActiveIndex为当前点击的navbar
+      this.setData({
+          navbarActiveIndex: detail.current
       })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+   },
+
+   canvasIdErrorCallback: function (e) {
+    console.error(e.detail.errMsg)
+   },
+
+  onReady: function (e) {
+
+    var context1 = wx.createCanvasContext('firstCanvas')
+    context1.fillStyle="#cc2222";
+    context1.beginPath();
+    context1.arc(32,32,20,Math.PI*2,0,true);
+    context1.closePath();
+    context1.fill();
+    context1.draw();
+
+    var context2 = wx.createCanvasContext('secondCanvas')
+    context2.fillStyle="#00aacc";
+    context2.beginPath();
+    context2.arc(32,32,20,Math.PI*2,0,true);
+    context2.closePath();
+    context2.fill();
+    context2.draw();
+
+    var context3 = wx.createCanvasContext('thirdCanvas')
+    context3.fillStyle="#cc00cc";
+    context3.beginPath();
+    context3.arc(32,32,20,Math.PI*2,0,true);
+    context3.closePath();
+    context3.fill();
+    context3.draw();
+
+    var context4 = wx.createCanvasContext('fourthCanvas')
+    context4.fillStyle="#cc2222";
+    context4.beginPath();
+    context4.arc(32,32,20,Math.PI*2,0,true);
+    context4.closePath();
+    context4.fill();
+    context4.draw();
+
+    var context5 = wx.createCanvasContext('fifthCanvas')
+    context5.fillStyle="#00aacc";
+    context5.beginPath();
+    context5.arc(32,32,20,Math.PI*2,0,true);
+    context5.closePath();
+    context5.fill();
+    context5.draw();
+
   }
+
 })
