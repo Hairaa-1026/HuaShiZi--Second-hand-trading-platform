@@ -1,4 +1,4 @@
-.search-bar {
+.search-good {
   display: flex;
   padding: 20rpx 30rpx;
   align-items: center;
@@ -29,13 +29,13 @@
   color: #fff;
   border-radius: 20rpx;
 }
-.book-wrapper {
+.good-wrapper {
   padding: 0 30rpx;
   border-bottom: 1px solid #F8F8F8;
   box-sizing: border-box;
   background-color: #fff;
 }
-.book-content {
+.good-content {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -44,11 +44,10 @@
   font-size: 30rpx;
   padding: 15rpx 0rpx;
 }
-.book-content::after {
+.good-content::after {
   position: absolute;
   right: 40rpx;
   content: ">";
   font-size: 40rpx;
   color: #ccc;
 }
-

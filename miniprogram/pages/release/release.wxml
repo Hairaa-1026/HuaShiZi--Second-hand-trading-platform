@@ -1,0 +1,59 @@
+<!--pages/release/release.wxml-->
+
+<view class='search-list'>
+
+    <view class='movie-wrapper'>
+      <view class='movie-content'>
+        <image class='poster' src="../../images/search/dior.jpg"></image>
+        <view class='total'>
+          <text class='name'>Dior999</text>
+          <text class='desc'>校区：中北校区</text>
+          <text class='desc'>提取方式：面交</text>
+          <text class='desc'>发布者：郑某人</text>
+          <text class='price'>￥999</text>
+      </view>
+    </view>
+    </view>
+
+    <view class='movie-wrapper'>
+      <view class='movie-content'>
+        <image class='poster' src="../../images/search/mac.jpg"></image>
+        <view class='total'>
+          <text class='name'>绝美mac!</text>
+          <text class='desc'>校区：中北校区</text>
+          <text class='desc'>提取方式：邮寄</text>
+          <text class='desc'>发布者：海海</text>
+          <text class='price'>￥170</text>
+      </view>
+    </view>
+    </view>
+
+    <view class='movie-wrapper'>
+      <view class='movie-content'>
+        <image class='poster' src="../../images/search/zapai.jpg"></image>
+        <view class='total'>
+          <text class='name'>小众品牌，随缘出</text>
+          <text class='desc'>校区：闵行校区</text>
+          <text class='desc'>提取方式：邮寄</text>
+          <text class='desc'>发布者：芳芳子</text>
+          <text class='price'>￥30</text>
+      </view>
+    </view>
+    </view>
+
+    <view class='movie-wrapper'>
+      <view class='movie-content'>
+        <image class='poster' src="../../images/search/dior2.jpg"></image>
+        <view class='total'>
+          <text class='name'>Dior441，你值得拥有</text>
+          <text class='desc'>校区：中北校区</text>
+          <text class='desc'>提取方式：其它</text>
+          <text class='desc'>发布者：星星</text>
+          <text class='price'>￥199</text>
+      </view>
+    </view>
+    </view>
+</view>
+
+
+  
