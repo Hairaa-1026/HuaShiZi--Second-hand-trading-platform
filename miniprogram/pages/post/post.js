@@ -136,12 +136,12 @@ Page({
   //响应事件
   bindPostTypeInput: function(e) { //交易类别
     this.setData({
-      postType: e.detail.value
+      postTypeIndex: e.detail.value
     })
   },
   bindDiliveryTypeInput: function(e) { //取货方式
     this.setData({
-      diliveryType: e.detail.value
+      diliveryTypeIndex: e.detail.value
     })
   },
 
@@ -165,7 +165,7 @@ Page({
   },
   bindThingTypeInput: function(e) { //商品类型
     this.setData({
-      thingType: e.detail.value
+      thingTypeIndex: e.detail.value
     })
   },                  
   bindThingConditionsInput: function(e) { //商品成色
@@ -217,8 +217,16 @@ Page({
       this.setData({
         buttonLoadingThing: true
       })
+      var postTypeIndex = that.data.postTypeIndex; //交易类型索引
+      var postType = that.data.postType[postTypeIndex]; //交易类型
+      var diliveryTypeIndex = that.data.diliveryTypeIndex; //运送方式索引值
+      var diliveryType = that.data.diliveryType[diliveryTypeIndex]; //运送方式
+
       var thingImage = that.data.thingImage; //图片
       var thingName = that.data.thingName; //名字
+      var thingTypeIndex = that.data.thingTypeIndex; //物品类型索引值
+      var thingType = that.data.thingType[thingTypeIndex]; //物品类型
+
       var thingConditionIndex = that.data.thingConditionIndex; //成色索引值
       var thingConditions = that.data.thingConditions[thingConditionIndex]; //成色
       var thingCampusIndex = that.data.thingCampusIndex; //校区索引值
@@ -233,8 +241,11 @@ Page({
       wx.request({
         url,
         data: {
+          postType: postType,
+          diliveryType:diliveryType,
           thingImage: thingImage,
           thingName: thingName,
+          thingType: thingType,
           thingConditions: thingConditions,
           thingCampus: thingCampus,
           thingDescribe: thingDescribe,

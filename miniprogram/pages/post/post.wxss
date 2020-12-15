@@ -45,7 +45,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  background: #fff;
+  background: #eee;
 }
 .b_title textarea {
   width: 100%;
@@ -63,7 +63,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  background: #fff;
+  background: #eee;
 }
 .b_text textarea {
   width: 100%;
