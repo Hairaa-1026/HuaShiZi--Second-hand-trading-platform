@@ -7,7 +7,11 @@
     "pages/personalCenter/myPost/myPost",
     "pages/personalCenter/myOrder/myOrder",
     "pages/personalCenter/myCollection/myCollection",
-    "pages/personalCenter/mySetting/mySetting"
+    "pages/personalCenter/mySetting/mySetting",
+    "pages/show/show",
+    "pages/post/post",
+    "pages/search/search",
+    "pages/invitation/invitation"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,19 +29,23 @@
       },
       {
         "text": "论坛",
+<<<<<<< HEAD
         "pagePath": "pages/forum/forum",
+=======
+        "pagePath": "pages/invitation/invitation",
+>>>>>>> fd6d59de2c79a94fb2ccd928ec7a126983e36cc8
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },
       {
-        "text": "我想卖",
-        "pagePath": "pages/index/index",
+        "text": "物品发布",
+        "pagePath": "pages/post/post",
         "iconPath": "images/tabBar/release.png",
-        "selectedIconPath": "images/tabBar/release.png"
+        "selectedIconPath": "images/tabBar/release.fill.png"
       },
       {
         "text": "搜索",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/search/search",
         "iconPath": "images/tabBar/search.png",
         "selectedIconPath": "images/tabBar/search.fill.png"
       },
@@ -50,6 +58,9 @@
     ],
     "color": "#000000",
     "selectedColor": "#1E68C9"
+  },
+  "useExtendedLib": {
+    "weui": true
   },
   "debug": true,
   "style": "v2",

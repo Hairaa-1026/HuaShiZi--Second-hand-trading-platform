@@ -1,2 +1,29 @@
 <!--pages/personalCenter/myPost/myPost.wxml-->
-<text>pages/personalCenter/myPost/myPost.wxml</text>
+
+<view class="page">
+<view class="page__bd">
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">我的发布</view>
+    <view class="weui-panel__bd">
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="../../../images/posts/exm1.png" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">并夕夕上买的小零食</view>
+          <view class="weui-media-box__desc">双十一买多了，回血冲双十二</view>
+        </view>
+      </navigator>
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="../../../images/posts/exm2.png" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">姐姐们都在用的化妆品</view>
+          <view class="weui-media-box__desc">乘风破浪的姐姐推荐，真的很好用，用了马上就能出道</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+</view>

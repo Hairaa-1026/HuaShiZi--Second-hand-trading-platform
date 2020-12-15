@@ -1,0 +1,43 @@
+<!--pages/invitation/invitation.wxml-->
+<view class="page">
+<view class="page__bd">
+  <view class="weui-panel">
+    <view class="weui-panel__hd">咨询区</view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">我大一写出了八皇后属于什么水平？</view>
+        <view class="weui-media-box__desc">老师布置的一个大作业，他给的代码有16页ppt，我表示不想照搬，就自己写逻辑。</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">孤独的橘猫</view>
+          <view class="weui-media-box__info__meta">2020.12.14 10:24</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">中北校区</view>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__desc">上知乎挨大神前辈们打击的水平。</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">秃头码农</view>
+          <view class="weui-media-box__info__meta">2020.12.14 11:24</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">中北校区</view>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__desc">建议题主给自己吃顿好的，高兴高兴。毕竟不是谁都能体会到写代码的乐趣。</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">C#天下第一</view>
+          <view class="weui-media-box__info__meta">2020.12.14 12:24</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">中北校区</view>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__desc">emm…如果我一直不按回车的话不就永远只有一行代码吗</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">Java带师</view>
+          <view class="weui-media-box__info__meta">2020.12.14 15:05</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">中北校区</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

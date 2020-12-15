@@ -1,2 +1,37 @@
 <!--pages/personalCenter/myOrder/myOrder.wxml-->
-<text>pages/personalCenter/myOrder/myOrder.wxml</text>
+<view class="page">
+<view class="page__bd">
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">我的订单</view>
+    <view class="weui-panel__bd">
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="../../../images/orders/exm1.jpg" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">现代软件工程</view>
+          <view class="weui-media-box__desc">CS必买！年薪百万宝典</view>
+        </view>
+      </navigator>
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="../../../images/orders/exm2.jpg" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">抗寒必备</view>
+          <view class="weui-media-box__desc">军大衣！yyds！让你在田楼没有空调的教室不至于冻死</view>
+        </view>
+      </navigator>
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="../../../images/orders/exm3.jpg" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">程序设计能力实训VIP辅导</view>
+          <view class="weui-media-box__desc">EOJ精通指南，300分包过，不过退款</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+</view>
