@@ -8,7 +8,8 @@
     "pages/personalCenter/myCollection/myCollection",
     "pages/personalCenter/mySetting/mySetting",
     "pages/show/show",
-    "pages/post/post"
+    "pages/post/post",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,7 +39,7 @@
       },
       {
         "text": "搜索",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/search/search",
         "iconPath": "images/tabBar/search.png",
         "selectedIconPath": "images/tabBar/search.fill.png"
       },
