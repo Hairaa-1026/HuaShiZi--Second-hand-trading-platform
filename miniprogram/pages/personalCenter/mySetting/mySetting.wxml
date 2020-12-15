@@ -1,2 +1,31 @@
-<!--pages/personalCenter/mySetting/mySetting.wxml-->
-<text>pages/personalCenter/mySetting/mySetting.wxml</text>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd">
+        <view class="weui-cells__title">学号</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入学号" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">密码</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入公共数据库密码" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">校区</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="中北校区/闵行校区" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+        </view>
+    </view>
+</view>
