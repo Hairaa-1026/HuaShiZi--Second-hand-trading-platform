@@ -9,7 +9,8 @@
     "pages/personalCenter/mySetting/mySetting",
     "pages/show/show",
     "pages/post/post",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/invitation/invitation"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,12 +28,12 @@
       },
       {
         "text": "论坛",
-        "pagePath": "pages/show/show",
+        "pagePath": "pages/invitation/invitation",
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },
       {
-        "text": "我想卖",
+        "text": "物品发布",
         "pagePath": "pages/post/post",
         "iconPath": "images/tabBar/release.png",
         "selectedIconPath": "images/tabBar/release.fill.png"
