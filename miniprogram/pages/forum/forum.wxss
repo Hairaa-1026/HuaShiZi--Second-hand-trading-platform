@@ -2,7 +2,7 @@
 
 .mine{
   background-color: #b5004291;
-  height: 80px;
+  height: 180rpx;
   position: absolute;
   left: 0;
   top: 0;
@@ -15,126 +15,114 @@
   height: 15vw;
   border-radius: 50%;
   position: absolute;
-  left: 10px;
-  top: 10px;
+  left: 20rpx;
+  top: 40rpx;
 }
 
 .mine text{
   position: absolute;
-  left: 65px;
-  top: 20px;
+  left: 150rpx;
+  top: 65rpx;
   color: #DFDFDF;
 }
+
 
 .my-post {
   position: relative;
   border: solid 1px;
-  top: 80px;
-  height: 100px;
+  top: 180rpx;
+  height: 200rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.information text{
-  font-size: 12px;
-  position: absolute;
-  font-weight: bolder;
-  left: 30px;
+.information{
+  width:32%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .post-num {
   font-size: x-large;
   font-weight: bolder;
-  position: absolute;
-  left: 60px;
-  top: 40px;
+  text-align: center;
+  position: relative;
+  top: 70rpx;
 }
 
 .post {
   font-size: 10px;
   font-weight: lighter;
   color: gray;
-  position: absolute;
-  left: 48px;
-  top: 70px;
-  
+  position: relative;
+  top: 60rpx;
 }
 
-.want-post image{
-  width: 15%;
-  height: 15vw;
-  position: absolute;
-  left: 130px;
-  top: 25px;
+.information image{
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 70rpx;
 }
 
-.want-post text{
+.want-post {
   font-size: 10px;
   font-weight: medium;
   color: black;
-  position: absolute;
-  left: 135px;
-  top: 75px;
+  position: relative;
+  top: 70rpx;
 }
 
-.collection-num text{
+.collection-num {
   font-size: x-large;
   font-weight: bolder;
-  position: absolute;
-  left: 240px;
-  top: 40px;
+  text-align: center;
+  position: relative;
+  top: 70rpx;
 }
 
-.collection text{
+.collection {
   font-size: 10px;
   font-weight: lighter;
   color: gray;
-  position: absolute;
-  left: 228px;
-  top: 70px;
+  position: relative;
+  top: 60rpx;
 }
 
 .board {
-  top: 120px;
   position: relative;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 400px;
+  top: 120px;
+  align-items: center;
 }
 
-.guaren {
-  top: 0px;
-}
-
-text.text-border {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
+.text-border {
+  align-items: center;
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
+  height: 120rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
   border: solid 2px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.guaren text{
-  position: absolute;
-  left: 80px;
-  font-size: 20px;
-}
 
-.consult {
-  top: 120px;
-}
 
-.consult text{
-  font-size: 20px;
-  position: absolute;
-  top: 120px;
-  left: 80px;
-}
 
-.tucao{
-  top: 240px;
-}
 
-.tucao text{
-  font-size: 20px;
-  position: absolute;
-  top: 240px;
-  left: 80px;
-}
+
+
 

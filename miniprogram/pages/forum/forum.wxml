@@ -1,52 +1,43 @@
 <!--pages/forum/forum.wxml-->
 
 <view class="mine">
-  <image src="//timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608064033623&di=cc57f8c182afeebcfeb79fb980e80261&imgtype=0&src=http%3A%2F%2Fpic2.zhimg.com%2Fv2-538d5b5128ae5f3c6ac346de906a2dc3_1200x500.jpg"></image>
-  <text>二某</text>
+  <view wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class='btn-logn'>
+   <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"  background-size="cover"></image>
+   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
 </view>
 
 <view class="my-post">
   <view class="information">
-    <text>我的帖子</text>
+    <view class="post-num">
+      <text>1</text>
+    </view>
+    <view class="post">
+      <text>我发布的</text>
+    </view>
   </view>
 
-  <view class="post-num">
-    <text>1</text>
-  </view>
-
-  <view class="post">
-    <text>我发布的</text>
-  </view>
-  <navigator url="myPost/myPost" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <view class="information">
+    <image src="../../images/tabBar/forum.png" mode="widthFix"></image>
     <view class="want-post">
-      <image src="../../images/tabBar/forum.png"></image>
       <text>我要发贴</text>
     </view>
-  </navigator>
-
-  
-
-  <view class="collection-num">
-    <text>3</text>
   </view>
 
-  <view class="collection">
-    <text>我收藏的</text>
+  <view class="information">
+    <view class="collection-num">
+      <text>3</text>
+    </view>
+    <view class="collection">
+      <text>我收藏的</text>
+    </view>
   </view>
 </view>
 
 <view class="board">
-  <view class="guaren">
-    <text class="text-border">挂人区</text>
-  </view>
-
-  <view class="consult">
-    <text class="text-border">咨询区</text>
-  </view>
-
-  <view class="tucao">
-    <text class="text-border">吐槽区</text>
-  </view>
+  <view class="text-border">挂人区</view>
+  <view class="text-border">咨询区</view>
+  <view class="text-border">吐槽区</view>
 </view>
 
 

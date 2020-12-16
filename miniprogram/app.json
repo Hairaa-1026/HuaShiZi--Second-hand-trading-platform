@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/show/show",
     "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
     "pages/personalCenter/myOrder/myOrder",
     "pages/personalCenter/myCollection/myCollection",
     "pages/personalCenter/mySetting/mySetting",
-    "pages/show/show",
     "pages/post/post",
     "pages/search/search",
     "pages/invitation/invitation",

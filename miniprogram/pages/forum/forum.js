@@ -1,34 +1,122 @@
 // pages/forum/forum.js
 Page({
   data: {
+     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+     userInfo: {
+       nickName: '',
+       avatarUrl: '', 
+     },
+  },
+
+  onLoad: function () {
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function (res) {
+              //用户已经授权过
+            }
+          })
+        }
+      }
+    })
 
   },
 
-  canvasIdErrorCallback: function (e) {
-    console.error(e.detail.errMsg)
-  },
-
-  onReady: function (e) {
-    var ctx = wx.createCanvasContext('mycanvas');
-    ctx.rect(20, 70, 360, 240);
-    ctx.setFillStyle('#fff');
-    ctx.fill();
-    ctx.draw();
+   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    var that = this;
+    var nickName = 'userInfo.nickName';
+    var avatarUrl = 'userInfo.avatarUrl';
     
-    var ctx1 = wx.createCanvasContext('mycanvas1');
-    ctx1.setStrokeStyle('gray');
-    ctx1.strokeRect(20, 80, 280, 70);
-    ctx1.draw();
+    //get缓存值用户名字，并设置
+    try {
+      var value = wx.getStorageSync('nickName')
+      console.log(value);
+      if (value) {
+        that.setData({
+          [nickName]: value
+        })
+      }
+    } catch (e) {
+      // Do something when catch error
+    }
 
-    var ctx2 = wx.createCanvasContext('mycanvas2');
-    ctx2.setStrokeStyle('gray');
-    ctx2.strokeRect(20, 40, 280, 70);
-    ctx2.draw();
+   //get缓存值用户头像，并设置
+   wx.getStorage({
+     key: 'avatarUrl',
+     success: function(res) {  
+       that.setData({
+        [avatarUrl]: res.data
+       })
+     },
+   })
+  },
 
-    var ctx3 = wx.createCanvasContext('mycanvas3');
-    ctx3.setStrokeStyle('gray');
-    ctx3.strokeRect(20, 0, 280, 70);
-    ctx3.draw();
+  bindGetUserInfo: function(e) {
+    var that = this;
+    var nickName = that.data.userInfo.nickName;
+    var avatarUrl = that.data.userInfo.avatarUrl;
+    
+    if (e.detail.userInfo) {
+       //用户按了允许授权按钮
+       var userInfo = e.detail.userInfo;
+       console.log(userInfo)
+      that.setData({
+        nickName: userInfo.nickName
+      })
+      that.setData({
+        avatarUrl : userInfo.avatarUrl
+      })
+      try {//同步设置nickName
+        wx.setStorageSync('nickName', userInfo.nickName)
+      } catch (e) {
+      }
+      
+      wx.setStorage({
+        key: 'avatarUrl',
+        data: userInfo.avatarUrl,
+      })
+    } else {
+      //用户按了拒绝按钮
+      wx.showModal({
+        title: '提示',
+        content: '请授权登录',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateBack({
+              delta: 1
+            })
+          } else {
+            console.log('用户点击取消')
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+          
+        }
+      })
+    }
+  },
 
-  }
+  bindClear: function (e) {
+    var that = this;
+    var nickName = 'userInfo.nickName';
+    var avatarUrl = 'userInfo.avatarUrl';
+   
+    try {//同步设置nickName
+      wx.setStorageSync('nickName', '')
+    } catch (e) {
+    }
+  
+    wx.setStorage({
+      key: 'avatarUrl',
+      data: '',
+    })
+  },
+
 })
