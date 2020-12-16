@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/test/test",
     "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
