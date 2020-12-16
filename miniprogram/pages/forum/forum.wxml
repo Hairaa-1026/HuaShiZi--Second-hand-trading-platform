@@ -5,48 +5,46 @@
   <text>二某</text>
 </view>
 
-<view class="information">
-  <canvas canvas-id="mycanvas">
+<view class="my-post">
+  <view class="information">
     <text>我的帖子</text>
-  </canvas>
+  </view>
+
+  <view class="post-num">
+    <text>1</text>
+  </view>
+
+  <view class="post">
+    <text>我发布的</text>
+  </view>
+
+  <view class="want-post">
+    <image src="../../images/tabBar/forum.png"></image>
+    <text>我要发贴</text>
+  </view>
+
+  <view class="collection-num">
+    <text>3</text>
+  </view>
+
+  <view class="collection">
+    <text>我收藏的</text>
+  </view>
 </view>
 
-<view class="post-num">
-  <text>1</text>
-</view>
+<view class="board">
+  <view class="guaren">
+    <text class="text-border">挂人区</text>
+  </view>
 
-<view class="post">
-  <text>我发布的</text>
-</view>
+  <view class="consult">
+    <text class="text-border">咨询区</text>
+  </view>
 
-<view class="want-post">
-  <image src="../../images/tabBar/release.png"></image>
-  <text>我要发贴</text>
+  <view class="tucao">
+    <text class="text-border">吐槽区</text>
+  </view>
 </view>
-
-<view class="collection-num">
-  <text>3</text>
-</view>
-
-<view class="collection">
-  <text>我收藏的</text>
-</view>
-
-<view class="guaren">
-  <canvas canvas-id="mycanvas1"></canvas>
-  <text>挂人区</text>
-</view>
-
-<view class="consult">
-  <canvas canvas-id="mycanvas2"></canvas>
-  <text>咨询区</text>
-</view>
-
-<view class="tucao">
-  <canvas canvas-id="mycanvas3"></canvas>
-  <text>吐槽区</text>
-</view>
-
 
 
 

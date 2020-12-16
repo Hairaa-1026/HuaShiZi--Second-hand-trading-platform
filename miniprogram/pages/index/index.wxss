@@ -38,7 +38,7 @@
   color: #ffffff;
   font-size: 12px;
   box-sizing: border-box;
-  background-color: #4169E1;
+  background-color: #b50042a4;
   border-top: 1rpx solid #DFDFDF;
   border-bottom: 1rpx solid #DFDFDF;
 }

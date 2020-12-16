@@ -1,0 +1,41 @@
+.tabs-first{
+  height: 100rpx;
+  flex: 1;
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.tabs-second{
+  font-size:30rpx;
+  color: #00000059;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+}
+
+.load-pic{
+  flex: 1;
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.pic{
+  height: 260rpx;
+  width: 260rpx;
+}
+
+.load-icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cancel-icon{
+  height: 60rpx;
+  width: 60rpx;
+
+}

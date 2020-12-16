@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/forum/forum",
+    "pages/postInfo/postInfo",
+    "pages/posting/posting",
+    "pages/forumBrowse/forumBrowse",
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
     "pages/personalCenter/myOrder/myOrder",
@@ -15,7 +17,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#4169E1",
+    "navigationBarBackgroundColor": "#a3223a",
     "navigationBarTitleText": "花狮子二手交易信息",
     "navigationBarTextStyle": "white"
   },
@@ -29,11 +31,7 @@
       },
       {
         "text": "论坛",
-<<<<<<< HEAD
         "pagePath": "pages/forum/forum",
-=======
-        "pagePath": "pages/invitation/invitation",
->>>>>>> fd6d59de2c79a94fb2ccd928ec7a126983e36cc8
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },

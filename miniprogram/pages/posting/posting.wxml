@@ -1,0 +1,43 @@
+<view class="tabs">
+  <text>\n</text>
+  <text>\n</text>
+  <view class="tabs-first">
+    <view>发布帖子></view>
+    <view>注意礼仪></view>
+  </view>
+  <view class="tabs-second">
+    <view class="second-style">看看大家都在聊啥</view>
+    <view class="second-style">不要引战哦~</view>
+  </view>
+  <view>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+  </view>
+  <view class="load-pic">
+    <image 
+      class="pic"
+      src="/images/postingClass/postingWords.jpg" 
+      mode="aspectFit">
+    </image>
+    <image 
+      class="pic"
+      src="/images/postingClass/postingPictures.jpg"
+      mode="aspectFit">
+    </image>
+  </view>
+  <text>\n</text>
+  <view class="load-icon">
+    <image
+    class="cancel-icon"
+    src="/images/postingClass/cancel.png">
+    </image>
+  </view>
+</view>

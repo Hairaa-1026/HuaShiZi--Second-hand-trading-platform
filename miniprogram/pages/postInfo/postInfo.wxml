@@ -1,0 +1,50 @@
+<view class="page-body">
+  <view class="page-top">
+    <text>取消</text>
+  </view>
+  <text>\n</text>
+  <view class="page-input">
+    <view class="title">
+      <input class="weui-input" auto-focus placeholder="（选填）帖子标题"/>
+    </view>
+    <view class="_line"></view>
+    <view class="section">
+      <textarea placeholder="尽情发挥吧~" auto-focus />
+    </view>
+  </view>
+  <view class="blankspace">
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+  </view>
+  <view class="page-pick">
+    <button 
+    style="width:100vw" 
+    class="answer-button" 
+    bindtap="onSelectAnswerA">
+      #添加TAG    
+    </button>
+    <view class="line"></view>
+    <button 
+    style="width:100vw" 
+    class="answer-button" 
+    bindtap="onSelectAnswerA">
+      &选择分类
+    </button>
+    <view class="line"></view>
+    <button 
+    style="width:100vw" 
+    class="answer-button" 
+    bindtap="onSelectAnswerA">
+      *更多设置
+    </button>
+  </view>
+  <view class="blankspace">
+    <text>\n</text>
+    <text>\n</text>
+    <text>\n</text>
+  </view>
+  <view class="page-end">
+    <button type="primary" plain="true">发布</button>
+  </view>
+</view>

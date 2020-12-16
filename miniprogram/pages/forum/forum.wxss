@@ -1,7 +1,7 @@
 /* pages/forum/forum.wxss */
 
 .mine{
-  background-color: #4169E1;
+  background-color: #b5004291;
   height: 80px;
   position: absolute;
   left: 0;
@@ -26,29 +26,36 @@
   color: #DFDFDF;
 }
 
-.information canvas text{
+.my-post {
+  position: relative;
+  border: solid 1px;
+  top: 80px;
+  height: 100px;
+}
+
+.information text{
   font-size: 12px;
   position: absolute;
   font-weight: bolder;
   left: 30px;
-  top: 80px;
 }
 
-.post-num text{
+.post-num {
   font-size: x-large;
   font-weight: bolder;
   position: absolute;
   left: 60px;
-  top: 120px;
+  top: 40px;
 }
 
-.post text{
+.post {
   font-size: 10px;
   font-weight: lighter;
   color: gray;
   position: absolute;
   left: 48px;
-  top: 150px;
+  top: 70px;
+  
 }
 
 .want-post image{
@@ -56,7 +63,7 @@
   height: 15vw;
   position: absolute;
   left: 130px;
-  top: 105px;
+  top: 25px;
 }
 
 .want-post text{
@@ -65,7 +72,7 @@
   color: black;
   position: absolute;
   left: 135px;
-  top: 155px;
+  top: 75px;
 }
 
 .collection-num text{
@@ -73,7 +80,7 @@
   font-weight: bolder;
   position: absolute;
   left: 240px;
-  top: 120px;
+  top: 40px;
 }
 
 .collection text{
@@ -82,26 +89,52 @@
   color: gray;
   position: absolute;
   left: 228px;
-  top: 150px;
+  top: 70px;
+}
+
+.board {
+  top: 120px;
+  position: relative;
+
+}
+
+.guaren {
+  top: 0px;
+}
+
+text.text-border {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border: solid 2px;
 }
 
 .guaren text{
-  font-size: 20px;
   position: absolute;
-  top: 250px;
-  left: 130px;
+  left: 80px;
+  font-size: 20px;
+}
+
+.consult {
+  top: 120px;
 }
 
 .consult text{
   font-size: 20px;
   position: absolute;
-  top: 360px;
-  left: 130px;
+  top: 120px;
+  left: 80px;
+}
+
+.tucao{
+  top: 240px;
 }
 
 .tucao text{
   font-size: 20px;
   position: absolute;
-  top: 470px;
-  left: 130px;
+  top: 240px;
+  left: 80px;
 }
+

@@ -1,0 +1,16 @@
+.button-sp-area{
+  margin: 0 auto;
+  width: 60%;
+}
+
+._line{
+  width:100%;
+  height:8rpx;
+  background: #aaffff60;
+}
+
+.line{
+  width:100%;
+  height:6rpx;
+  background: #ffffff;
+}
