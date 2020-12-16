@@ -8,21 +8,19 @@
 
 .a_container{
   width: 100%;
-  padding: 32rpx;
+  padding-top: 32rpx;
   display: flex;
   box-sizing: border-box;
-
+  align-items: center;
+  justify-content: center;
 }
 .a_image {
-  margin: auto 0rpx;
   border: 1rpx solid #d3d3d3;
-
-  justify-content: center; 
 }
 .a_image image {
-  width: 185rpx;
-  height: 220rpx;
-  
+  width: 400rpx;
+  height: 300rpx;
+  padding :10px;
 }
 
 .b_container{
@@ -139,7 +137,7 @@ text-input{
 
 .b_ccontain {
   width: 100%;
-  padding: 32rpx;
+  padding-bottom: 32rpx;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
