@@ -1,9 +1,7 @@
 {
   "pages": [
-    "pages/postInfo/postInfo",
-    "pages/posting/posting",
-    "pages/forumBrowse/forumBrowse",
     "pages/index/index",
+    "pages/test/test",
     "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
@@ -13,7 +11,11 @@
     "pages/show/show",
     "pages/post/post",
     "pages/search/search",
-    "pages/invitation/invitation"
+    "pages/invitation/invitation",
+    "pages/postInfo/postInfo",
+    "pages/posting/posting",
+    "pages/forumBrowse/forumBrowse"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

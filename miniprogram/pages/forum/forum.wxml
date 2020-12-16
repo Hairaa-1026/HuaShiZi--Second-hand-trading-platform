@@ -17,11 +17,14 @@
   <view class="post">
     <text>我发布的</text>
   </view>
+  <navigator url="myPost/myPost" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="want-post">
+      <image src="../../images/tabBar/forum.png"></image>
+      <text>我要发贴</text>
+    </view>
+  </navigator>
 
-  <view class="want-post">
-    <image src="../../images/tabBar/forum.png"></image>
-    <text>我要发贴</text>
-  </view>
+  
 
   <view class="collection-num">
     <text>3</text>

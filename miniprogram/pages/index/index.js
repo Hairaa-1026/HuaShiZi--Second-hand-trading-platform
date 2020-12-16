@@ -34,7 +34,7 @@ Page({
     console.error(e.detail.errMsg)
    },
 
-  onReady: function (e) {
+/*  onReady: function (e) {
 
     var context1 = wx.createCanvasContext('firstCanvas')
     context1.fillStyle="#cc2222";
@@ -77,5 +77,5 @@ Page({
     context5.draw();
 
   }
-
+*/
 })

@@ -1,0 +1,5 @@
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>
+<view class = "tags">
+  <text>哈哈哈哈哈哈哈</text>
+</view>

@@ -110,4 +110,4 @@ for (let i = 0; i < types.length; ++i) {
   }(types[i]))
 }
 
-Page(pageObject)
+//Page(pageObject)
