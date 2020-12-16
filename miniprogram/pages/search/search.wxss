@@ -29,6 +29,23 @@
   color: #fff;
   border-radius: 20rpx;
 }
+.tags{
+  display: flex;
+  line-height: 20px;
+  margin-left: 10px;
+}
+
+.search-tag {
+  height: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  font-size: 32rpx;
+  background-color: #d8d8d8;
+  color: black;
+  border-radius: 20rpx;
+}
+
 .good-wrapper {
   padding: 0 30rpx;
   border-bottom: 1px solid #F8F8F8;
