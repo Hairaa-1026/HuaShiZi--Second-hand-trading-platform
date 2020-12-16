@@ -1,20 +1,20 @@
 <!--post.wxml-->
 
 <!-- 发布物品 -->
-<view class='box'>
+<!-- <view class='box'>
   <view class='wrapper'>
     <view class="tab-content {{leave ? 'select' : 'noSelect'}} " bindtap='chooseLeave'></view>
     <view class="tab-content {{postThing ? 'select' : 'noSelect'}}" bindtap='choosePostThing'>物品发布</view>
     <view class="tab-content {{thingsList ? 'select' : 'noSelect'}}" bindtap='chooseList'></view>
   </view>
-</view>
+</view> -->
 
 <!-- 发布出售/求购物品 -->
 <view class='weui-panel outside_border' wx:if="{{postThing}}">
   <!-- 图片 -->
   <view class="a_container">
   <view class="a_image" bindtap='bindThingImageInput'>
-      <image src=" {{thingImage}}" mode="aspectFit" />
+      <image src=" {{thingImage}}" mode="aspectFit" ></image>
   </view>
 </view>
 

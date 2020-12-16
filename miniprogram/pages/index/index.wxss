@@ -126,9 +126,5 @@ page {
   line-height: 15px;
 }
 
-.super_goods{
-  display: flex;
-}
-
 
 

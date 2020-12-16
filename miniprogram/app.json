@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
     "pages/personalCenter/myOrder/myOrder",
@@ -10,7 +9,7 @@
     "pages/show/show",
     "pages/post/post",
     "pages/search/search",
-    "pages/invitation/invitation",
+    "pages/forumBrowse/invitation/invitation",
     "pages/postInfo/postInfo",
     "pages/posting/posting",
     "pages/forumBrowse/forumBrowse"
@@ -32,7 +31,7 @@
       },
       {
         "text": "论坛",
-        "pagePath": "pages/forum/forum",
+        "pagePath": "pages/forumBrowse/forumBrowse",
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },
