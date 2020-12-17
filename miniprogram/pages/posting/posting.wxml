@@ -21,25 +21,31 @@
     <text>\n</text>
     <text>\n</text>
   </view>
-  <navigator url = "../postInfo/postInfo">
-    <view class="load-pic">
+  <view class="load-pic">
+    <!-- 发布（仅）文字帖子 -->
+    <navigator url="../postInfo/postInfo">
       <image 
         class="pic"
         src="/images/postingClass/postingWords.jpg" 
         mode="aspectFit">
       </image>
+    </navigator>
+   
+    <!-- 发布带图片帖子 -->
+    <navigator url="../postInfo/postInfo">
       <image 
         class="pic"
         src="/images/postingClass/postingPictures.jpg"
         mode="aspectFit">
       </image>
-    </view>
-    <text>\n</text>
-    <view class="load-icon">
-      <image
-      class="cancel-icon"
-      src="/images/postingClass/cancel.png">
-      </image>
-    </view>
-  </navigator>
+    </navigator>
+    
+  </view>
+  <text>\n</text>
+  <view class="load-icon">
+    <image
+    class="cancel-icon"
+    src="/images/postingClass/cancel.png">
+    </image>
+  </view>
 </view>

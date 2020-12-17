@@ -1,3 +1,4 @@
+<!-- 顶端导航栏区 -->
 <view class="tabs">
   <view class="tabs_title">
     <view 
@@ -10,9 +11,70 @@
      {{item.name}}
     </view>
   </view>
+</view>
 
-  <view class="post_area">
-    <view class="post_block">
+<!-- 帖子的楼层区域 -->
+<view class="post_area">
+  <!-- 带图片的帖子 postWithPicture -->
+  <view class="postWithPicture">
+    <view class="weui-panel__bd">
+      <!-- Part 1 发帖人信息-->
+      <navigator url="" class="poster_info" hover-class="weui-cell_active">
+        <!-- 头像 -->
+        <view class="avatar-area">
+          <image class="avatar" src="/images/collections/exm1.jpg" />
+        </view>
+        <!-- 人名 -->
+        <view class="poster_name">红耶耶耶</view>
+      </navigator>
+      <!-- Part 2 帖子内容 -->
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <!-- 帖子内容 -->
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">标题</view>
+          <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+        </view>
+        <!-- 右侧图片：帖子图片 -->
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="/images/collections/exm2.jpg" />
+        </view>
+      </navigator>
+      <!-- Part 3 tag -->
+      <view class="weui-media-box__info">
+        <view class="weui-media-box__info__meta">#挂人</view>
+        <view class="weui-media-box__info__meta">#海海子冲呀</view>
+        <view class="weui-media-box__info__meta">#气死我了</view>
+      </view>
     </view>
   </view>
+
+  <!-- 不带图片（纯文字）的帖子 postOnlyWords -->
+  <view class="postOnlyWords">
+    <view class="weui-panel__bd">
+      <view class="weui-panel__bd">
+      <!-- 发帖人信息-->
+      <navigator url="" class="poster_info" hover-class="weui-cell_active">
+        <!-- 头像 -->
+        <view class="avatar-area">
+          <image class="avatar" src="/images/collections/exm2.jpg" />
+        </view>
+        <!-- 人名 -->
+        <view class="poster_name">郑某人</view>
+      </navigator>
+      <!-- 帖子内容 -->
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <!-- 中间内容：id和帖子内容 -->
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">标题</view>
+          <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+        </view>
+      </navigator>
+      <view class="weui-media-box__info">
+        <view class="weui-media-box__info__meta">#帮挂</view>
+        <view class="weui-media-box__info__meta">#海海子冲呀</view>
+        <view class="weui-media-box__info__meta">#气死我姐了</view>
+      </view>
+    </view>
+  </view>
+</view>
 </view>

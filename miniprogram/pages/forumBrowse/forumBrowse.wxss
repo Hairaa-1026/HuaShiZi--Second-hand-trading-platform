@@ -1,17 +1,24 @@
-
 .tabs_title{
   display: flex;
   padding:10rpx 0;
 }
-
 .title_item{
   flex:1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .active{
   color:#030303c0;
   border-bottom: 15rpx solid currentColor;
+}
+
+.poster_info{
+  display: flex;
+}
+
+.avatar{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 10rpx;
 }

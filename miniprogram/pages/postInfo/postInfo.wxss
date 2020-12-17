@@ -14,3 +14,74 @@
   height:6rpx;
   background: #ffffff;
 }
+
+.pic{
+  height: 360rpx;
+  width: 300rpx;
+  justify-content: flex-start;
+}
+
+.box{
+  width: 60%;
+  height: 40rpx;
+  display: flex;
+  text-align:center;
+  align-items: center;
+}
+
+.boxbox-hover{
+  width: 100%;
+  height: 40rpx;
+  display: flex;
+  text-align:center;
+  align-items: center;
+  opacity: 0.9; /* 透明度变化 */
+  background-color: #ffc343;
+}
+
+.img-box{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10px;
+}
+
+.text-box{
+  font-size: 15px;
+  margin-left: 10px;
+  display: flex;
+   flex-direction: column;
+   align-items: center;
+  margin-bottom: 2px;
+}
+
+.line{
+   background-color: #f4f4f4;
+    width: 100%;
+    height: 5rpx
+}
+.line2{
+ width: 5rpx;
+height: 140rpx ;
+background-color: #ffffff;
+}
+.addpic{
+  width: 140rpx;
+  height: 160rpx;
+  margin-left: 10px;
+}
+
+.addPics{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  white-space: pre-wrap;
+}
+
+.block{
+  width: 100%;
+   /*下面三行代码实现了图片换行*/
+  display: flex;
+ flex-flow: row wrap;  
+align-content: space-around;
+}
+

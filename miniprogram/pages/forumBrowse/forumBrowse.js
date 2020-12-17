@@ -4,6 +4,7 @@ Component({
   },
 
   data: {
+    //顶部区域
     tabs:[
       {
         id:0,
@@ -20,7 +21,9 @@ Component({
         name:"咨询区",
         isActive:false
       }
-    ]
+    ],
+    //帖子数据
+    postList:[]
   },
 
   methods:{
@@ -33,5 +36,10 @@ Component({
         tabs
       })
     }
+  },
+
+  //获取帖子数据
+  getPostList(){
+    
   }
 })

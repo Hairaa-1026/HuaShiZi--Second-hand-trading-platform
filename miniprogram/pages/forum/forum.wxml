@@ -17,15 +17,12 @@
     </view>
   </view>
 
-  <view class="information">
-    
-    <image  src="../../images/tabBar/forum.png" mode="widthFix"></image>
-    <navigator url="../posting/posting">
-      <view class="want-post">
-        <text>我要发贴</text>
-      </view>
-    </navigator>
-  </view>
+  <navigator class="information" url="/pages/posting/posting">
+    <image src="../../images/tabBar/forum.png" mode="widthFix"></image>
+    <view class="want-post">
+      <text>我要发贴</text>
+    </view>
+  </navigator>
 
   <view class="information">
     <view class="collection-num">
@@ -38,7 +35,9 @@
 </view>
 <navigator url="/pages/forumBrowse/invitation/invitation" open-type="navigate">
   <view class="board">
-    <view class="text-border">挂人区</view>
+    <navigator class="text-border" url="/pages/forumBrowse/forumBrowse">
+      <view>挂人区</view>
+  </navigator>
     <view class="text-border">咨询区</view>
     <view class="text-border">吐槽区</view>
   </view>

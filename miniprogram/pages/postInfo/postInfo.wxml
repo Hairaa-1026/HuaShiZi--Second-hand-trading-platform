@@ -1,44 +1,95 @@
 <view class="page-body">
-  <view class="page-top">
+  <!-- “取消 -->
+
+  <view class="page-top" bindtap="handleCancel">
     <text>取消</text>
   </view>
+  
   <text>\n</text>
+  <!-- 输入 -->
   <view class="page-input">
+    <!-- 标题输入 -->
     <view class="title">
       <input class="weui-input" auto-focus placeholder="（选填）帖子标题"/>
     </view>
     <view class="_line"></view>
+    <!-- 内容输入 -->
     <view class="section">
       <textarea placeholder="尽情发挥吧~" auto-focus />
     </view>
   </view>
+  
+
+  <!-- 图片显示 -->
+  <!-- <button bindtap='bindThingImageInput'>加载图片</button>
+  <view class="loadPicture" >
+    <image 
+      class="pic"
+      src="{{tempfilepath }}"
+      mode="aspectFit">
+    </image>
+  </view> -->
+  <!-- 加载图片 -->
+  <view class='box' hover-class="box-hover" hover-stay-time="500" bindtap='changeImg'>
+    <image class='img-box' src='/images/{{image}}'></image>
+    <text class='text-box'>添加图片</text>
+  </view>
+
+  <view class='line'></view>
+
+  <view hidden='{{status}}'>
+    <view class='addPics'>
+      <image class='addpic' src='/images/postInfo/addPicture.jpg' bindtap='goTakePic'></image>
+    </view>
+    <view class="block">
+      <block wx:for="{{src}}">
+      <!-- <block wx:if="{{index % 5 == 0}}">
+        <view></view>
+      </block> -->
+        <navigator url=''>
+          <image class='addpic' src='{{item}}' data-index="{{index}}" bindtap="previewImage"></image>
+        </navigator>
+      </block>
+    </view>
+  </view>
+
+
+
+  <!-- 空白 -->
   <view class="blankspace">
     <text>\n</text>
     <text>\n</text>
     <text>\n</text>
   </view>
+
+  <!-- 设置 -->
   <view class="page-pick">
-    <button 
-    style="width:100vw" 
-    class="answer-button" 
+    <!-- 添加TAG -->
+    <view class="weui-panel__ft"
     bindtap="onSelectAnswerA">
-      #添加TAG    
-    </button>
-    <view class="line"></view>
-    <button 
-    style="width:100vw" 
-    class="answer-button" 
+      <view class="weui-cell weui-cell_access weui-cell_link">
+        <view class="weui-cell__bd">#添加TAG</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+    <!-- 选择分类 -->
+    <view class="weui-panel__ft"
     bindtap="onSelectAnswerA">
-      &选择分类
-    </button>
-    <view class="line"></view>
-    <button 
-    style="width:100vw" 
-    class="answer-button" 
+      <view class="weui-cell weui-cell_access weui-cell_link">
+        <view class="weui-cell__bd">&选择分类</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+    <!-- 更多设置 -->
+    <view class="weui-panel__ft"
     bindtap="onSelectAnswerA">
-      *更多设置
-    </button>
+      <view class="weui-cell weui-cell_access weui-cell_link">
+        <view class="weui-cell__bd">*更多设置</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
   </view>
+
   <view class="blankspace">
     <text>\n</text>
     <text>\n</text>
@@ -48,3 +99,5 @@
     <button type="primary" plain="true">发布</button>
   </view>
 </view>
+
+
