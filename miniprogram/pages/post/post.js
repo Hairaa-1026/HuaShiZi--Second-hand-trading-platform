@@ -206,7 +206,7 @@ Page({
           if (res.confirm) {
             console.log('用户点击确定')
             wx.navigateTo({
-              url: '../my/mySetting/mySetting',
+              url: '../personalCenter/mySetting/mySetting',
             })
           } else if (res.cancel) {
             console.log('用户点击取消')
