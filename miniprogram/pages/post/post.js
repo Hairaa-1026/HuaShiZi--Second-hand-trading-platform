@@ -18,7 +18,7 @@ Page({
     diliveryType:["面交","邮寄","其它"],
     diliveryTypeIndex: 0,
 
-    thingImage: '../../images/tabBar/post.PNG',
+    thingImage: '../../images/tabBar/post.jpg',
     thingName: '',
     thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材"],
     thingTypeIndex: 0,

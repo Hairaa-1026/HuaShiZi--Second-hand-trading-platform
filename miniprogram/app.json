@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-<<<<<<< HEAD
     "pages/show/show",
+    "pages/postInfo/postInfo",
+    "pages/forumBrowse/forumBrowse",
+    "pages/posting/posting",
     "pages/forum/forum",
-=======
->>>>>>> cad8c615baaff44183314bd0ff21aedf885888d0
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
     "pages/personalCenter/myOrder/myOrder",
@@ -13,11 +13,7 @@
     "pages/personalCenter/mySetting/mySetting",
     "pages/post/post",
     "pages/search/search",
-    "pages/forumBrowse/invitation/invitation",
-    "pages/postInfo/postInfo",
-    "pages/posting/posting",
-    "pages/forumBrowse/forumBrowse"
-    
+    "pages/forumBrowse/invitation/invitation"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,7 +31,7 @@
       },
       {
         "text": "论坛",
-        "pagePath": "pages/forumBrowse/forumBrowse",
+        "pagePath": "pages/forum/forum",
         "iconPath": "images/tabBar/forum.png",
         "selectedIconPath": "images/tabBar/forum.fill.png"
       },

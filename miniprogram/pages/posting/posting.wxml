@@ -21,23 +21,25 @@
     <text>\n</text>
     <text>\n</text>
   </view>
-  <view class="load-pic">
-    <image 
-      class="pic"
-      src="/images/postingClass/postingWords.jpg" 
-      mode="aspectFit">
-    </image>
-    <image 
-      class="pic"
-      src="/images/postingClass/postingPictures.jpg"
-      mode="aspectFit">
-    </image>
-  </view>
-  <text>\n</text>
-  <view class="load-icon">
-    <image
-    class="cancel-icon"
-    src="/images/postingClass/cancel.png">
-    </image>
-  </view>
+  <navigator url = "../postInfo/postInfo">
+    <view class="load-pic">
+      <image 
+        class="pic"
+        src="/images/postingClass/postingWords.jpg" 
+        mode="aspectFit">
+      </image>
+      <image 
+        class="pic"
+        src="/images/postingClass/postingPictures.jpg"
+        mode="aspectFit">
+      </image>
+    </view>
+    <text>\n</text>
+    <view class="load-icon">
+      <image
+      class="cancel-icon"
+      src="/images/postingClass/cancel.png">
+      </image>
+    </view>
+  </navigator>
 </view>

@@ -18,10 +18,13 @@
   </view>
 
   <view class="information">
-    <image src="../../images/tabBar/forum.png" mode="widthFix"></image>
-    <view class="want-post">
-      <text>我要发贴</text>
-    </view>
+    
+    <image  src="../../images/tabBar/forum.png" mode="widthFix"></image>
+    <navigator url="../posting/posting">
+      <view class="want-post">
+        <text>我要发贴</text>
+      </view>
+    </navigator>
   </view>
 
   <view class="information">
@@ -33,12 +36,14 @@
     </view>
   </view>
 </view>
+<navigator url="/pages/forumBrowse/invitation/invitation" open-type="navigate">
+  <view class="board">
+    <view class="text-border">挂人区</view>
+    <view class="text-border">咨询区</view>
+    <view class="text-border">吐槽区</view>
+  </view>
+</navigator>
 
-<view class="board">
-  <view class="text-border">挂人区</view>
-  <view class="text-border">咨询区</view>
-  <view class="text-border">吐槽区</view>
-</view>
 
 
 
