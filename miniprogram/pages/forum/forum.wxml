@@ -33,15 +33,17 @@
     </view>
   </view>
 </view>
-<navigator url="/pages/forumBrowse/invitation/invitation" open-type="navigate">
   <view class="board">
     <navigator class="text-border" url="/pages/forumBrowse/forumBrowse">
       <view>挂人区</view>
-  </navigator>
-    <view class="text-border">咨询区</view>
-    <view class="text-border">吐槽区</view>
+    </navigator>
+    <navigator class="text-border" url="/pages/forumBrowse/forumBrowse">
+      <view>咨询区</view>
+    </navigator>
+    <navigator class="text-border" url="/pages/forumBrowse/forumBrowse">
+      <view>吐槽区</view>
+    </navigator>
   </view>
-</navigator>
 
 
 
