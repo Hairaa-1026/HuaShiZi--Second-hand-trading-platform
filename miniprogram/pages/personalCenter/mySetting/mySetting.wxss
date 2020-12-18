@@ -1,1 +1,18 @@
 /* pages/personalCenter/mySetting/mySetting.wxss */
+
+.a_container{
+  width: 100%;
+  padding-top: 32rpx;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+.a_image {
+  border: 1rpx solid #d3d3d3;
+}
+.a_image image {
+  width: 400rpx;
+  height: 300rpx;
+  padding :10px;
+}

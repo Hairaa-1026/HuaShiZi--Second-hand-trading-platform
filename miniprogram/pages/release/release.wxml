@@ -1,7 +1,12 @@
 <!--pages/release/release.wxml-->
-
+<view class='search'>
+  <view class='search-good'>
+    <icon type='search' size='16' class='search-icon'></icon>
+    <input class='search-input' placeholder='口红' bindinput='searchGood'></input>
+    <text class='search-search' data-keyWord='{{keyWord}}' bindtap='bindToSearch'>搜索</text>
+  </view>
+</view>
 <view class='search-list'>
-
     <view class='movie-wrapper'>
       <view class='movie-content'>
         <image class='poster' src="../../images/search/dior.jpg"></image>

@@ -1,12 +1,9 @@
 <!--index.wxml-->
-
-<view>
-  <view class="navbar">
-    <block wx:for="{{navbarTitle}}" wx:key="index">
-      <view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
-        <text>{{item}}</text>
-      </view>
-    </block>
+<view class='search'>
+  <view class='search-good'>
+    <icon type='search' size='16' class='search-icon'></icon>
+    <input class='search-input' placeholder='口红' bindinput='searchGood'></input>
+    <text class='search-search' data-keyWord='{{keyWord}}' bindtap='bindToSearch'>搜索</text>
   </view>
 </view>
 <view class="my_swiper">
@@ -16,12 +13,7 @@
       <swiper-item> <image mode="widthFix" src="//gd3.alicdn.com/imgextra/i3/17453883/O1CN011K4mpO1eYSU6ZFXLn_!!17453883.jpg" /></swiper-item>
     </swiper>
   </view>
-  <view class="swiper">
-    <swiper autoplay circular indicator-dots style="height: 100%;" >
-      <swiper-item> <image mode="widthFix" src="//gd1.alicdn.com/imgextra/i4/2996527432/O1CN01J1edSq24luCfrttjW_!!2996527432-0-picasso.jpg" /></swiper-item>
-      <swiper-item> <image mode="widthFix" src="//gd4.alicdn.com/imgextra/i4/2996527432/O1CN01Vqe5wB24lu5NtDtOK_!!2996527432.png" /></swiper-item>
-    </swiper>
-  </view>
+
 </view>
 <view class = "tags">
   <view class = "my_tags" style="background-color : #FFB6C1">

@@ -1,5 +1,14 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
     <view class="page__bd">
+        <!-- 图片 -->
+        <view class="weui-cells__title">校园卡</view>
+        <view class="a_container">
+        <view class="a_image" >
+            <image src=" {{studentCardImage}}" ></image>
+        </view>
+        </view>
+
         <view class="weui-cells__title">学号</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
@@ -8,14 +17,7 @@
                 </view>
             </view>
         </view>
-        <view class="weui-cells__title">密码</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入公共数据库密码" />
-                </view>
-            </view>
-        </view>
+
         <view class="weui-cells__title">校区</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
