@@ -22,12 +22,12 @@
   font-size: 32rpx;
 }
 .search-search {
-  width: 80rpx;
+  width: 80px;
   height: 48rpx;
   line-height: 48rpx;
   text-align: center;
   font-size: 32rpx;
-  background-color: #FF7B00;
+  background-color: #ff6a6a;
   color: #fff;
   border-radius: 20rpx;
 }

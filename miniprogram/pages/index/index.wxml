@@ -15,22 +15,33 @@
   </view>
 
 </view>
+<!-- 第一行小圆图标 -->
 <view class = "tags">
-  <view class = "my_tags" style="background-color : #FFB6C1">
-    <text>服装</text>
-  </view>
-  <view class = "my_tags" style="background-color : #6495ED">
-    <text>教材</text>
-  </view>
-  <view class = "my_tags" style="background-color : #98FB98">
-    <text>健身</text>
-  </view>
-  <view class = "my_tags" style="background-color : #FFDEAD">
-    <text>美妆</text>
-  </view>
-  <view class = "my_tags" style="background-color : #F08080">
-    <text>电脑</text>
-  </view>
+  <view class = "my_tags" ><image mode ="widthFix" src = "../../images/indexIcon/books.png"/></view>
+  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/card.png"/></view>
+  <view class = "my_tags" ><image mode ="widthFix" src = "../../images/indexIcon/cosmetic.png"/></view>
+  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/skinCare.png"/></view>
+</view>
+<!-- 第一行小圆图标的文字说明 -->
+<view class = "tags" style="margin-top:0px;">
+  <view class = "tag_words"><text>教材</text></view>
+  <view class = "tag_words"><text>卡券</text></view>
+  <view class = "tag_words"><text>美妆</text></view>
+  <view class = "tag_words"><text>护肤</text></view>
+</view>
+<!-- 第二行小圆图标 -->
+<view class = "tags">
+  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/dress.png"/></view>
+  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/food.png"/></view>
+  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/rent.png"/></view>
+  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/others.png"/></view>
+</view>
+<!-- 第二行小圆图标的文字说明 -->
+<view class = "tags" style="margin-top:0px;">
+  <view class = "tag_words"><text>服装</text></view>
+  <view class = "tag_words"><text>食品</text></view>
+  <view class = "tag_words"><text>租借</text></view>
+  <view class = "tag_words"><text>其他</text></view>
 </view>
 <view class = "my_goods">
   <view class = "goods">
