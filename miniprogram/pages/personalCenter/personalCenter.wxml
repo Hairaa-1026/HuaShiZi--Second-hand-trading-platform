@@ -19,11 +19,6 @@
   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 </navigator>
 
-<navigator url="myOrder/myOrder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-  <view class="weui-cell__bd">我的订单</view>
-  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-</navigator>
-
 <navigator url="myCollection/myCollection" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
   <view class="weui-cell__bd">我的收藏</view>
   <view class="weui-cell__ft weui-cell__ft_in-access"></view>

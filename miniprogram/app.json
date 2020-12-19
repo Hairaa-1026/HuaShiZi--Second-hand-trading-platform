@@ -8,7 +8,6 @@
     "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
-    "pages/personalCenter/myOrder/myOrder",
     "pages/personalCenter/myCollection/myCollection",
     "pages/personalCenter/mySetting/mySetting",
     "pages/post/post",

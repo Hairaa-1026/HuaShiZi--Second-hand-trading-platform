@@ -93,8 +93,8 @@ page {
   background-color: rgb(255, 108, 108);
   border-radius: 50%;
   text-align: center;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
   align-items: center;
   justify-content: center;
   display: flex
@@ -114,8 +114,8 @@ page {
 .tag_words{
   width: 60px;
   text-align: center;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
   align-items: center;
   justify-content: center;
   display: flex
