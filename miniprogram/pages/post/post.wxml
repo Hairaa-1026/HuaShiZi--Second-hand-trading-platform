@@ -20,7 +20,6 @@
 
   <!-- 标题型号 描述 -->
 <view class="b_container">
-  
       <view class="b_title" >
         <textarea bindinput="bindThingNameInput" value="{{thingName}}" maxlength="200" placeholder="物品信息 物品型号"></textarea>
       </view>

@@ -4,8 +4,8 @@
         <!-- 图片 -->
         <view class="weui-cells__title">校园卡</view>
         <view class="a_container">
-        <view class="a_image" >
-            <image src=" {{studentCardImage}}" ></image>
+        <view class="a_image"  bindtap='bindStudentCardImageInput' >
+            <image src=" {{stuCardPhoto}}" mode="aspectFit" ></image>
         </view>
         </view>
 
@@ -13,7 +13,7 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入学号" />
+                    <input bindinput="bindStuNumberInput" value="{{stuNumber}}" maxlength="11" class="weui-input" placeholder="请输入学号" />
                 </view>
             </view>
         </view>
@@ -22,7 +22,7 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="中北校区/闵行校区" />
+                    <input bindinput="bindCampusInput" value="{{campus}}" maxlength="4" class="weui-input" placeholder="中北校区/闵行校区" />
                 </view>
             </view>
         </view>
