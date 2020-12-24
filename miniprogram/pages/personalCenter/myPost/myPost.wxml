@@ -5,24 +5,19 @@
   <view class="weui-panel weui-panel_access">
     <view class="weui-panel__hd">我的发布</view>
     <view class="weui-panel__bd">
+      <block wx:for="{{thingData}}" wx:key="thingInfo">
       <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" src="../../../images/posts/exm1.png" />
+          <image class="weui-media-box__thumb" src='{{item.thumbnail}}' />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">并夕夕上买的小零食</view>
-          <view class="weui-media-box__desc">双十一买多了，回血冲双十二</view>
+          <view class="weui-media-box__title">{{item.title}}</view>
+          <view class="weui-media-box__desc">{{item.discription}}</view>
+          <button class="btn" type="primary" bindtap="" >交易成功</button>
         </view>
       </navigator>
-      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" src="../../../images/posts/exm2.png" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">姐姐们都在用的化妆品</view>
-          <view class="weui-media-box__desc">乘风破浪的姐姐推荐，真的很好用，用了马上就能出道</view>
-        </view>
-      </navigator>
+    </block>
+
     </view>
   </view>
 </view>

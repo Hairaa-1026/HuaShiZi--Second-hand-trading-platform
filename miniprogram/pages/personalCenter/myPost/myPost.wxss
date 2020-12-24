@@ -1,1 +1,18 @@
 /* pages/personalCenter/myPost/myPost.wxss */
+
+.btn {
+  width: 20px;
+  height: 20px;
+  margin-top: 20rpx;
+  background-color: burlywood;
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.btn::after {
+  border-radius: 98rpx;
+  border: 0; 
+}

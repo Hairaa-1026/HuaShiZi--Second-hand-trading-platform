@@ -28,7 +28,8 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    pjDataList: [{ headpic: '/images/profilePhotos/exm3.jpg', author: '芳芳', add_time: '2021-01-01', content:'请问看完这本书可以让我过软件工程吗'},
+    pjDataList: [
+      { headpic: '/images/profilePhotos/exm3.jpg', author: '芳芳', add_time: '2021-01-01', content:'请问看完这本书可以让我过软件工程吗'},
       { headpic: '/images/profilePhotos/exm2.jpg', author: '海海', add_time: '2021-01-01', content: '要买要买！私聊' }
     ],
   },

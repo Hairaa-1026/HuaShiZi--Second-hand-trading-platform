@@ -13,7 +13,75 @@ Page({
     goodLastId: '',// 每组数据的最后一个的id
     goodSearchLength: 5,
     isGoodSearchShow: false,
+    thingInfo: { 
+      thingId: 1, 
+      poster:"嗨嗨",
+      
+      postType:"出售",
+      diliveryType:"面交",
+      thingImagePath: '../../images/search/dior.jpg',
+      thingName: "现代软件工程",
+      thingType:  "教材",
+      thingPrice: "999",
+      thingCampus: "中北校区",
+      thingPagePath:" ",
+    },//仅用于测试
+    thingData: [
+      { 
+        thingId: 1, 
+        poster:"嗨嗨",
+        
+        postType:"出售",
+        diliveryType:"面交",
+        thingImagePath: '../../images/search/dior.jpg',
+        thingName: "11",
+        thingType:  "教材",
+        thingPrice: "999",
+        thingCampus: "中北校区",
+        thingPagePath:" ",
+      },
+      { 
+        thingId: 2, 
+        poster:"hh",
+        
+        postType:"出售",
+        diliveryType:"面交",
+        thingImagePath: '../../images/search/dior.jpg',
+        thingName: "现代软件工程",
+        thingType:  "教材",
+        thingPrice: "2222",
+        thingCampus: "中北校区",
+        thingPagePath:" ",
+      },
+      { 
+        thingId: 3, 
+        poster:"嗨嗨",
+        
+        postType:"出售",
+        diliveryType:"面交",
+        thingImagePath: '../../images/search/dior.jpg',
+        thingName: "现代软件工程",
+        thingType:  "教材",
+        thingPrice: "999",
+        thingCampus: "中北校区",
+        thingPagePath:" ",
+      },
+      { 
+        thingId: 4, 
+        poster:"嗨嗨",
+        
+        postType:"出售",
+        diliveryType:"面交",
+        thingImagePath: '../../images/search/dior.jpg',
+        thingName: "44",
+        thingType:  "教材",
+        thingPrice: "999",
+        thingCampus: "中北校区",
+        thingPagePath:" ",
+      },
+      ],
   },
+
 
   /**
    * 生命周期函数--监听页面加载

@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/show/show",
     "pages/postInfo/postInfo",
@@ -12,6 +13,7 @@
     "pages/personalCenter/mySetting/mySetting",
     "pages/post/post",
     "pages/search/search",
+    "pages/release/release",
     "pages/forumBrowse/invitation/invitation"
   ],
   "window": {

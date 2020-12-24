@@ -4,24 +4,19 @@
   <view class="weui-panel weui-panel_access">
     <view class="weui-panel__hd">我的收藏</view>
     <view class="weui-panel__bd">
+
+      <block wx:for="{{thingData}}" wx:key="thingInfo">
       <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" src="../../../images/collections/exm1.jpg" />
+          <image class="weui-media-box__thumb" src='{{item.thumbnail}}' />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">iPad Air4 天蓝色 64G</view>
-          <view class="weui-media-box__desc">盖泡面神器</view>
+          <view class="weui-media-box__title">{{item.title}}</view>
+          <view class="weui-media-box__desc">{{item.discription}}</view>
         </view>
       </navigator>
-      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <image class="weui-media-box__thumb" src="../../../images/collections/exm2.jpg" />
-        </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">李斯丹妮签名照</view>
-          <view class="weui-media-box__desc">乘风破浪的姐姐李四蛋亲笔签名，拥有它就拥有了姐姐的爱</view>
-        </view>
-      </navigator>
+    </block>
+
     </view>
   </view>
 </view>
