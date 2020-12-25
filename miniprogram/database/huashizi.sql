@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2020-12-17 07:53:49
--- 服务器版本： 5.7.26
--- PHP 版本： 7.2.18
+-- 生成日期： 2020-12-25 04:13:20
+-- 服务器版本： 5.7.31
+-- PHP 版本： 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -37,47 +36,12 @@ CREATE TABLE IF NOT EXISTS `buyinginfo` (
   `class_id` int(11) NOT NULL COMMENT '分类id',
   `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT '详细描述',
   `state` tinyint(4) NOT NULL COMMENT '认证状态',
+  `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
+  `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `comment`
---
-
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品评论id',
-  `source_Comment_id` int(11) DEFAULT NULL COMMENT '源评论id',
-  `source_Info_id` int(11) NOT NULL COMMENT '源信息id',
-  `context` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '评论内容',
-  `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
-  `creatorId` int(11) NOT NULL COMMENT '创建者id',
-  `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `goodscollection`
---
-
-DROP TABLE IF EXISTS `goodscollection`;
-CREATE TABLE IF NOT EXISTS `goodscollection` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏id',
-  `source_id` int(11) NOT NULL COMMENT '源信息id',
-  `owner` int(11) NOT NULL COMMENT '收藏者',
-  `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
-  `creatorId` int(11) NOT NULL COMMENT '创建者id',
-  `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -103,6 +67,24 @@ CREATE TABLE IF NOT EXISTS `invitation` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `invitationcollection`
+--
+
+DROP TABLE IF EXISTS `invitationcollection`;
+CREATE TABLE IF NOT EXISTS `invitationcollection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏id',
+  `source_id` int(11) NOT NULL COMMENT '源信息id',
+  `owner` int(11) NOT NULL COMMENT '收藏者',
+  `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
+  `creatorId` int(11) NOT NULL COMMENT '创建者id',
+  `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `invitationcomment`
 --
 
@@ -121,19 +103,58 @@ CREATE TABLE IF NOT EXISTS `invitationcomment` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `productcategory`
+-- 表的结构 `productcollection`
 --
 
-DROP TABLE IF EXISTS `productcategory`;
-CREATE TABLE IF NOT EXISTS `productcategory` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '分类id',
-  `context` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '分类文本',
+DROP TABLE IF EXISTS `productcollection`;
+CREATE TABLE IF NOT EXISTS `productcollection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏id',
+  `source_id` int(11) NOT NULL COMMENT '源信息id',
+  `owner` int(11) NOT NULL COMMENT '收藏者',
+  `category` enum('sell','buy') COLLATE utf8_unicode_ci NOT NULL COMMENT '标记收藏产品是求购/出售',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `productcomment`
+--
+
+DROP TABLE IF EXISTS `productcomment`;
+CREATE TABLE IF NOT EXISTS `productcomment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品评论id',
+  `source_Comment_id` int(11) DEFAULT NULL COMMENT '源评论id',
+  `source_Info_id` int(11) NOT NULL COMMENT '源信息id',
+  `context` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '评论内容',
+  `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
+  `creatorId` int(11) NOT NULL COMMENT '创建者id',
+  `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `productimage`
+--
+
+DROP TABLE IF EXISTS `productimage`;
+CREATE TABLE IF NOT EXISTS `productimage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '图片id',
+  `productId` int(11) NOT NULL COMMENT '商品id',
+  `imageAddress` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '图片地址',
+  `creatorId` int(11) NOT NULL COMMENT '创建者id',
+  `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
+  `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -150,6 +171,8 @@ CREATE TABLE IF NOT EXISTS `sellinginfo` (
   `class_id` int(11) NOT NULL COMMENT '分类',
   `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT '详细描述',
   `state` tinyint(4) NOT NULL COMMENT '出售状态',
+  `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
+  `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
