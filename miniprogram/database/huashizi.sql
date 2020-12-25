@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2020-12-25 04:13:20
--- 服务器版本： 5.7.31
--- PHP 版本： 7.3.21
+-- 生成日期： 2020-12-25 06:29:38
+-- 服务器版本： 5.7.26
+-- PHP 版本： 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,12 +39,20 @@ CREATE TABLE IF NOT EXISTS `buyinginfo` (
   `state` tinyint(4) NOT NULL COMMENT '认证状态',
   `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
   `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
+  `thumbnail` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '略缩图位置',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `buyinginfo`
+--
+
+INSERT INTO `buyinginfo` (`id`, `title`, `price`, `pickupWay`, `class_id`, `description`, `state`, `quality`, `campus`, `thumbnail`, `creatorId`, `modifierId`, `lastModifyTime`, `createTime`) VALUES
+(1, '韩式包包', 40, 'SelfPick', 1, '非常好看的韩式包包', 1, '100', 'PuTuo', 'images/goods/bag.jpg', 1, 1, '2020-12-25 14:17:19', '2020-12-25 12:25:11');
 
 -- --------------------------------------------------------
 
@@ -80,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `invitationcollection` (
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -117,7 +126,15 @@ CREATE TABLE IF NOT EXISTS `productcollection` (
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `productcollection`
+--
+
+INSERT INTO `productcollection` (`id`, `source_id`, `owner`, `category`, `modifierId`, `creatorId`, `createTime`, `lastModifyTime`) VALUES
+(1, 1, 1, 'buy', 1, 1, '2020-12-25 12:24:04', '2020-12-25 12:24:04'),
+(2, 1, 1, 'buy', 1, 1, '2020-12-25 12:47:29', '2020-12-25 12:47:29');
 
 -- --------------------------------------------------------
 
@@ -154,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `productimage` (
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -173,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `sellinginfo` (
   `state` tinyint(4) NOT NULL COMMENT '出售状态',
   `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
   `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
+  `thumbnail` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '略缩图位置',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
