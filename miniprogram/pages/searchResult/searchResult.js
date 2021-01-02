@@ -2,6 +2,24 @@
 const app = getApp();
 Page({
 
+  test() {
+    wx.request({
+      url:'http://localhost/viewMyPost.php',
+      method: 'POST',
+      data: {
+        userId:1,
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded ' },
+      success(res) {
+        console.log(res);
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
+  },
+
+
   /**
    * 页面的初始数据
    */
@@ -83,6 +101,9 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+
+
 
   searchResult() {
     var that = this;

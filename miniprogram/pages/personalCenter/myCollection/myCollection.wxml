@@ -5,14 +5,14 @@
     <view class="weui-panel__hd">我的收藏</view>
     <view class="weui-panel__bd">
 
-      <block wx:for="{{thingData}}" wx:key="thingInfo">
+      <block wx:for="{{collectionList}}" wx:key="thingInfo">
       <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
           <image class="weui-media-box__thumb" src='{{item.thumbnail}}' />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">{{item.title}}</view>
-          <view class="weui-media-box__desc">{{item.discription}}</view>
+          <view class="weui-media-box__desc">{{item.description}}</view>
           <button class="btn" type="primary" bindtap="">删除</button>
         </view>
       </navigator>

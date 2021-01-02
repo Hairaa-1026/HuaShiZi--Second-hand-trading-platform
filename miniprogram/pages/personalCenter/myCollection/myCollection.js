@@ -5,12 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userId:1,
     thingInfo: { 
       product_id: 1, 
       thingStatus:"",
       thumbnail: '../../../images/collections/exm1.jpg',
-      title: "iPad Air4 天蓝色 64G",
-      discription: "超盖泡面神器！",
+      title: "",
+      discription: "",
     },
     thingData:[
       { 
@@ -35,14 +36,31 @@ Page({
         discription: "超级无敌棒棒棒的书！",
       },
     ],
-    
+    collectionList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url:'http://localhost/viewMyCollection.php',
+      method: 'POST',
+      data: {
+        userId:that.data.userId,
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded ' },
+      success(res) {
+        that.setData({
+          collectionList:res.data.data,
+        });
+        console.log( that.data.collectionList);
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
   },
 
   /**

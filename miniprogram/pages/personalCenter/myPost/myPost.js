@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userId:1,
     thingInfo: { 
       product_id: 1, 
       thingStatus:"",
@@ -41,21 +42,22 @@ Page({
   },
 
   onLoad: function () {
-    that = this;
-    var Post = Bmob.Object.extend("post");
-    var query = new Bmob.Query(Post);
-    query.equalTo("ownerId", Bmob.User.current().id);
-    query.descending('updatedAt');
-    query.limit(this.data.limit);
-    query.find({
-      success: function (results) {
-        that.setData({
-          postList: results,
-          skip: results.length
-        })
+    var that = this;
+    wx.request({
+      url:'http://localhost/viewMyPost.php',
+      method: 'POST',
+      data: {
+        userId:that.data.userId,
       },
-      error: function (error) {
-        console.log("onLoad查询post失败: " + error.code + " " + error.message);
+      header: { 'content-type': 'application/x-www-form-urlencoded ' },
+      success(res) {
+        that.setData({
+        postList:res.data.data,
+        });
+        console.log( that.data.postList);
+      },
+      fail(err) {
+        console.log(err);
       }
     })
 
