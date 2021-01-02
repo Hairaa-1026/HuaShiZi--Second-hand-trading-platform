@@ -10,6 +10,9 @@
 <!--物品价钱-->
 <view class="info-price clear">
   <view class='price'>￥{{thingInfo.thingPrice}} </view>
+  <view style='float:right;font-size:12px;color:#A2A2A2;width:12px;height:12px'>
+    <image mode ="widthFix" src = "../../images/shows/collect.jpg" />
+  </view>
 </view>
 
 <!--物品描述-->
@@ -82,7 +85,7 @@
         <image src="/img/touxiang.jpg" class="ico_img_jt"></image>
      </view>
      <view style='float:right;font-size:12px;color:#A2A2A2;'>
-        <navigator url="pjList?id={{thingId}}">查看全部</navigator>
+        <navigator url="pjList?id={{thingId}}">我要评论</navigator>
      </view>
      <view class='clear'></view>
     </view>

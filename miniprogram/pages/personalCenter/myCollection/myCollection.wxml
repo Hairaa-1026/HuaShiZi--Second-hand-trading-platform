@@ -13,6 +13,7 @@
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">{{item.title}}</view>
           <view class="weui-media-box__desc">{{item.discription}}</view>
+          <button class="btn" type="primary" bindtap="">删除</button>
         </view>
       </navigator>
     </block>
