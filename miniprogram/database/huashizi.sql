@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2021-01-03 06:31:52
+-- 生成日期： 2021-01-03 06:58:31
 -- 服务器版本： 5.7.31
 -- PHP 版本： 7.3.21
 
@@ -20,38 +20,6 @@ SET time_zone = "+00:00";
 --
 -- 数据库： `huashizi`
 --
-
--- --------------------------------------------------------
-
---
--- 表的结构 `buyinginfo`
---
-
-DROP TABLE IF EXISTS `buyinginfo`;
-CREATE TABLE IF NOT EXISTS `buyinginfo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
-  `price` int(11) NOT NULL COMMENT '价格',
-  `pickupWay` enum('SelfPick','Delivery') COLLATE utf8_unicode_ci NOT NULL COMMENT '提取方式',
-  `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT '详细描述',
-  `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
-  `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
-  `thumbnail` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '略缩图位置',
-  `buyState` tinyint(4) NOT NULL COMMENT '已买/未买到',
-  `category` enum('教材','卡券','美妆','护肤','服装','食品','租借','其它') COLLATE utf8_unicode_ci NOT NULL COMMENT '商品类别',
-  `creatorId` int(11) NOT NULL COMMENT '创建者id',
-  `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
-  `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
-  `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- 转存表中的数据 `buyinginfo`
---
-
-INSERT INTO `buyinginfo` (`id`, `title`, `price`, `pickupWay`, `description`, `quality`, `campus`, `thumbnail`, `buyState`, `category`, `creatorId`, `modifierId`, `lastModifyTime`, `createTime`) VALUES
-(1, '韩式包包', 40, 'SelfPick', '非常好看的韩式包包', '100', 'PuTuo', 'images/goods/bag.jpg', 0, '教材', 1, 1, '2020-12-25 14:17:19', '2020-12-25 12:25:11');
 
 -- --------------------------------------------------------
 
@@ -175,11 +143,11 @@ CREATE TABLE IF NOT EXISTS `productimage` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `sellinginfo`
+-- 表的结构 `productinfo`
 --
 
-DROP TABLE IF EXISTS `sellinginfo`;
-CREATE TABLE IF NOT EXISTS `sellinginfo` (
+DROP TABLE IF EXISTS `productinfo`;
+CREATE TABLE IF NOT EXISTS `productinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
   `price` int(11) NOT NULL COMMENT '价格',
@@ -190,6 +158,7 @@ CREATE TABLE IF NOT EXISTS `sellinginfo` (
   `thumbnail` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '略缩图位置',
   `sellState` tinyint(4) NOT NULL COMMENT '已卖/未卖出',
   `category` enum('教材','卡券','美妆','护肤','服装','食品','租借','其它') COLLATE utf8_unicode_ci NOT NULL COMMENT '商品分类',
+  `type` enum('sell','buy') COLLATE utf8_unicode_ci NOT NULL COMMENT '出售/求购',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
