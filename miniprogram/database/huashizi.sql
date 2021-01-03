@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2020-12-25 06:29:38
--- 服务器版本： 5.7.26
--- PHP 版本： 7.2.18
+-- 生成日期： 2021-01-03 06:31:52
+-- 服务器版本： 5.7.31
+-- PHP 版本： 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,12 +33,12 @@ CREATE TABLE IF NOT EXISTS `buyinginfo` (
   `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
   `price` int(11) NOT NULL COMMENT '价格',
   `pickupWay` enum('SelfPick','Delivery') COLLATE utf8_unicode_ci NOT NULL COMMENT '提取方式',
-  `class_id` int(11) NOT NULL COMMENT '分类id',
   `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT '详细描述',
-  `state` tinyint(4) NOT NULL COMMENT '认证状态',
   `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
   `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
   `thumbnail` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '略缩图位置',
+  `buyState` tinyint(4) NOT NULL COMMENT '已买/未买到',
+  `category` enum('教材','卡券','美妆','护肤','服装','食品','租借','其它') COLLATE utf8_unicode_ci NOT NULL COMMENT '商品类别',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
@@ -51,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `buyinginfo` (
 -- 转存表中的数据 `buyinginfo`
 --
 
-INSERT INTO `buyinginfo` (`id`, `title`, `price`, `pickupWay`, `class_id`, `description`, `state`, `quality`, `campus`, `thumbnail`, `creatorId`, `modifierId`, `lastModifyTime`, `createTime`) VALUES
-(1, '韩式包包', 40, 'SelfPick', 1, '非常好看的韩式包包', 1, '100', 'PuTuo', 'images/goods/bag.jpg', 1, 1, '2020-12-25 14:17:19', '2020-12-25 12:25:11');
+INSERT INTO `buyinginfo` (`id`, `title`, `price`, `pickupWay`, `description`, `quality`, `campus`, `thumbnail`, `buyState`, `category`, `creatorId`, `modifierId`, `lastModifyTime`, `createTime`) VALUES
+(1, '韩式包包', 40, 'SelfPick', '非常好看的韩式包包', '100', 'PuTuo', 'images/goods/bag.jpg', 0, '教材', 1, 1, '2020-12-25 14:17:19', '2020-12-25 12:25:11');
 
 -- --------------------------------------------------------
 
@@ -82,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `invitation` (
 DROP TABLE IF EXISTS `invitationcollection`;
 CREATE TABLE IF NOT EXISTS `invitationcollection` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏id',
-  `source_id` int(11) NOT NULL COMMENT '源信息id',
+  `sourceId` int(11) NOT NULL COMMENT '源信息id',
   `owner` int(11) NOT NULL COMMENT '收藏者',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
@@ -100,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `invitationcollection` (
 DROP TABLE IF EXISTS `invitationcomment`;
 CREATE TABLE IF NOT EXISTS `invitationcomment` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品评论id',
-  `source_id` int(11) NOT NULL COMMENT '源帖子id',
+  `sourceId` int(11) NOT NULL COMMENT '源帖子id',
   `context` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT '评论内容',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
@@ -118,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `invitationcomment` (
 DROP TABLE IF EXISTS `productcollection`;
 CREATE TABLE IF NOT EXISTS `productcollection` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏id',
-  `source_id` int(11) NOT NULL COMMENT '源信息id',
+  `sourceId` int(11) NOT NULL COMMENT '源信息id',
   `owner` int(11) NOT NULL COMMENT '收藏者',
   `category` enum('sell','buy') COLLATE utf8_unicode_ci NOT NULL COMMENT '标记收藏产品是求购/出售',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
@@ -132,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `productcollection` (
 -- 转存表中的数据 `productcollection`
 --
 
-INSERT INTO `productcollection` (`id`, `source_id`, `owner`, `category`, `modifierId`, `creatorId`, `createTime`, `lastModifyTime`) VALUES
+INSERT INTO `productcollection` (`id`, `sourceId`, `owner`, `category`, `modifierId`, `creatorId`, `createTime`, `lastModifyTime`) VALUES
 (1, 1, 1, 'buy', 1, 1, '2020-12-25 12:24:04', '2020-12-25 12:24:04'),
 (2, 1, 1, 'buy', 1, 1, '2020-12-25 12:47:29', '2020-12-25 12:47:29');
 
@@ -145,8 +144,8 @@ INSERT INTO `productcollection` (`id`, `source_id`, `owner`, `category`, `modifi
 DROP TABLE IF EXISTS `productcomment`;
 CREATE TABLE IF NOT EXISTS `productcomment` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品评论id',
-  `source_Comment_id` int(11) DEFAULT NULL COMMENT '源评论id',
-  `source_Info_id` int(11) NOT NULL COMMENT '源信息id',
+  `sourceCommentId` int(11) DEFAULT NULL COMMENT '源评论id',
+  `sourceInfoId` int(11) NOT NULL COMMENT '源信息id',
   `context` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '评论内容',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
@@ -185,12 +184,12 @@ CREATE TABLE IF NOT EXISTS `sellinginfo` (
   `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '标题',
   `price` int(11) NOT NULL COMMENT '价格',
   `pickupWay` enum('SelfPick','Delivery') COLLATE utf8_unicode_ci NOT NULL COMMENT '配送方式',
-  `class_id` int(11) NOT NULL COMMENT '分类',
   `description` varchar(150) COLLATE utf8_unicode_ci NOT NULL COMMENT '详细描述',
-  `state` tinyint(4) NOT NULL COMMENT '出售状态',
   `quality` enum('100','95','90','80','50','under') COLLATE utf8_unicode_ci NOT NULL COMMENT '成色',
   `campus` enum('PuTuo','MinHang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
   `thumbnail` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '略缩图位置',
+  `sellState` tinyint(4) NOT NULL COMMENT '已卖/未卖出',
+  `category` enum('教材','卡券','美妆','护肤','服装','食品','租借','其它') COLLATE utf8_unicode_ci NOT NULL COMMENT '商品分类',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `lastModifyTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
@@ -207,18 +206,25 @@ CREATE TABLE IF NOT EXISTS `sellinginfo` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  `user_Name` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
+  `userName` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
   `phone` char(11) COLLATE utf8_unicode_ci NOT NULL COMMENT '手机号码',
-  `stu_Number` int(11) NOT NULL COMMENT '学号',
+  `stuNumber` int(11) NOT NULL COMMENT '学号',
   `campus` enum('Putuo','Minhang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
-  `authen_State` tinyint(4) NOT NULL COMMENT '认证状态',
-  `password` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '公共数据库密码',
+  `authenState` tinyint(4) NOT NULL COMMENT '认证状态',
+  `stuCardPhoto` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '校园卡照片',
   `modifierId` int(11) NOT NULL COMMENT '修改者id',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `userName`, `phone`, `stuNumber`, `campus`, `authenState`, `stuCardPhoto`, `modifierId`, `creatorId`, `lastModifyTime`, `createTime`) VALUES
+(1, 'H', '15621927126', 1, 'Putuo', 0, 'image/user/1.jpg', 1, 1, '2021-01-02 22:36:13', '2020-12-25 16:09:27');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
