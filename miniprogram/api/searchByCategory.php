@@ -1,32 +1,33 @@
 <?php
+
 include "header.php";
 
-viewMyCollection();
+searchByCategory();
 
-function viewMyCollection(){
+function searchByCategory(){
     $conn = ConnectDatabase();
-    $userId=$_POST['userId'];
+    $productCategory=$_POST['productCategory'];
     $data = array();
-    if(empty($userId)){
+    if(empty($productCategory)){
         $data = array('code' => '3');   //参数为空
         die(json_encode($data) . mysqli_error($conn));//.mysqli_error($conn))
     }
-    $sql = "SELECT sourceId FROM productcollection WHERE (owner='{$userId}')";
+    $sql = "SELECT id, title, thumbnail, type, campus, pickupWay, creatorId, price FROM productinfo WHERE (category='{$productCategory}' and sellState = 0)";
     $result = mysqli_query($conn,$sql);
     if (!$result) {
         $data = array('code' => '2');   //数据库错误
         die(json_encode($data) . mysqli_error($conn));//.mysqli_error($conn));
     }
     while($row = mysqli_fetch_array($result)){
-        $sql2 = "SELECT id, title, description, thumbnail,type FROM productinfo WHERE (id = '{$row['sourceId']}') ";
-        $result2 =mysqli_query($conn,$sql2);
-        $row2  = mysqli_fetch_array($result2);
         array_push($data,array(
-            'productId'=>$row2['id'],
-            'title'=>$row2['title'],
-            'description'=>$row2['description'],
-            'thumbnail'=>$row2['thumbnail'],
-            'type'=>$row2['type']
+            'productId'=>$row['id'],
+            'thumbnail'=>$row['thumbnail'],
+            'title'=>$row['title'],
+            'campus'=>$row['campus'],
+            'pickupWay'=>$row['pickupWay'],
+            'creatorId'=>$row['creatorId'],
+            'type'=>$row['type'],
+            'price'=>$row['price']
         ));
     }
     if (!$result) {

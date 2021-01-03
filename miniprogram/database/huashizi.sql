@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2021-01-03 06:58:31
--- 服务器版本： 5.7.31
--- PHP 版本： 7.3.21
+-- 生成日期： 2021-01-03 08:15:40
+-- 服务器版本： 5.7.26
+-- PHP 版本： 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `productcollection` (
 
 INSERT INTO `productcollection` (`id`, `sourceId`, `owner`, `category`, `modifierId`, `creatorId`, `createTime`, `lastModifyTime`) VALUES
 (1, 1, 1, 'buy', 1, 1, '2020-12-25 12:24:04', '2020-12-25 12:24:04'),
-(2, 1, 1, 'buy', 1, 1, '2020-12-25 12:47:29', '2020-12-25 12:47:29');
+(2, 2, 1, 'buy', 1, 1, '2020-12-25 12:47:29', '2021-01-03 15:26:46');
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,18 @@ CREATE TABLE IF NOT EXISTS `productinfo` (
   `lastModifyTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `productinfo`
+--
+
+INSERT INTO `productinfo` (`id`, `title`, `price`, `pickupWay`, `description`, `quality`, `campus`, `thumbnail`, `sellState`, `category`, `type`, `creatorId`, `modifierId`, `lastModifyTime`, `createTime`) VALUES
+(1, '韩式包包', 40, 'SelfPick', '最新款的韩式包包，值得入手！', '95', 'PuTuo', 'images/products/exm1.png', 0, '其它', 'sell', 1, 1, '2021-01-03 15:19:31', '2021-01-03 15:19:31'),
+(2, '菌菇水', 20, 'SelfPick', '从朋友手里入手的，应该是正品！', '95', 'PuTuo', 'images/products/exm2.png', 0, '其它', 'sell', 1, 1, '2021-01-03 15:32:31', '2021-01-03 15:19:31'),
+(3, 'LANCOME秋冬限量迷雾红管唇膏', 245, 'Delivery', '雾面质感暗红色管身，优雅而高贵', '100', 'MinHang', 'images/products/exm1.png', 0, '美妆', 'sell', 2, 2, '2021-01-03 15:43:47', '2021-01-03 15:43:47'),
+(4, 'PUMA芥末绿复古老爹鞋', 529, 'SelfPick', '芥末绿色的鞋面视觉上给人一种清新感。', '100', 'PuTuo', 'images/products/exm1.png', 0, '服装', 'buy', 3, 3, '2021-01-03 15:44:32', '2021-01-03 15:44:32'),
+(5, '招聘淘宝客服', 99, 'SelfPick', '找工作外包 副业赚钱 普通族 宝妈应聘 在家可做', '100', 'MinHang', 'images/products/exm1.png', 0, '其它', 'buy', 4, 4, '2021-01-03 15:45:38', '2021-01-03 15:45:38');
 
 -- --------------------------------------------------------
 
