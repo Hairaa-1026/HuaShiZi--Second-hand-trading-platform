@@ -11,7 +11,7 @@ function viewMyCollection(){
         $data = array('code' => '3');   //参数为空
         die(json_encode($data) . mysqli_error($conn));//.mysqli_error($conn))
     }
-    $sql = "SELECT sourceId FROM productcollection WHERE (owner='{$userId}')";
+    $sql = "SELECT sourceId FROM productcollection WHERE (creatorId='{$userId}')";
     $result = mysqli_query($conn,$sql);
     if (!$result) {
         $data = array('code' => '2');   //数据库错误

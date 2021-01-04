@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1:3306
--- 生成日期： 2021-01-03 08:15:40
+-- 生成日期： 2021-01-04 06:24:16
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.2.18
 
@@ -87,22 +87,22 @@ DROP TABLE IF EXISTS `productcollection`;
 CREATE TABLE IF NOT EXISTS `productcollection` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏id',
   `sourceId` int(11) NOT NULL COMMENT '源信息id',
-  `owner` int(11) NOT NULL COMMENT '收藏者',
-  `category` enum('sell','buy') COLLATE utf8_unicode_ci NOT NULL COMMENT '标记收藏产品是求购/出售',
   `modifierId` int(11) NOT NULL COMMENT '最后修改者id',
   `creatorId` int(11) NOT NULL COMMENT '创建者id',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 转存表中的数据 `productcollection`
 --
 
-INSERT INTO `productcollection` (`id`, `sourceId`, `owner`, `category`, `modifierId`, `creatorId`, `createTime`, `lastModifyTime`) VALUES
-(1, 1, 1, 'buy', 1, 1, '2020-12-25 12:24:04', '2020-12-25 12:24:04'),
-(2, 2, 1, 'buy', 1, 1, '2020-12-25 12:47:29', '2021-01-03 15:26:46');
+INSERT INTO `productcollection` (`id`, `sourceId`, `modifierId`, `creatorId`, `createTime`, `lastModifyTime`) VALUES
+(1, 1, 1, 1, '2020-12-25 12:24:04', '2020-12-25 12:24:04'),
+(2, 2, 1, 1, '2020-12-25 12:47:29', '2021-01-03 15:26:46'),
+(3, 1, 2, 2, '2021-01-04 14:09:56', '2021-01-04 14:09:56'),
+(4, 6, 2, 2, '2021-01-04 14:10:16', '2021-01-04 14:10:16');
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `productinfo` (
   `lastModifyTime` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 转存表中的数据 `productinfo`
@@ -176,7 +176,7 @@ INSERT INTO `productinfo` (`id`, `title`, `price`, `pickupWay`, `description`, `
 (2, '菌菇水', 20, 'SelfPick', '从朋友手里入手的，应该是正品！', '95', 'PuTuo', 'images/products/exm2.png', 0, '其它', 'sell', 1, 1, '2021-01-03 15:32:31', '2021-01-03 15:19:31'),
 (3, 'LANCOME秋冬限量迷雾红管唇膏', 245, 'Delivery', '雾面质感暗红色管身，优雅而高贵', '100', 'MinHang', 'images/products/exm1.png', 0, '美妆', 'sell', 2, 2, '2021-01-03 15:43:47', '2021-01-03 15:43:47'),
 (4, 'PUMA芥末绿复古老爹鞋', 529, 'SelfPick', '芥末绿色的鞋面视觉上给人一种清新感。', '100', 'PuTuo', 'images/products/exm1.png', 0, '服装', 'buy', 3, 3, '2021-01-03 15:44:32', '2021-01-03 15:44:32'),
-(5, '招聘淘宝客服', 99, 'SelfPick', '找工作外包 副业赚钱 普通族 宝妈应聘 在家可做', '100', 'MinHang', 'images/products/exm1.png', 0, '其它', 'buy', 4, 4, '2021-01-03 15:45:38', '2021-01-03 15:45:38');
+(5, '招聘淘宝客服', 99, 'SelfPick', '找工作外包 副业赚钱 普通族 宝妈应聘 在家可做', '100', 'MinHang', 'images/products/exm1.png', 1, '其它', 'buy', 4, 4, '2021-01-04 14:23:45', '2021-01-03 15:45:38');
 
 -- --------------------------------------------------------
 
@@ -189,23 +189,25 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `userName` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
   `phone` char(11) COLLATE utf8_unicode_ci NOT NULL COMMENT '手机号码',
-  `stuNumber` int(11) NOT NULL COMMENT '学号',
+  `stuNumber` varchar(11) COLLATE utf8_unicode_ci NOT NULL COMMENT '学号',
   `campus` enum('Putuo','Minhang') COLLATE utf8_unicode_ci NOT NULL COMMENT '校区',
   `authenState` tinyint(4) NOT NULL COMMENT '认证状态',
   `stuCardPhoto` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '校园卡照片',
-  `modifierId` int(11) NOT NULL COMMENT '修改者id',
-  `creatorId` int(11) NOT NULL COMMENT '创建者id',
+  `modifierId` int(11) DEFAULT NULL COMMENT '修改者id',
+  `creatorId` int(11) DEFAULT NULL COMMENT '创建者id',
   `lastModifyTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   `createTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`id`, `userName`, `phone`, `stuNumber`, `campus`, `authenState`, `stuCardPhoto`, `modifierId`, `creatorId`, `lastModifyTime`, `createTime`) VALUES
-(1, 'H', '15621927126', 1, 'Putuo', 0, 'image/user/1.jpg', 1, 1, '2021-01-02 22:36:13', '2020-12-25 16:09:27');
+(1, 'H', '15621927126', '1', 'Putuo', 0, 'image/user/1.jpg', 1, 1, '2021-01-02 22:36:13', '2020-12-25 16:09:27'),
+(2, '郑某人', '15621927127', '10185102257', 'Putuo', 0, 'image/card/zhy.png', 2, 2, '2021-01-04 13:37:46', '2021-01-04 13:28:21'),
+(3, '海海子', '15621927126', '10185102251', 'Putuo', 0, 'image/card/hr.png', 3, 3, '2021-01-04 13:37:32', '2021-01-04 13:37:32');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
