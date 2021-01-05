@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/post/post",
     "pages/index/index",
     "pages/show/show",
     "pages/postInfo/postInfo",
@@ -10,10 +10,7 @@
     "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
-    "pages/post/post",
-
     "pages/personalCenter/mySetting/mySetting",
-
     "pages/search/search",
     "pages/release/release",
     "pages/searchResult/searchResult",
