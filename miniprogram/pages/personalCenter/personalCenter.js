@@ -113,7 +113,6 @@ Page({
     var that = this;
     var nickName = that.data.userInfo.nickName;
     var avatarUrl = that.data.userInfo.avatarUrl;
-    
     if (e.detail.userInfo) {
        //用户按了允许授权按钮
        var userInfo = e.detail.userInfo;
