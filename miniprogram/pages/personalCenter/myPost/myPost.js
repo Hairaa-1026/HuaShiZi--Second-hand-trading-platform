@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userId:1,
+    userId:'',
     thingInfo: { 
       product_id: 1, 
       thingStatus:"",
@@ -43,6 +43,24 @@ Page({
 
   onLoad: function () {
     var that = this;
+    wx.getStorage({  //异步获取缓存值studentId
+      key: 'stuNumber',
+      success: function (res) {
+        that.setData({
+          stuNumber: res.data
+        })
+
+      }
+    }),
+    wx.getStorage({  //异步获取缓存值userId
+      key: 'userId',
+      success: function (res) {
+        that.setData({
+          userId: res.data
+        }),
+        console.log(res.data);
+      }
+    }),
     wx.request({
       url:'http://localhost/viewMyPost.php',
       method: 'POST',
@@ -54,7 +72,7 @@ Page({
         that.setData({
         postList:res.data.data,
         });
-        console.log( that.data.postList);
+        console.log(res.data.data);
       },
       fail(err) {
         console.log(err);
@@ -63,22 +81,7 @@ Page({
 
   },
   onShow:function(){
-    var Post = Bmob.Object.extend("post");
-    var query = new Bmob.Query(Post);
-    query.equalTo("ownerId", Bmob.User.current().id);
-    query.descending('updatedAt');
-    query.limit(this.data.limit);
-    query.find({
-      success: function (results) {
-        that.setData({
-          postList: results,
-          skip: results.length
-        })
-      },
-      error: function (error) {
-        console.log("onShow查询post失败: " + error.code + " " + error.message);
-      }
-    })
+    
   },
 
   onPullDownRefresh: function () {

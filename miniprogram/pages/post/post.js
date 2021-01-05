@@ -7,10 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //导航栏的数据
+    //导航栏的数据,现取消
     Quit:false ,
     postThing: true,
     thingsList: false,
+
+    userId:'',
 
     //物品发布的数据
     postType:["出售","求购"],

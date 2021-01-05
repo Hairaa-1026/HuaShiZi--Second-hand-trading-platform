@@ -1,12 +1,16 @@
 Component({
   data: {
+        
+      userName:'',
       userId:'',
-      stuNumber:'',
-      phoneNumber:'',
+      phone:'',
       campus:'',
       stuCardPhoto: '',
-      showTopTips: false,
+      stuNumber:'',
 
+      showTopTips: false,
+      buttonLoading:false,
+      
       rules: [ {
           name: 'stuCardPhoto',
           rules: {required: true, message: '图片必填'},
@@ -19,6 +23,30 @@ Component({
       }]
   },
   methods: {
+    onShow: function () {
+      var that = this;
+      var stuNumber = that.data.stuNumber;
+      var userId = that.data.userId;
+      wx.getStorage({  //异步获取缓存值studentId
+        key: 'stuNumber',
+        success: function (res) {
+          that.setData({
+            stuNumber: res.data
+          })
+  
+        }
+      })
+      wx.getStorage({  //异步获取缓存值userId
+        key: 'userId',
+        success: function (res) {
+          that.setData({
+            userId: res.data
+          })
+  
+        }
+      })
+    },
+
       bindStudentCardImageInput: function() { //学生卡图片选择
         var that = this;
         wx.chooseImage({
@@ -36,11 +64,18 @@ Component({
       bindCampusInput: function(e) { //校区
         this.setData({
           campus: e.detail.value
-        })
+        });
+        //console.log(this.data.campus);
       },
+      
       bindStuNumberInput: function(e) { //学号
         this.setData({
             stuNumber: e.detail.value
+        })
+      },
+      bindPhoneInput: function(e) { //电话号
+        this.setData({
+            Phone: e.detail.value
         })
       },
       bindAgreeChange: function (e) {
@@ -48,24 +83,88 @@ Component({
               isAgree: !!e.detail.value.length
           });
       },
-      submitForm() {
-          this.selectComponent('#form').validate((valid, errors) => {
-              console.log('valid', valid, errors)
-              if (!valid) {
-                  const firstError = Object.keys(errors)
-                  if (firstError.length) {
-                      this.setData({
-                          error: errors[firstError[0]].message
-                      })
-  
-                  }
-              } else {
-                  wx.showToast({
-                      title: '校验通过'
+
+      bindSubmit: function () {
+        var that = this;
+        this.setData({
+          buttonLoading: true
+        })
+        var that = this;
+        var userName = 'aa';  //that.data.userName;
+        var phone = 'aa'; //that.data.phone;
+        var campus = 'Putuo';  //that.data.campus;
+        var stuCardPhoto = '../../../images/collections/exm1.jpg';  //that.data.stuCardPhoto;
+        var stuNumber = '10185102210';  //that.data.stuNumber;
+        var url = 'http://localhost/personalAuthentication.php';
+        wx.request({
+          url,
+          data: {
+            userName:userName,
+            phone:phone,
+            campus:campus,
+            stuCardPhoto: stuCardPhoto,
+            stuNumber:stuNumber,
+          },
+          method: "POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded '
+          },
+          success: function (res) {
+            console.log(res);
+            if (res.data.data.userId) {
+              wx.showModal({
+                title: '提示',
+                content: '身份验证成功',
+                success: function () {
+                  wx.navigateBack({
+                    delta: 1
+                  }),
+                  wx.setStorage({
+                    key: "studentId",// 异步缓存学号
+                    data: stuNumber //学号
                   })
+                  wx.setStorage({
+                    key: "userId",// 异步缓存ID
+                    data: res.data.data.userId
+                  }),
+                  wx.redirectTo({
+                    url: 'pages/personalCenter/personalCenter',
+                  })
+
+                }
+              })
+              try {
+                wx.setStorageSync('stuNumberSync', stuNumber)
+              } catch (e) {
               }
-          })
-      }
+            } else if (res.data === 0) {
+              wx.showModal({
+                title: '提示',
+                content: '身份验证失败,请重试！',
+                success: function () {
+                  wx.redirectTo({
+                    url: './mySetting',
+                  })
+                }
+              });
+            }
+          },
+          fail: function (res) {
+            console.log(JSON.stringify(res));
+            wx.showModal({
+              title: '提示',
+              content: '身份验证失败,请重试！',
+              success: function () {
+                wx.redirectTo({
+                  url: './mySetting',
+                })
+              }
+            });
+    
+          },
+        })
+    
+      },
 
   }
 });

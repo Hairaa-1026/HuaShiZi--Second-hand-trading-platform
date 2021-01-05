@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userId:1,
+    userId:'',
     thingInfo: { 
       product_id: 1, 
       thingStatus:"",
@@ -44,6 +44,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.getStorage({  //异步获取缓存值userId
+      key: 'userId',
+      success: function (res) {
+        that.setData({
+          userId: res.data
+        }),
+        console.log(res.data);
+      }
+    }),
     wx.request({
       url:'http://localhost/viewMyCollection.php',
       method: 'POST',

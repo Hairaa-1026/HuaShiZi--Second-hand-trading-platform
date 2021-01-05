@@ -10,6 +10,7 @@ Page({
     userInfo: {
       nickName: '个人信息',
       avatarUrl: '', 
+      userId:'',
     },
   },
  
