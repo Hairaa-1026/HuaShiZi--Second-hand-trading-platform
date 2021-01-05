@@ -8,23 +8,27 @@ Page({
    */
   data: {
     // 存放数据
-    resultList: [],
+
+    poster:"嗨嗨",
+    productId: 0,
     keyword: '', //接收search传过来的关键字
+
     goodLastId: '',// 每组数据的最后一个的id
     goodSearchLength: 5,
     isGoodSearchShow: false,
+
+    resultList: [],
     thingInfo: { 
-      thingId: 1, 
-      poster:"嗨嗨",
+      productId: 1, 
+      creatorId:0,
       
       postType:"出售",
-      diliveryType:"面交",
-      thingImagePath: '../../images/search/dior.jpg',
-      thingName: "现代软件工程",
-      thingType:  "教材",
-      thingPrice: "999",
-      thingCampus: "中北校区",
-      thingPagePath:" ",
+      pickupWay:"面交",
+      thumbnail: '../../images/search/dior.jpg',
+      title: "现代软件工程",
+      type:  "教材",
+      price: "999",
+      campus: "中北校区",
     },//仅用于测试
     thingData: [
       { 
@@ -86,15 +90,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options);
-    var that = this;
-    var keyWord = that.data.keyWord;
-      console.log(options.keyWord);
-    that.setData({
-      keyWord: options.keyWord
-    })
-    that.searchResult();
+  onLoad: function () {
+    
   },
 
   /**
@@ -108,7 +105,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    var keyword = that.data.keyword;
+     wx.getStorage({
+       key: 'keyword',
+       success:function(res){
+         that.setData({
+           keyword:res.data,
+         })
+         keyword=res.data;
+         console.log(keyword);
+         console.log("ssssssssss");
 
+         wx.request({
+          url: 'http://localhost/searchByKeyWord.php',
+          data:{
+             keyword:keyword,
+          },
+          method: "POST",
+          header: { 'content-type': 'application/x-www-form-urlencoded ' },
+          success(res) {
+           console.log(res);
+           that.setData({
+           resultList:res.data.data,
+           })
+         },
+         fail(err) {
+           console.log(err);
+         }
+   
+        })
+
+       }
+     })
+     console.log(keyword);
+     
   },
 
   /**+
@@ -125,9 +156,30 @@ Page({
 
   },
 
+   //获取输入框内容
+   searchGood: function(e){
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+
+   bindToSearch(e) {
+    var that = this;
+    var keyword = that.data.keyword;
+    console.log(keyword);
+    wx.setStorage({
+      data: keyword,
+      key: 'keyword',
+    })
+    wx.navigateTo({
+      url: '/pages/release/release'
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
+  /*
   onPullDownRefresh: function () {
     wx.setNavigationBarTitle({
       title: '搜索结果'
@@ -142,6 +194,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
+  /*
   onReachBottom: function () {
     this.searchResult();
   },
@@ -149,6 +202,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
+  /*
   onShareAppMessage: function () {
 
   },
@@ -287,4 +341,7 @@ Page({
       url: '../movie-detail/movie-detail?id=' + id, //跳转到商品详情页
     })
   }
+
+  */
+
 })

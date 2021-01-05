@@ -2,10 +2,12 @@
 <view class='search'>
   <view class='search-good'>
     <icon type='search' size='16' class='search-icon'></icon>
-    <input class='search-input' placeholder='口红' bindinput='searchGood'></input>
+    <input class='search-input' placeholder='搜索' bindinput='searchGood'></input>
     <text class='search-search' data-keyWord='{{keyWord}}' bindtap='bindToSearch'>搜索</text>
   </view>
 </view>
+
+
 <view class="my_swiper">
   <view class="swiper">
     <swiper autoplay circular indicator-dots style="height: 100%;">

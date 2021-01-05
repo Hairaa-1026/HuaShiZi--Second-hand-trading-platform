@@ -2,21 +2,21 @@
 <view class='search'>
   <view class='search-good'>
     <icon type='search' size='16' class='search-icon'></icon>
-    <input class='search-input' placeholder='口红' bindinput='searchGood'></input>
+    <input class='search-input' placeholder='搜索' bindinput='searchGood'></input>
     <text class='search-search' data-keyWord='{{keyWord}}' bindtap='bindToSearch'>搜索</text>
   </view>
 </view>
 <view class='search-list'>
-  <block wx:for="{{thingData}}" wx:key="thingInfo">
+  <block wx:for="{{resultList}}" wx:key="thingInfo">
     <view class='movie-wrapper'>
       <view class='movie-content'>
         <image class='poster' src='{{item.thingImagePath}}'></image>
         <view class='total'>
-          <text class='name'>{{item.thingName}}</text>
-          <text class='desc'>校区：{{item.thingCampus}}</text>
-          <text class='desc'>提取方式：{{item.diliveryType}}</text>
-          <text class='desc'>发布者：{{item.poster}}</text>
-          <text class='price'>￥{{item.thingPrice}}</text>
+          <text class='name'>{{item.title}}</text>
+          <text class='desc'>校区：{{item.campus}}</text>
+          <text class='desc'>提取方式：{{item.pickupWay}}</text>
+          <text class='desc'>发布者：{{item.creatorId}}</text>
+          <text class='price'>￥{{item.price}}</text>
       </view>
     </view>
     </view>

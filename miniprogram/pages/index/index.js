@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    keyword:'',
     navbarActiveIndex: 0,
     navbarTitle: [
     "首页",
@@ -34,13 +35,23 @@ Page({
     console.error(e.detail.errMsg)
    },
 
+   //获取输入框内容
+  searchGood: function(e){
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+
    bindToSearch(e) {
     var that = this;
-    var keyWord = that.data.keyWord;
-    console.log(1);
-    console.log(keyWord);
+    var keyword = that.data.keyword;
+    console.log(keyword);
+    wx.setStorage({
+      data: keyword,
+      key: 'keyword',
+    })
     wx.navigateTo({
-      url: '../release/release?keyWord=' + keyWord
+      url: '/pages/release/release'
     })
   },
   searchBar(e) {
