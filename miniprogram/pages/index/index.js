@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+<<<<<<< HEAD
       goodsList:[
         /*{
           "url": "/pages/show/show",
@@ -39,6 +40,57 @@ Page({
         },*/
       ],
 
+=======
+    keyword:'',
+    navbarActiveIndex: 0,
+    navbarTitle: [
+    "首页",
+    "服装鞋帽",
+    "教材书籍",
+    "美妆护肤",
+    "卡券交易"
+    ]
+  },
+  
+  onNavBarTap: function (event) {
+      // 获取点击的navbar的index
+      let navbarTapIndex = event.currentTarget.dataset.navbarIndex
+      // 设置data属性中的navbarActiveIndex为当前点击的navbar
+      this.setData({
+          navbarActiveIndex: navbarTapIndex      
+      })
+   },
+  
+   onBindAnimationFinish: function ({detail}) {
+      // 设置data属性中的navbarActiveIndex为当前点击的navbar
+      this.setData({
+          navbarActiveIndex: detail.current
+      })
+   },
+
+   canvasIdErrorCallback: function (e) {
+    console.error(e.detail.errMsg)
+   },
+
+   //获取输入框内容
+  searchGood: function(e){
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+
+   bindToSearch(e) {
+    var that = this;
+    var keyword = that.data.keyword;
+    console.log(keyword);
+    wx.setStorage({
+      data: keyword,
+      key: 'keyword',
+    })
+    wx.navigateTo({
+      url: '/pages/release/release'
+    })
+>>>>>>> e2c2506cf1df21f3d13cff3087ff31985b5aa4fc
   },
   
   searchBar(e) {
