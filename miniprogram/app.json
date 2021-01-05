@@ -1,6 +1,5 @@
 {
   "pages": [
-
     "pages/index/index",
     "pages/show/show",
     "pages/postInfo/postInfo",

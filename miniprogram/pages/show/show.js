@@ -3,19 +3,23 @@ Page({
   data: {
     is_shoucang:0,
     thingInfo: { 
-      thingId: 1, 
-      postType:"出售",
-      diliveryType:"面交",
-      thingImage: '',
-      thingName: "现代软件工程",
-      thingType:  "教材",
-      thingConditions: "全新",
-      thingConditionIndex: 0,
-      thingPrice: "999",
-      thingCampus: "中北校区",
-      thingCampusIndex: 0,
+      userId: '',
+      issuer: '123',
+      type:"出售",
+      pickupWay:"面交",
+      thumbnail: '',
+      title: "现代软件工程",
+      quality: "全新",
+      price: "999",
+      campus: "中北校区",
+      description: "超级无敌棒棒棒的书！",
       thingPhoneNumber: "8888888",
-      thingDescribe: "超级无敌棒棒棒的书！",
+      thingType:  "教材",
+      /*
+      thingId: 1, 
+      thingConditionIndex: 0,
+      thingCampusIndex: 0,
+      */
     },
 
     thingImg: [
@@ -48,11 +52,15 @@ Page({
       urls: imglist 
     })
   },
+
+  bindtoCollection:function(){
+    
+  },
  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 })

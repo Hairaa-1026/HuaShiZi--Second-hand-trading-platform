@@ -19,6 +19,39 @@
   line-height:50px;
   color:#FF6666;
   font-size: 25px; }
+  .collect{
+    float: right;
+    margin-top: 7px;
+    margin-left: 10px;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    background-color: #db7094bd;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+ 
+    .status{
+      float: right;
+      margin-top: 7px;
+      margin-left: 10px;
+      height: 30px;
+      width: 70px;
+      border-radius: 5px;
+      background-color: #FF6666;
+      font-size: 15px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      font-weight: bold;
+      color: #ffffff;
+    }
+  
 .fenxiang{text-align: center;
    font-size: 12px;
     color:#999;
