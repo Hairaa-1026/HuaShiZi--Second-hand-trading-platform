@@ -13,6 +13,9 @@ Page({
     thingsList: false,
 
     userId:'',
+    productId:'',
+    nickName:'',
+    stuNumber:'',
 
     //物品发布的数据
     postType:["出售","求购"],
@@ -38,7 +41,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function() {
-
+    var that=this;
+    wx.getStorage({  //异步获取缓存值userId
+      key: 'userId',
+      success: function (res) {
+        that.setData({
+          userId: res.data
+        })
+      }
+    })
   },
 
   /**
@@ -53,16 +64,16 @@ Page({
    */
   onShow: function() {
     var that = this;
-    var studentId = that.data.studentId;
+    var stuNumber = that.data.stuNumber;
     var nickName = that.data.nickName;
     wx.getStorage({
-      key: 'studentId',
+      key: 'stuNumber',
       success: function(res) {
         that.setData({
-          studentId: res.data
+          stuNumber: res.data
         })
       },
-    })
+    }),
     wx.getStorage({
       key: 'nickName',
       success: function(res) {
@@ -199,8 +210,8 @@ Page({
   //发布物品的响应事件
   bindSubmitThing: function() {
     var that = this;
-    var studentId = that.data.studentId;
-    if (!studentId) {
+    var stuNumber = that.data.stuNumber;
+    if (!stuNumber) {
       wx.showModal({
         title: '提示',
         content: '请验证您的学生身份',

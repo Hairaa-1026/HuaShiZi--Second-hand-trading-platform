@@ -8,6 +8,7 @@ Page({
    */
   data: {
     userId:'',
+  
     thingInfo: { 
       product_id: 1, 
       thingStatus:"",

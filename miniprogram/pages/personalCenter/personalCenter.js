@@ -7,10 +7,12 @@ Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+    stuNumber:'',
+    userId:'',
     userInfo: {
       nickName: '个人信息',
       avatarUrl: '', 
-      userId:'',
     },
   },
  
@@ -44,15 +46,25 @@ Page({
    */
   onShow: function() {
     var that = this;
-    var studentId = that.data.studentId;
+    var stuNumber = that.data.stuNumber;
     var nickName = 'userInfo.nickName';
     var avatarUrl = 'userInfo.avatarUrl';
-    wx.getStorage({  //异步获取缓存值studentId
-      key: 'studentId',
+    wx.getStorage({  //异步获取缓存值stuNumber
+      key: 'stuNumber',
       success: function (res) { 
         that.setData({
-          studentId: res.data
+          stuNumber: res.data
         })
+        console.log(that.data.userId);
+      }
+    }),
+    wx.getStorage({  //异步获取缓存值userId
+      key: 'userId',
+      success: function (res) { 
+        that.setData({
+          userId: res.data
+        })
+        console.log(that.data.userId);
       }
     })
     //get缓存值用户名字，并设置
@@ -77,14 +89,9 @@ Page({
        })
      },
    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
 
   },
+
 
   /**
    * 生命周期函数--监听页面卸载
@@ -121,7 +128,6 @@ Page({
         wx.setStorageSync('nickName', userInfo.nickName)
       } catch (e) {
       }
-      
       wx.setStorage({
         key: 'avatarUrl',
         data: userInfo.avatarUrl,
@@ -157,14 +163,16 @@ Page({
       wx.setStorageSync('nickName', '')
     } catch (e) {
     }
+    /*
     wx.setStorage({
-      key: 'studentId',
+      key: 'stuNumber',
       data: '',
     })
     wx.setStorage({
-      key: 'passWord',
+      key: 'userId',
       data: '',
     })
+    */
     wx.setStorage({
       key: 'avatarUrl',
       data: '',
@@ -173,6 +181,7 @@ Page({
       [nickName]: '个人信息',
       [avatarUrl]: ''
     })
+
     wx.showModal({
       title: '提示',
       content: '退出账号成功',

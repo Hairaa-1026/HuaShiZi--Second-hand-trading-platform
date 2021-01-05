@@ -1,12 +1,18 @@
 Component({
   data: {
-        
+
+
+    stuNumber:'',
+    userId:'',
+    userInfo: {
+      nickName: '',
+      avatarUrl: '', 
+    },
+
       userName:'',
-      userId:'',
       phone:'',
       campus:'',
       stuCardPhoto: '',
-      stuNumber:'',
 
       showTopTips: false,
       buttonLoading:false,
@@ -27,7 +33,7 @@ Component({
       var that = this;
       var stuNumber = that.data.stuNumber;
       var userId = that.data.userId;
-      wx.getStorage({  //异步获取缓存值studentId
+      wx.getStorage({  //异步获取缓存值stuNumber
         key: 'stuNumber',
         success: function (res) {
           that.setData({
@@ -42,9 +48,27 @@ Component({
           that.setData({
             userId: res.data
           })
-  
+        }
+      }),
+      wx.getStorage({  //异步获取缓存值nickName
+        key: 'nickName',
+        success: function (res) {
+          that.setData({
+            [nickName]: res.data
+          })
         }
       })
+
+   //get缓存值用户头像，并设置
+   wx.getStorage({
+    key: 'avatarUrl',
+    success: function(res) {  
+      that.setData({
+       [avatarUrl]: res.data
+      })
+    }
+  })
+
     },
 
       bindStudentCardImageInput: function() { //学生卡图片选择
@@ -67,7 +91,6 @@ Component({
         });
         //console.log(this.data.campus);
       },
-      
       bindStuNumberInput: function(e) { //学号
         this.setData({
             stuNumber: e.detail.value
@@ -120,7 +143,7 @@ Component({
                     delta: 1
                   }),
                   wx.setStorage({
-                    key: "studentId",// 异步缓存学号
+                    key: "stuNumber",// 异步缓存学号
                     data: stuNumber //学号
                   })
                   wx.setStorage({
