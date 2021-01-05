@@ -13,12 +13,14 @@ Page({
     thingsList: false,
 
     userId:'',
-    productId:'',
     nickName:'',
     stuNumber:'',
 
+    productId:'',
+
     //物品发布的数据
     postType:["出售","求购"],
+    postType1:["sell","buy"],
     postTypeIndex: 0,
     diliveryType:["面交","邮寄","其它"],
     diliveryTypeIndex: 0,
@@ -230,12 +232,13 @@ Page({
       this.setData({
         buttonLoadingThing: true
       })
+      var userId=that.data.userId;
       var postTypeIndex = that.data.postTypeIndex; //交易类型索引
-      var postType = that.data.postType[postTypeIndex]; //交易类型
+      var postType = that.data.postType1[postTypeIndex]; //交易类型
       var diliveryTypeIndex = that.data.diliveryTypeIndex; //运送方式索引值
       var diliveryType = that.data.diliveryType[diliveryTypeIndex]; //运送方式
 
-      var thingImage = that.data.thingImage; //图片
+      var thingImage = ['../../../images/collections/exm1.jpg']; //that.data.thingImage; //图片
       var thingName = that.data.thingName; //名字
       var thingTypeIndex = that.data.thingTypeIndex; //物品类型索引值
       var thingType = that.data.thingType[thingTypeIndex]; //物品类型
@@ -245,27 +248,25 @@ Page({
       var thingCampusIndex = that.data.thingCampusIndex; //校区索引值
       var thingCampus = that.data.thingCampus[thingCampusIndex]; //校区
       var thingDescribe = that.data.thingDescribe || '无备注或描述'; //备注
-      var thingPhoneNumber = that.data.thingPhoneNumber; //电话
-      var thingPrice = that.data.thingPrice; //价格
-      var studentId = that.data.studentId;
-      var nickName = that.data.nickName;
-      var url = app.globalData.huanbaoBase + 'thingpost.php';
-      var urlImg = app.globalData.huanbaoBase + 'thingimg.php';
+      //var thingPhoneNumber = that.data.thingPhoneNumber; //电话
+      var thingPrice = parseInt(that.data.thingPrice); //价格
+      var stuNumber = that.data.stuNumber;
+      //var nickName = that.data.nickName;
+      var url = 'http://localhost/' + 'addProduct.php';
+      //var urlImg = app.globalData.huanbaoBase + 'thingimg.php';
       wx.request({
         url,
         data: {
-          postType: postType,
-          diliveryType:diliveryType,
-          thingImage: thingImage,
-          thingName: thingName,
-          thingType: thingType,
-          thingConditions: thingConditions,
-          thingCampus: thingCampus,
-          thingDescribe: thingDescribe,
-          thingPhoneNumber: thingPhoneNumber,
-          thingPrice: thingPrice,
-          studentId: studentId,
-          nickName: nickName,
+          userId:userId,
+          transactionType: postType,
+          pickupWay:diliveryType,
+          photo: thingImage,
+          title: thingName,
+          category: thingType,
+          quality: thingConditions,
+          campus: thingCampus,
+          description: thingDescribe,
+          price: thingPrice,
         },
         method: "POST",
         header: {
@@ -273,20 +274,10 @@ Page({
         },
         success: function(res) {
           console.log(res);
-          var currenttime = util.formatTime(new Date());
-          var currentdate = util.formatDate(new Date());
-          var thingId = res.data;
-          const uploadTask = wx.uploadFile({
-            url: urlImg,
-            filePath: thingImage[0],
-            name: 'file',
-            formData: {
-              'date': currentdate,
-              'datetime': currenttime,
-              'thingId': thingId,
-            },
-            success: function(res) {
-              console.log(res.data);
+          var productId = res.data.productId;
+          that.setData({
+            productId: productId
+          })
               wx.showToast({
                 title: '发布成功',
                 icon: 'succes',
@@ -299,21 +290,7 @@ Page({
                 thingName: '',
                 thingDescribe: '',
                 thingPrice: '',
-                thingPhoneNumber: '',//电话号码
               })
-            },
-            fail: function(res) {
-              console.log(JSON.stringify(res));
-              wx.showToast({
-                title: '发布失败',
-                icon: 'loading',
-                duration: 2000
-              })
-              that.setData({
-                buttonLoadingThing: false
-              })
-            },
-          })
         },
         fail: function(res) {
           console.log(JSON.stringify(res));

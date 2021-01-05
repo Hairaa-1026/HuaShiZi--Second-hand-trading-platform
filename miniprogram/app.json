@@ -4,14 +4,16 @@
     "pages/index/index",
     "pages/show/show",
     "pages/postInfo/postInfo",
+    "pages/personalCenter/myCollection/myCollection",
     "pages/forumBrowse/forumBrowse",
     "pages/posting/posting",
     "pages/forum/forum",
     "pages/personalCenter/personalCenter",
     "pages/personalCenter/myPost/myPost",
-    "pages/personalCenter/myCollection/myCollection",
-    "pages/personalCenter/mySetting/mySetting",
     "pages/post/post",
+
+    "pages/personalCenter/mySetting/mySetting",
+
     "pages/search/search",
     "pages/release/release",
     "pages/searchResult/searchResult",

@@ -9,7 +9,7 @@ Page({
   data: {
     // 存放数据
     resultList: [],
-    keyWord: '', //接收search传过来的关键字
+    keyword: '', //接收search传过来的关键字
     goodLastId: '',// 每组数据的最后一个的id
     goodSearchLength: 5,
     isGoodSearchShow: false,

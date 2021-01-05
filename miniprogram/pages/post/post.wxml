@@ -28,7 +28,7 @@
       </view>
 
       <view class="b_text">
-        <textarea value="{{thingDescribe}}" bindinput=" bindThingDescribeInput" maxlength="200" placeholder="在这里详细描述出售/求购原因、物品详情、规格尺寸等信息吧~"></textarea>
+        <textarea value="{{thingDescribe}}" bindinput="bindThingDescribeInput" maxlength="200" placeholder="在这里详细描述出售/求购原因、物品详情、规格尺寸等信息吧~"></textarea>
         <view class="b_less">{{desc_counts}}/200</view>
       </view>
 
@@ -77,6 +77,7 @@
       </picker>
 				</radio-group>
       </view>
+
       <view class="b_border"></view>
 
       <view class="b_bar">
@@ -96,12 +97,13 @@
       </view>
       <view class="b_border"></view>
 
+      <!--
       <view class="b_bar">
 				<view class="b_name">联系方式</view>
 				<input class="text-input" placeholder="请输入电话/微信" bindinput="bindThingPhoneNumber" value="{{thingPhoneNumber}}" />
       </view>
       <view class="b_border"></view>
-		
+		-->
 			<view class="b_tips">
 				<text>* </text>请认真填写，注意信息安全</view>
 		</view>

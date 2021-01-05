@@ -11,7 +11,7 @@ Page({
     stuNumber:'',
     userId:'',
     userInfo: {
-      nickName: '个人信息',
+      nickName: '登录更多精彩',
       avatarUrl: '', 
     },
   },
@@ -131,6 +131,7 @@ Page({
         key: 'avatarUrl',
         data: userInfo.avatarUrl,
       })
+
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -152,6 +153,7 @@ Page({
         }
       })
     }
+
   },
   bindClear: function (e) {
     var that = this;

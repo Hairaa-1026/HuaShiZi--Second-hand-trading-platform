@@ -32,14 +32,14 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <input bindinput="bindCampusInput" value="{{campus}}" maxlength="5" class="weui-input" placeholder="中北校区/闵行校区" />
+                    <radio-group class="kind-group" bindchange="kindChange">
+					<picker bindchange="bindCampusInput" value="{{campusIndex}}" range="{{campus}}">
+                    <view class="weui-select weui-select_in-select-after">{{campus[campusIndex]}}</view>
+                    </picker>
+				</radio-group>
                 </view>
             </view>
         </view>
-
-
-
-
 
         <view class="weui-btn-area">
             <button class="weui-btn" type="primary" bindtap="bindSubmit">确定</button>

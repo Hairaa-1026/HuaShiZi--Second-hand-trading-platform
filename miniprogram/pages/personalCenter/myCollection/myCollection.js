@@ -62,9 +62,9 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded ' },
       success(res) {
         that.setData({
+          
           collectionList:res.data.data,
         });
-        console.log( that.data.collectionList);
       },
       fail(err) {
         console.log(err);

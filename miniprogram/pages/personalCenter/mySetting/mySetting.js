@@ -1,7 +1,5 @@
 Component({
   data: {
-
-
     stuNumber:'',
     userId:'',
     userInfo: {
@@ -11,7 +9,9 @@ Component({
 
       userName:'',
       phone:'',
-      campus:'',
+      campus:['中北校区' , '闵行校区'],
+      campus1:['Putuo' , 'Minhang'],
+      campusIndex:0,
       stuCardPhoto: '',
 
       showTopTips: false,
@@ -33,6 +33,7 @@ Component({
       var that = this;
       var stuNumber = that.data.stuNumber;
       var userId = that.data.userId;
+      var nickName = that.data.nickName;
       wx.getStorage({  //异步获取缓存值stuNumber
         key: 'stuNumber',
         success: function (res) {
@@ -42,6 +43,7 @@ Component({
   
         }
       })
+      
       wx.getStorage({  //异步获取缓存值userId
         key: 'userId',
         success: function (res) {
@@ -49,25 +51,19 @@ Component({
             userId: res.data
           })
         }
-      }),
-      wx.getStorage({  //异步获取缓存值nickName
-        key: 'nickName',
-        success: function (res) {
-          that.setData({
-            [nickName]: res.data
-          })
-        }
       })
-
-   //get缓存值用户头像，并设置
-   wx.getStorage({
-    key: 'avatarUrl',
-    success: function(res) {  
-      that.setData({
-       [avatarUrl]: res.data
-      })
+     //get缓存值用户名字，并设置
+    try {
+      var value = wx.getStorageSync('nickName')
+      console.log(value);
+      if (value) {
+        that.setData({
+          [nickName]: value
+        })
+      }
+    } catch (e) {
+      // Do something when catch error
     }
-  })
 
     },
 
@@ -78,6 +74,8 @@ Component({
           sourceType: ['album', 'camera'],
           success: function(res) {
             var stuCardPhoto = res.tempFilePaths;
+            console.log(stuCardPhoto);
+            console.log("get it");
             that.setData({
                 stuCardPhoto: stuCardPhoto
             })
@@ -87,7 +85,7 @@ Component({
       
       bindCampusInput: function(e) { //校区
         this.setData({
-          campus: e.detail.value
+          campusIndex: e.detail.value
         });
         //console.log(this.data.campus);
       },
@@ -98,7 +96,7 @@ Component({
       },
       bindPhoneInput: function(e) { //电话号
         this.setData({
-            Phone: e.detail.value
+            phone: e.detail.value
         })
       },
       bindAgreeChange: function (e) {
@@ -113,11 +111,12 @@ Component({
           buttonLoading: true
         })
         var that = this;
-        var userName = 'aa';  //that.data.userName;
-        var phone = 'aa'; //that.data.phone;
-        var campus = 'Putuo';  //that.data.campus;
-        var stuCardPhoto = '../../../images/collections/exm1.jpg';  //that.data.stuCardPhoto;
-        var stuNumber = '10185102210';  //that.data.stuNumber;
+        var userName =that.data.nickName;
+        var phone =that.data.phone;
+        var campus = that.data.campus1[that.data.campusIndex];
+        var stuNumber =that.data.stuNumber;
+        var stuCardPhoto = 'a' //that.data.stuCardPhoto;
+        console.log(stuCardPhoto);
         var url = 'http://localhost/personalAuthentication.php';
         wx.request({
           url,
@@ -134,7 +133,7 @@ Component({
           },
           success: function (res) {
             console.log(res);
-            if (res.data.data.userId) {
+            if (res.data.data) {
               wx.showModal({
                 title: '提示',
                 content: '身份验证成功',
@@ -160,7 +159,7 @@ Component({
                 wx.setStorageSync('stuNumberSync', stuNumber)
               } catch (e) {
               }
-            } else if (res.data === 0) {
+            } else {
               wx.showModal({
                 title: '提示',
                 content: '身份验证失败,请重试！',

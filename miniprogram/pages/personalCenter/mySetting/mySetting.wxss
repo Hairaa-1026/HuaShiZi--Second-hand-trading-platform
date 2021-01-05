@@ -16,3 +16,33 @@
   height: 300rpx;
   padding :10px;
 }
+
+
+.b_bar {
+  height: 90rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kind-group {
+  display: flex;
+}
+
+.b_radio {
+  padding-left: 20rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.b_radio radio {
+  transform: scale(0.8);
+}
+
+.b_name {
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+}
