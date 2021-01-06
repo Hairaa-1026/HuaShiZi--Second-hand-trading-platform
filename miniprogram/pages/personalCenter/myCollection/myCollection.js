@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    state:false,
     userId:0,
     thingInfo: { 
       product_id: 1, 
@@ -92,45 +93,44 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  toDelete(event) {
+    var that = this;
+    var productId = event.currentTarget.dataset.id;
+    console.log("test");
+    console.log(productId);
+    wx.showModal({
+      title: '操作提示',
+      content: '确定要删除该收藏？',
+      success: function (res) {
+        if (res.confirm) {
+          //删除发布的信息
+          wx.request({
+            url:'http://localhost/changeMyPost.php',
+            method: 'POST',
+            data: {
+              productId:productId,
+              state:'delete',
+            },
+            header: { 'content-type': 'application/x-www-form-urlencoded ' },
+            success(res) {
+              console.log(res);
+              wx.showToast({
+                title: '已删除',
+                icon: 'success',
+                duration: 500
+              })
+              that.onLoad();
+              that.onShow();
+            },
+            fail(err) {
+              console.log(err);
+            }
+          })
 
+      
+       
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

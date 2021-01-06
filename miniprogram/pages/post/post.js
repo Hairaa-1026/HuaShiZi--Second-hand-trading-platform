@@ -157,6 +157,7 @@ Page({
       postTypeIndex: e.detail.value
     })
   },
+
   bindDiliveryTypeInput: function(e) { //取货方式
     this.setData({
       diliveryTypeIndex: e.detail.value
@@ -181,11 +182,13 @@ Page({
       thingName: e.detail.value
     })
   },
+
   bindThingTypeInput: function(e) { //商品类型
     this.setData({
       thingTypeIndex: e.detail.value
     })
   },                  
+  
   bindThingConditionsInput: function(e) { //商品成色
     this.setData({
       thingConditionsIndex: e.detail.value

@@ -114,6 +114,15 @@ Page({
     var nickName = that.data.userInfo.nickName;
     var avatarUrl = that.data.userInfo.avatarUrl;
     if (e.detail.userInfo) {
+      wx.showModal({
+        title: '提示',
+        content: '请授权登录',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateBack({
+              delta: 1
+            })
        //用户按了允许授权按钮
        var userInfo = e.detail.userInfo;
        console.log(userInfo)
@@ -131,27 +140,22 @@ Page({
         key: 'avatarUrl',
         data: userInfo.avatarUrl,
       })
+      that.onLoad();
+      that.onShow();
 
-    } else {
-      //用户按了拒绝按钮
-      wx.showModal({
-        title: '提示',
-        content: '请授权登录',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-            wx.navigateBack({
-              delta: 1
-            })
           } else {
             console.log('用户点击取消')
             wx.navigateBack({
               delta: 1
             })
           }
-          
         }
       })
+    
+    } else {
+      //用户按了拒绝按钮
+
+    
     }
 
   },
@@ -187,9 +191,8 @@ Page({
       title: '提示',
       content: '退出账号成功',
       success: function(){
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
+        that.onLoad();
+        that.onShow();
       }
     })
   },

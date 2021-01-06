@@ -27,3 +27,7 @@
   font-weight: bold;
   color: #ffffff;
 }
+/*.btn::after {
+  border-radius: 98rpx;
+  border: 0; 
+}*/

@@ -56,7 +56,33 @@ Page({
 
       }
     })
-   
+    /*wx.getStorage({  //异步获取缓存值userId
+      key: 'userId',
+      success: function (res) {
+        that.setData({
+          userId: res.data
+        }),
+        userId=res.data;
+
+        wx.request({
+          url:'http://localhost/viewMyPost.php',
+          method: 'POST',
+          data: {
+            userId:res.data,
+          },
+          header: { 'content-type': 'application/x-www-form-urlencoded ' },
+          success(res) {
+            that.setData({
+            postList:res.data.data,
+            });
+          },
+          fail(err) {
+            console.log(err);
+          }
+        })
+    
+      }
+    })*/
 
   },
   onShow:function(){
@@ -114,104 +140,90 @@ Page({
   },
 
   onReachBottom: function () {
+    var Post = Bmob.Object.extend("post");
+    var query = new Bmob.Query(Post);
+    query.equalTo("ownerId", Bmob.User.current().id);
+    query.descending('updatedAt');
+    query.skip(this.data.skip);
+    query.limit(this.data.limit);
+    query.find({
+      success: function (results) {
+        if (results.length > 0) {
+          var nl = that.data.postList.concat(results);
+          that.setData({
+            skip: that.data.skip + results.length,
+            postList: nl
+          })
+        }
+        else {
           wx.showToast({
             title: '已全部加载',
             icon: 'success',
-            duration: 500
+            duration: 3000
           })
-
-  },
-
-  toProductDetail(e) {
-    var productId = e.currentTarget.dataset.id;
-    console.log( productId);
-    wx.setStorage({
-      data: productId,
-      key: 'productId',
-    })
-    wx.redirectTo({
-      url: '../../../pages/show/show',
+        }
+      },
+      error: function (error) {
+        console.log("onReachBottom查询post失败: " + error.code + " " + error.message);
+      }
     })
   },
-
   finishPost: function (event) {
-    var that = this;
-    var productId = event.currentTarget.dataset.id;
-    console.log("test");
-    console.log(productId);
+    var objectId = event.target.dataset.id;
     wx.showModal({
       title: '操作提示',
-      content: '确定交易已完成？',
+      content: '请确定当前交易已完成',
       success: function (res) {
         if (res.confirm) {
-          //完成发布的信息
-          wx.request({
-            url:'http://localhost/changeMyPost.php',
-            method: 'POST',
-            data: {
-              productId:productId,
-              state:'sold',
-            },
-            header: { 'content-type': 'application/x-www-form-urlencoded ' },
-            success(res) {
-              console.log(res);
-              wx.showToast({
-                title: '已完成交易',
-                icon: 'success',
-                duration: 500
-              })
-              that.onLoad();
+          //删除日记
+          var Post = Bmob.Object.extend("post");
+          //创建查询对象，入口参数是对象类的实例
+          var query = new Bmob.Query(Post);
+          query.equalTo("objectId", objectId);
+          query.destroyAll({
+            success: function () {
+              common.showTip('删除成功');
               that.onShow();
             },
-            fail(err) {
-              console.log(err);
+            error: function (err) {
+              common.showTip('删除失败', 'loading');
             }
-          })
+          });
         }
       }
     })
   },
   toDelete(event) {
     var that = this;
-    var productId = event.currentTarget.dataset.id;
-    console.log("test");
-    console.log(productId);
+    var productId = event.currentTarget.dataset.productid;
+    let {postList} = this.data;
     wx.showModal({
       title: '操作提示',
       content: '确定要删除该发布？',
       success: function (res) {
         if (res.confirm) {
-          //删除发布的信息
-          wx.request({
-            url:'http://localhost/changeMyPost.php',
-            method: 'POST',
-            data: {
-              productId:productId,
-              state:'delete',
-            },
-            header: { 'content-type': 'application/x-www-form-urlencoded ' },
-            success(res) {
-              console.log(res);
-              wx.showToast({
-                title: '已删除',
-                icon: 'success',
-                duration: 500
-              })
-              that.onLoad();
-              that.onShow();
-            },
-            fail(err) {
-              console.log(err);
-            }
+          //删除日记
+          const index=postList.findIndex(v => v.productId==productId);
+          postList.splice(index,1);
+          that.setData({
+            postList: postList
           })
-
-      
-       
+          //this.onShow();
+          var Post = Bmob.Object.extend("post");
+          //创建查询对象，入口参数是对象类的实例
+          var query = new Bmob.Query(Post);
+          query.equalTo("index", postList[index]);
+          query.destroyAll({
+            success: function () {
+              common.showTip('删除成功');
+              that.onLoad();
+            },
+            error: function (err) {
+              common.showTip('删除失败', 'loading');
+            }
+          });
         }
       }
     })
-  
   },
-
-
 })
