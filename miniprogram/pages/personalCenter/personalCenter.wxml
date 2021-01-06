@@ -28,6 +28,7 @@
   <view class="weui-cell__bd">我的收藏</view>
   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 </navigator>
-<button class="btm" bindtap='bindClear'>退出帐号</button>
+<button class="btm" bindtap='bindLeave'>退出账号</button>
+<button class="btm" bindtap='bindClear'>注销账号</button>
 
 </view>

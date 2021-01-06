@@ -7,6 +7,7 @@ Component({
       avatarUrl: '', 
     },
 
+    status:false,
       userName:'',
       phone:'',
       campus:['中北校区' , '闵行校区'],
@@ -44,13 +45,23 @@ Component({
   
         }
       })
-      
       wx.getStorage({  //异步获取缓存值userId
         key: 'userId',
         success: function (res) {
           that.setData({
             userId: res.data
           })
+          if (res.data==''){
+            that.setData({
+              status: false
+            })
+          }
+          else{
+            that.setData({
+              status: true
+            })
+
+          }
         }
       })
       wx.getStorage({  //异步获取缓存值stuNumber
@@ -76,6 +87,8 @@ Component({
     } catch (e) {
       // Do something when catch error
     }
+
+
 
     },
 
@@ -126,9 +139,9 @@ Component({
         var userName = wx.getStorageSync('nickName')
         console.log('test:'+userName);
         var phone =that.data.phone;
-        var campus = that.data.campus1[that.data.campusIndex];
+        var campus = that.data.campus[that.data.campusIndex];
         var stuNumber =that.data.stuNumber;
-        var stuCardPhoto = 'a' //that.data.stuCardPhoto;
+        var stuCardPhoto = 'a'  ;//that.data.stuCardPhoto;
         console.log(stuCardPhoto);
         var url = 'http://localhost/personalAuthentication.php';
         wx.request({
@@ -165,6 +178,10 @@ Component({
                   wx.setStorage({
                     key: "phone",// 异步缓存电话号码
                     data: phone
+                  }),
+                  wx.setStorage({
+                    key: "campus",// 异步缓存校区
+                    data: campus
                   }),
                   wx.redirectTo({
                     url: 'pages/personalCenter/personalCenter',
