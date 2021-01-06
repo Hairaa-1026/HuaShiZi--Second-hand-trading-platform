@@ -52,8 +52,8 @@
       <view class="b_bar">
 				<view class="b_name">物品成色</view>
 				<radio-group class="kind-group" bindchange="kindChange">
-					<picker bindchange="bindThingConditionsInput" value="{{thingConditionIndex}}" range="{{thingConditions}}">
-        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionIndex]}}</view>
+					<picker bindchange="bindThingConditionsInput" value="{{thingConditionsIndex}}" range="{{thingConditions}}">
+        <view class="weui-select weui-select_in-select-after">{{thingConditions[thingConditionsIndex]}}</view>
       </picker>
 				</radio-group>
       </view>

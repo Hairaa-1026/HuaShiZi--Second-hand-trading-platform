@@ -22,15 +22,17 @@ Page({
     postType:["出售","求购"],
     postType1:["sell","buy"],
     postTypeIndex: 0,
-    diliveryType:["面交","邮寄","其它"],
+    diliveryType:["面交","邮寄"],
+    diliveryType1:['SelfPick','Delivery'],
     diliveryTypeIndex: 0,
 
     thingImage: '../../images/tabBar/post.jpg',
     thingName: '',
-    thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材"],
+    thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材","其它","护肤"],
     thingTypeIndex: 0,
-    thingConditions: ["全新", "几乎全新", "九成新", "八成新", "五成新", "五成新以下"],
-    thingConditionIndex: 0,
+    thingConditions: ['全新', '几乎全新', '九成新', '八成新', '五成新', '五成新以下'],
+    thingConditions1:['100','95','90','80','50'],
+    thingConditionsIndex: 0,
     thingPrice: 0,
     thingCampus: ["中北校区", "闵行校区"],
     thingCampus1:['Putuo' , 'Minhang'],
@@ -186,7 +188,7 @@ Page({
   },                  
   bindThingConditionsInput: function(e) { //商品成色
     this.setData({
-      thingConditionIndex: e.detail.value
+      thingConditionsIndex: e.detail.value
     })
   },
   bindThingPriceInput: function(e) { //商品价格
@@ -237,20 +239,21 @@ Page({
       var postTypeIndex = that.data.postTypeIndex; //交易类型索引
       var postType = that.data.postType1[postTypeIndex]; //交易类型
       var diliveryTypeIndex = that.data.diliveryTypeIndex; //运送方式索引值
-      var diliveryType = 'SelfPick';  //that.data.diliveryType[diliveryTypeIndex]; //运送方式
+      var diliveryType =that.data.diliveryType1[diliveryTypeIndex]; //运送方式
 
       var thingImage = ['images/collections/exm1.jpg']; //that.data.thingImage; //图片
       var thingName = that.data.thingName; //名字
       var thingTypeIndex = that.data.thingTypeIndex; //物品类型索引值
       var thingType = that.data.thingType[thingTypeIndex]; //物品类型
 
-      var thingConditionIndex = that.data.thingConditionIndex; //成色索引值
-      var thingConditions =95; // that.data.thingConditions[thingConditionIndex]; //成色
+      var thingConditionsIndex = that.data.thingConditionsIndex; //成色索引值
+      var thingConditions =that.data.thingConditions1[thingConditionsIndex]; //成色
+
       var thingCampusIndex = that.data.thingCampusIndex; //校区索引值
       var thingCampus = that.data.thingCampus1[thingCampusIndex]; //校区
       var thingDescribe = that.data.thingDescribe || '无备注或描述'; //备注
       //var thingPhoneNumber = that.data.thingPhoneNumber; //电话
-      var thingPrice = parseInt(that.data.thingPrice); //价格
+      var thingPrice = that.data.thingPrice; //价格
       var stuNumber = that.data.stuNumber;
       //var nickName = that.data.nickName;
       var url = 'http://localhost/' + 'addProduct.php';
@@ -260,7 +263,6 @@ Page({
         data: {
           userId:userId,
           type: postType,
-
           photo: thingImage,
           title: thingName,
           category: thingType,
@@ -277,10 +279,10 @@ Page({
         success: function(res) {
           console.log(res);
           if(res.data){
-          var productId = res.data.data.productId;
-          console.log(productId);
+          //var productId = res.data.data.productId;
+          //console.log(productId);
           that.setData({
-            productId: productId
+            productId: 9,
           })
               wx.showToast({
                 title: '发布成功',
