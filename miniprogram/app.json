@@ -34,12 +34,6 @@
         "selectedIconPath": "images/tabBar/home.fill.png"
       },
       {
-        "text": "论坛",
-        "pagePath": "pages/forum/forum",
-        "iconPath": "images/tabBar/forum.png",
-        "selectedIconPath": "images/tabBar/forum.fill.png"
-      },
-      {
         "text": "物品发布",
         "pagePath": "pages/post/post",
         "iconPath": "images/tabBar/release.png",
