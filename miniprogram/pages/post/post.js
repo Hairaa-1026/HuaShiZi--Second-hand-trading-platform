@@ -28,7 +28,7 @@ Page({
 
     thingImage: '../../images/tabBar/post.jpg',
     thingName: '',
-    thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材","其它","护肤"],
+    thingType: [ "教材", "卡券", "美妆","护肤","服装","食品", "租借","其它"],
     thingTypeIndex: 0,
     thingConditions: ['全新', '几乎全新', '九成新', '八成新', '五成新', '五成新以下'],
     thingConditions1:['100','95','90','80','50'],
