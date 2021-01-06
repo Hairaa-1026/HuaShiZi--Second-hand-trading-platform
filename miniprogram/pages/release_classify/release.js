@@ -10,7 +10,7 @@ Page({
     // 存放数据
     thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材","其它","护肤"],
 
-    poster:"嗨嗨",
+    userName:"嗨嗨",
     productId: 0,
     classifier: '', //接收index传过来的关键字类型
 

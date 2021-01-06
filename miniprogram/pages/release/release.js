@@ -9,7 +9,7 @@ Page({
   data: {
     // 存放数据
 
-    poster:"嗨嗨",
+    userName:"嗨嗨",
     productId: 0,
     keyword: '', //接收search传过来的关键字
 

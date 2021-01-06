@@ -68,7 +68,7 @@
 
       <view class="b_bar">
 				<view class="b_name">发布者</view>
-				<text class="b_name">{{creatorId}}</text>
+				<text class="b_name">{{userName}}</text>
       </view>
       <view class="b_border"></view>
 

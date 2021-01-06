@@ -79,39 +79,16 @@ Page({
     })
   },
 
-  toDelete(event) {
-    var that = this;
-    var productId = event.currentTarget.dataset.id;
-    wx.showModal({
-      title: '操作提示',
-      content: '确定要删除该收藏？',
-      success: function (res) {
-        if (res.confirm) {
-          //删除发布的信息
-          wx.request({
-            url:'http://localhost/changeMyPost.php',
-            method: 'POST',
-            data: {
-              productId:productId,
-              state:'delete',
-            },
-            header: { 'content-type': 'application/x-www-form-urlencoded ' },
-            success(res) {
-              console.log(res);
-              wx.showToast({
-                title: '已删除',
-                icon: 'success',
-                duration: 500
-              })
-              that.onLoad();
-              that.onShow();
-            },
-            fail(err) {
-              console.log(err);
-            }
-          })
-        }
-      }
+
+  toProductDetail(e) {
+    var productId = e.currentTarget.dataset.id;
+    console.log( productId);
+    wx.setStorage({
+      data: productId,
+      key: 'productId',
+    })
+    wx.redirectTo({
+      url: '../../../pages/show/show',
     })
   },
 })

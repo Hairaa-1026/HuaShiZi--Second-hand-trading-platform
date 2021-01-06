@@ -92,6 +92,7 @@ Page({
               description: res.data.data[0].description,
               phone:res.data.data[0].phone,
               category: res.data.data[0].category,
+              userName:res.data.data[0].userName
             })
           },
           fail(err) {
