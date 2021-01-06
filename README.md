@@ -29,4 +29,4 @@ Miniprogram Code：\miniprogram
 
 5.    So you can see the small program we designed on the page. The effect is shown below:
 
-   ![The effect is shown below](\miniprogram\images\readme.jpg)
+   ![](D:\GitHub Repository\HuaShiZi--Second-hand-trading-platform\miniprogram\images\readme.jpg)
