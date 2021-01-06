@@ -47,7 +47,7 @@
 
 <view class="my_goods">
   <block wx:for="{{goodsList}}" wx:key="index">
-    <navigator url="{{item.url}}" open-type="navigate">
+    <navigator open-type="navigate"  data-id='{{item.productId}}' bindtap='toProductDetail'>
       <view class="goods">
         <image src="{{item.thumbnail}}" class = "goods"></image>
         <view style="height:190px"><text>{{item.title}}</text></view>

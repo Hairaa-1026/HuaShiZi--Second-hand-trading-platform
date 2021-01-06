@@ -8,7 +8,7 @@
 </view>
 <view class='search-list'>
   <block wx:for="{{resultList}}" wx:key="thingInfo">
-    <view class='movie-wrapper'>
+    <view class='movie-wrapper' data-id='{{item.productId}}' bindtap='toProductDetail'>
       <view class='movie-content'>
         <image class='poster' src='{{item.thingImagePath}}'></image>
         <view class='total'>

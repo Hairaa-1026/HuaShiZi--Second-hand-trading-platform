@@ -6,7 +6,6 @@ Page({
   data: {
     goodsList:[]
   },
-  
    //获取输入框内容
   searchGood: function(e){
     this.setData({
@@ -42,5 +41,18 @@ Page({
         console.log(err);
       }
     })
+  },
+
+  toProductDetail(e) {
+    var productId = e.currentTarget.dataset.id;
+    console.log(e);
+    wx.setStorage({
+      data: productId,
+      key: 'productId',
+    })
+    wx.redirectTo({
+      url: '../show/show',
+    })
   }
+
 })
