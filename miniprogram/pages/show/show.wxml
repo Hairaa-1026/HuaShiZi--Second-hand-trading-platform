@@ -9,10 +9,11 @@
 
 <!--物品价钱-->
 <view class="info-price clear">
-  <view class='price'>￥{{thingInfo.price}} </view>
+  <view class='price'>￥{{price}} </view>
   <view style="float:left;width:60%;">
     <view class = "collect" bindtap='bindtoCollection'>收藏</view>
-    <view class = "status">已卖出</view>
+    
+    <view class = "status"  wx:if="{{status}}">已卖出</view>
   </view>
   <view style='float:right;font-size:12px;color:#A2A2A2;width:12px;height:12px'>
     <image mode ="widthFix" src = "../../images/shows/collect.jpg" />
@@ -21,12 +22,12 @@
 
 <!--物品描述-->
 <view class="info-title"  style='border-bottom:1px solid #f5f5f5;'>
-    <text>{{thingInfo.title}}</text>
+    <text>{{title}}</text>
 </view>
 <view class='details_box'>
   <view style='padding:10px 0px'>
       <view class="wxParse">
-         {{thingInfo.description}}
+         {{description}}
       </view>
     </view>
 </view>
@@ -38,43 +39,43 @@
 		<view class="b_card">
       <view class="b_bar">
 				<view class="b_name">交易类别</view>
-				<text class="b_name">{{thingInfo.type}}</text>
+				<text class="b_name">{{type}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">物品类型</view>
-				<text class="b_name">{{thingInfo.thingType}}</text>
+				<text class="b_name">{{thingType}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">物品成色</view>
-				<text class="b_name">{{thingInfo.quality}}</text>
+				<text class="b_name">{{quality}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">运送类型</view>
-				<text class="b_name">{{thingInfo.pickupWay}}</text>
+				<text class="b_name">{{pickupWay}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">所在校区</view>
-				<text class="b_name">{{thingInfo.campus}}</text>
+				<text class="b_name">{{campus}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">发布者</view>
-				<text class="b_name">{{thingInfo.issuer}}</text>
+				<text class="b_name">{{issuer}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">联系方式</view>
-				<text class="b_name">{{thingInfo.thingPhoneNumber}}</text>
+				<text class="b_name">{{thingPhoneNumber}}</text>
       </view>
       <view class="b_border"></view>
 

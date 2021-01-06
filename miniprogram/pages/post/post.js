@@ -12,7 +12,7 @@ Page({
     postThing: true,
     thingsList: false,
 
-    userId:'',
+    userId:0,
     nickName:'',
     stuNumber:'',
 
@@ -279,10 +279,10 @@ Page({
         success: function(res) {
           console.log(res);
           if(res.data){
-          //var productId = res.data.data.productId;
-          //console.log(productId);
+          var productId = res.data.data.productId;
+          console.log(productId);
           that.setData({
-            productId: 9,
+            productId: res.data.data.productId,
           })
               wx.showToast({
                 title: '发布成功',
@@ -296,6 +296,13 @@ Page({
                 thingName: '',
                 thingDescribe: '',
                 thingPrice: '',
+              })
+              wx.setStorage({
+                data: res.data.data.productId,
+                key: 'productId',
+              })
+              wx.redirectTo({
+                url: '../show/show',
               })
           }
           else{
