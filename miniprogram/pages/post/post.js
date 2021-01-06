@@ -12,6 +12,7 @@ Page({
     postThing: true,
     thingsList: false,
 
+
     userId:0,
     nickName:'',
     stuNumber:'',
@@ -22,7 +23,7 @@ Page({
     postType:["出售","求购"],
     postType1:["sell","buy"],
     postTypeIndex: 0,
-    diliveryType:["面交","邮寄"],
+    diliveryType:["自提","送货上门"],
     diliveryType1:['SelfPick','Delivery'],
     diliveryTypeIndex: 0,
 
@@ -240,21 +241,21 @@ Page({
       })
       var userId=that.data.userId;
       var postTypeIndex = that.data.postTypeIndex; //交易类型索引
-      var postType = that.data.postType1[postTypeIndex]; //交易类型
+      var postType = that.data.postType[postTypeIndex]; //交易类型
       var diliveryTypeIndex = that.data.diliveryTypeIndex; //运送方式索引值
-      var diliveryType =that.data.diliveryType1[diliveryTypeIndex]; //运送方式
+      var diliveryType =that.data.diliveryType[diliveryTypeIndex]; //运送方式
 
       var thingImage = that.data.thingImage[0]; //图片
-      console.log(thingImage);
+      console.log("thingImage:"+thingImage);
       var thingName = that.data.thingName; //名字
       var thingTypeIndex = that.data.thingTypeIndex; //物品类型索引值
       var thingType = that.data.thingType[thingTypeIndex]; //物品类型
 
       var thingConditionsIndex = that.data.thingConditionsIndex; //成色索引值
-      var thingConditions =that.data.thingConditions1[thingConditionsIndex]; //成色
+      var thingConditions =that.data.thingConditions[thingConditionsIndex]; //成色
 
       var thingCampusIndex = that.data.thingCampusIndex; //校区索引值
-      var thingCampus = that.data.thingCampus1[thingCampusIndex]; //校区
+      var thingCampus = that.data.thingCampus[thingCampusIndex]; //校区
       var thingDescribe = that.data.thingDescribe || '无备注或描述'; //备注
       //var thingPhoneNumber = that.data.thingPhoneNumber; //电话
       var thingPrice = that.data.thingPrice; //价格
@@ -262,6 +263,50 @@ Page({
       //var nickName = that.data.nickName;
       var url = 'http://localhost/' + 'addProduct.php';
       //var urlImg = app.globalData.huanbaoBase + 'thingimg.php';
+
+      if(thingName=='' || thingName == undefined){
+        wx.showToast({
+          title: '请输入信息标题',
+          icon: 'loading',
+          duration: 500
+        })
+        that.setData({
+          buttonLoadingThing: false
+        })
+      }
+      else if(thingImage=='.'||thingImage=='' || thingImage == undefined){
+        wx.showToast({
+          title: '请导入物品图片',
+          icon: 'loading',
+          duration: 500
+        })
+        that.setData({
+          buttonLoadingThing: false
+        })
+      }
+      else if (thingPrice == '' || thingPrice == undefined) {
+        wx.showToast({
+          title: '价格不能为空！',
+          icon: 'loading',
+          duration: 500
+        })
+        that.setData({
+          buttonLoadingThing: false
+        })
+      }
+      else if (!(/(^[0-9]*$)/.test(thingPrice))) {
+        wx.showToast({
+          title: '价格只能为数字！',
+          icon: 'loading',
+          duration: 500
+        })
+        that.setData({
+          buttonLoadingThing: false
+        })
+      }
+
+      else{
+      
       wx.request({
         url,
         data: {
@@ -333,5 +378,8 @@ Page({
         },
       })
     }
+    }
+
   },
+
 })
