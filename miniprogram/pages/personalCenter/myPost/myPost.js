@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userId:'',
+    userId:0,
   
     thingInfo: { 
       product_id: 1, 
@@ -44,6 +44,8 @@ Page({
 
   onLoad: function () {
     var that = this;
+    var userId = that.data.userId;
+
     wx.getStorage({  //异步获取缓存值studentId
       key: 'stuNumber',
       success: function (res) {
@@ -59,24 +61,27 @@ Page({
         that.setData({
           userId: res.data
         }),
-        console.log(res.data);
-      }
-    }),
-    wx.request({
-      url:'http://localhost/viewMyPost.php',
-      method: 'POST',
-      data: {
-        userId:that.data.userId,
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded ' },
-      success(res) {
-        that.setData({
-        postList:res.data.data,
-        });
-        console.log(res.data.data);
-      },
-      fail(err) {
-        console.log(err);
+        userId=res.data;
+
+        wx.request({
+          url:'http://localhost/viewMyPost.php',
+          method: 'POST',
+          data: {
+            userId:res.data,
+          },
+          header: { 'content-type': 'application/x-www-form-urlencoded ' },
+          success(res) {
+    
+            that.setData({
+            postList:res.data.data,
+            });
+            console.log(res.data.data);
+          },
+          fail(err) {
+            console.log(err);
+          }
+        })
+    
       }
     })
 

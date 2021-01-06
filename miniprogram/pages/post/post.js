@@ -241,7 +241,7 @@ Page({
       var diliveryTypeIndex = that.data.diliveryTypeIndex; //运送方式索引值
       var diliveryType =that.data.diliveryType1[diliveryTypeIndex]; //运送方式
 
-      var thingImage = ['images/collections/exm1.jpg']; //that.data.thingImage; //图片
+      var thingImage = 'images/collections/exm1.jpg'; //that.data.thingImage; //图片
       var thingName = that.data.thingName; //名字
       var thingTypeIndex = that.data.thingTypeIndex; //物品类型索引值
       var thingType = that.data.thingType[thingTypeIndex]; //物品类型
@@ -263,7 +263,7 @@ Page({
         data: {
           userId:userId,
           type: postType,
-          photo: thingImage,
+          thumbnail: thingImage,
           title: thingName,
           category: thingType,
           quality: thingConditions,

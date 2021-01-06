@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userId:'',
+    userId:0,
     thingInfo: { 
       product_id: 1, 
       thingStatus:"",
@@ -42,34 +42,47 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     var that = this;
+    var userId = that.data.userId;
+    wx.getStorage({  //异步获取缓存值studentId
+      key: 'stuNumber',
+      success: function (res) {
+        that.setData({
+          stuNumber: res.data
+        })
+      }
+    }),
     wx.getStorage({  //异步获取缓存值userId
       key: 'userId',
       success: function (res) {
         that.setData({
           userId: res.data
         }),
+        userId=res.data;
+        console.log("data");
         console.log(res.data);
-      }
-    }),
-    wx.request({
-      url:'http://localhost/viewMyCollection.php',
-      method: 'POST',
-      data: {
-        userId:that.data.userId,
-      },
-      header: { 'content-type': 'application/x-www-form-urlencoded ' },
-      success(res) {
-        that.setData({
-          
-          collectionList:res.data.data,
-        });
-      },
-      fail(err) {
-        console.log(err);
+        wx.request({
+          url:'http://localhost/viewMyCollection.php',
+          method: 'POST',
+          data: {
+            userId:res.data,
+          },
+          header: { 'content-type': 'application/x-www-form-urlencoded ' },
+          success(res) {
+            that.setData({
+              collectionList:res.data.data,
+            });
+            console.log(res.data.data);
+          },
+          fail(err) {
+            console.log(err);
+          }
+        })
+    
       }
     })
+
   },
 
   /**

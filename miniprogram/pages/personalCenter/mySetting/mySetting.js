@@ -1,7 +1,7 @@
 Component({
   data: {
     stuNumber:'',
-    userId:'',
+    userId:0,
     userInfo: {
       nickName: '',
       avatarUrl: '', 
@@ -55,6 +55,7 @@ Component({
      //get缓存值用户名字，并设置
     try {
       var value = wx.getStorageSync('nickName')
+      console.log("aaa");
       console.log(value);
       if (value) {
         that.setData({
@@ -111,7 +112,8 @@ Component({
           buttonLoading: true
         })
         var that = this;
-        var userName =that.data.nickName;
+        var userName = wx.getStorageSync('nickName')
+        console.log('test:'+userName);
         var phone =that.data.phone;
         var campus = that.data.campus1[that.data.campusIndex];
         var stuNumber =that.data.stuNumber;
