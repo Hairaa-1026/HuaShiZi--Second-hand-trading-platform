@@ -2,7 +2,7 @@
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}">
   <block wx:for="{{thingImg}}" wx:key="thingInfo">
     <swiper-item>
-      <image src="{{imghref}}{{item.img}}" class="slide-image" mode="aspectFill" data-src='{{imghref}}{{item.img}}' bindtap="previewImage"/>
+      <image src="{{thumbnail}}" class="slide-image" mode="aspectFill" data-src='{{imghref}}{{item.img}}' bindtap="previewImage"/>
     </swiper-item>
   </block>
 </swiper>
