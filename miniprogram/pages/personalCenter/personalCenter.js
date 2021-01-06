@@ -113,7 +113,6 @@ Page({
     var that = this;
     var nickName = that.data.userInfo.nickName;
     var avatarUrl = that.data.userInfo.avatarUrl;
-    if (e.detail.userInfo) {
       wx.showModal({
         title: '提示',
         content: '请授权登录',
@@ -142,24 +141,80 @@ Page({
       })
       that.onLoad();
       that.onShow();
-
           } else {
             console.log('用户点击取消')
-            wx.navigateBack({
-              delta: 1
-            })
           }
         }
       })
-    
-    } else {
-      //用户按了拒绝按钮
 
-    
-    }
 
   },
   bindClear: function (e) {
+    var that = this;
+    var nickName = 'userInfo.nickName';
+    var avatarUrl = 'userInfo.avatarUrl';
+   
+    wx.showModal({
+      title: '提示',
+      content: '是否清除账户数据',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.navigateBack({
+            delta: 1
+          })
+     //用户按了允许按钮
+    try {//同步设置nickName
+      wx.setStorageSync('nickName', '')
+    } catch (e) {
+    }
+
+    wx.setStorage({
+      key: 'stuNumber',
+      data: '',
+    })
+    wx.setStorage({
+      key: 'userId',
+      data: '',
+    })
+    wx.setStorage({
+      key: 'phone',
+      data: '',
+    })
+    wx.setStorage({
+      key: 'campus',
+      data: '',
+    })
+
+    wx.setStorage({
+      key: 'avatarUrl',
+      data: '',
+    })
+    that.setData({
+      [nickName]: '个人信息',
+      [avatarUrl]: ''
+    })
+
+    wx.showModal({
+      title: '提示',
+      content: '账号已注销',
+      success: function(){
+        that.onLoad();
+        that.onShow();
+      }
+    })
+        } else {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+
+
+
+
+  },
+  bindLeave: function (e) {
     var that = this;
     var nickName = 'userInfo.nickName';
     var avatarUrl = 'userInfo.avatarUrl';
@@ -196,6 +251,5 @@ Page({
       }
     })
   },
-
 
 })

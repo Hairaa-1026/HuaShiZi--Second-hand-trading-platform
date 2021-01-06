@@ -126,7 +126,7 @@ Component({
         var userName = wx.getStorageSync('nickName')
         console.log('test:'+userName);
         var phone =that.data.phone;
-        var campus = that.data.campus1[that.data.campusIndex];
+        var campus = that.data.campus[that.data.campusIndex];
         var stuNumber =that.data.stuNumber;
         var stuCardPhoto = 'a' //that.data.stuCardPhoto;
         console.log(stuCardPhoto);
@@ -165,6 +165,10 @@ Component({
                   wx.setStorage({
                     key: "phone",// 异步缓存电话号码
                     data: phone
+                  }),
+                  wx.setStorage({
+                    key: "campus",// 异步缓存校区
+                    data: campus
                   }),
                   wx.redirectTo({
                     url: 'pages/personalCenter/personalCenter',
