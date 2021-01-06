@@ -6,9 +6,10 @@ Page({
    */
   data: {
     state:false,
-    userId:0,
+    userId: 0,
+    productId: 1,
     thingInfo: { 
-      product_id: 1, 
+      productId: 1, 
       thingStatus:"",
       thumbnail: '../../../images/collections/exm1.jpg',
       title: "",
@@ -40,9 +41,6 @@ Page({
     collectionList:[],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function () {
     var that = this;
     var userId = that.data.userId;
@@ -61,8 +59,6 @@ Page({
           userId: res.data
         }),
         userId=res.data;
-        console.log("data");
-        console.log(res.data);
         wx.request({
           url:'http://localhost/viewMyCollection.php',
           method: 'POST',
@@ -74,30 +70,18 @@ Page({
             that.setData({
               collectionList:res.data.data,
             });
-            console.log(res.data.data);
           },
           fail(err) {
             console.log(err);
           }
         })
-    
       }
     })
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   toDelete(event) {
     var that = this;
     var productId = event.currentTarget.dataset.id;
-    console.log("test");
-    console.log(productId);
     wx.showModal({
       title: '操作提示',
       content: '确定要删除该收藏？',
@@ -126,9 +110,6 @@ Page({
               console.log(err);
             }
           })
-
-      
-       
         }
       }
     })

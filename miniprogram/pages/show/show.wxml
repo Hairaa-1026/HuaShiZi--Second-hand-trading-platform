@@ -10,9 +10,8 @@
 <!--物品价钱-->
 <view class="info-price clear">
   <view class='price'>￥{{price}} </view>
-  <view style="float:left;width:60%;">
+  <view style="float:left;width:80%;">
     <view class = "collect" bindtap='bindtoCollection'>收藏</view>
-    
     <view class = "status"  wx:if="{{status}}">已卖出</view>
   </view>
   <view style='float:right;font-size:12px;color:#A2A2A2;width:12px;height:12px'>
@@ -45,7 +44,7 @@
 
       <view class="b_bar">
 				<view class="b_name">物品类型</view>
-				<text class="b_name">{{thingType}}</text>
+				<text class="b_name">{{category}}</text>
       </view>
       <view class="b_border"></view>
 
@@ -69,13 +68,13 @@
 
       <view class="b_bar">
 				<view class="b_name">发布者</view>
-				<text class="b_name">{{issuer}}</text>
+				<text class="b_name">{{creatorId}}</text>
       </view>
       <view class="b_border"></view>
 
       <view class="b_bar">
 				<view class="b_name">联系方式</view>
-				<text class="b_name">{{thingPhoneNumber}}</text>
+				<text class="b_name">{{phone}}</text>
       </view>
       <view class="b_border"></view>
 

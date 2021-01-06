@@ -2,9 +2,9 @@
 Page({
   data: {
     is_shoucang:0,
-    issuer:'鸿雁',
     status:false,
-      userId: 0,
+      userName: '',
+      creatorId: 0,
       type:"出售",
       pickupWay:"面交",
       thumbnail: '',
@@ -13,14 +13,14 @@ Page({
       price: "999",
       campus: "中北校区",
       description: "超级无敌棒棒棒的书！",
-      thingPhoneNumber: "13879447821",
-      thingType:  "教材",
+      phone: "13879447821",
+      category:  "教材",
       /*
       thingId: 1, 
       thingConditionIndex: 0,
       thingCampusIndex: 0,
       */
-
+    productId:0,
     thingImg: [
       {'img': '/images/shows/book1.jpg'},
       {'img': '/images/shows/book2.jpg' },
@@ -52,18 +52,9 @@ Page({
     })
   },
 
-  bindtoCollection:function(){
-    
-  },
- 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-
   onLoad: function () {
     var that = this;
     var productId = that.data.productId;
-    console.log("test1");
     wx.getStorage({  //异步获取缓存值studentId
       key: 'stuNumber',
       success: function (res) {
@@ -72,7 +63,6 @@ Page({
         })
       }
     }),
-    console.log("test1");
     wx.getStorage({  //异步获取缓存值
       key: 'productId',
       success: function (res) {
@@ -89,8 +79,9 @@ Page({
           },
           header: { 'content-type': 'application/x-www-form-urlencoded ' },
           success(res) {
+            console.log(res)
             that.setData({
-              issuer:res.data.data[0].creatorId,
+              creatorId:res.data.data[0].creatorId,
               type:res.data.data[0].type,
               pickupWay:res.data.data[0].pickupWay,
               thumbnail: res.data.data[0].thumbnail,
@@ -99,24 +90,47 @@ Page({
               price:res.data.data[0].price,
               campus: res.data.data[0].campus,
               description: res.data.data[0].description,
-              
-              //thingPhoneNumber:res.data.data.,
-              //thingType: res.data.data.,
-            });
-            console.log("test");
-            console.log(res.data.data[0].title);
+              phone:res.data.data[0].phone,
+              category: res.data.data[0].category,
+            })
           },
           fail(err) {
             console.log(err);
           }
         })
-    
       }
     })
-
   },
 
+  bindtoCollection:function(){
+    var that = this;
+    var userId = 0;
+    var productId = that.data.productId;
 
-
-
+    wx.getStorage({  //异步获取缓存值
+      key: 'userId',
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          userId:res.data
+        })
+        userId=res.data
+        wx.request({
+          url: 'http://localhost/addCollection.php',
+          data:{
+             userId:userId,
+             productId:productId
+          },
+          method: "POST",
+          header: { 'content-type': 'application/x-www-form-urlencoded' },
+          success(res) {
+           console.log(res);
+          },
+          fail(err) {
+           console.log(err);
+          }
+        })
+      },
+    })
+  }
 })
