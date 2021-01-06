@@ -1,4 +1,5 @@
 # READ ME
+
 #### 1. Brief Introduction 
 
 This is the final assignment for the modern Software Engineering course of East China Normal University in the autumn term of 2020.
@@ -21,12 +22,10 @@ Miniprogram Code：\miniprogram
    git clone git@github.com:Hairaa-1026/HuaShiZi--Second-hand-trading-platform.git
    ```
 
-2.    Download `Weixin DevTools` (微信开发者工具)  and open the `\miniproprogram` project in it.
+2. Download `Weixin DevTools` (微信开发者工具)  and open the `\miniproprogram` project in it.
 
-3.    Download `Wampserver64`, create a new database `"huashizi"` , and import `huashizi.sql` from `\miniprogram\database` into it.
+3. Download `Wampserver64`, create a new database `"huashizi"` , and import `huashizi.sql` from `\miniprogram\database` into it.
 
-4.    Copy the PHP files from `miniprogram\api` to `\www` in the installation directory of Wampserver64.
+4. Copy the PHP files from `miniprogram\api` to `\www` in the installation directory of Wampserver64.
 
-5.    So you can see the small program we designed on the page. The effect is shown below:
-
-   ![](D:\GitHub Repository\HuaShiZi--Second-hand-trading-platform\miniprogram\images\readme.jpg)
+5. So you can see the small program we designed on the page.
