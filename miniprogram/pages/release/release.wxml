@@ -11,6 +11,7 @@
     <view class='movie-wrapper'>
       <view class='movie-content'>
         <image class='poster' src='{{item.thingImagePath}}'></image>
+        
         <view class='total'>
           <text class='name'>{{item.title}}</text>
           <text class='desc'>校区：{{item.campus}}</text>
