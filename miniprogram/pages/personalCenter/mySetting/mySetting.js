@@ -1,7 +1,7 @@
 Component({
   data: {
     stuNumber:'',
-    userId:'',
+    userId:0,
     userInfo: {
       nickName: '',
       avatarUrl: '', 
@@ -34,6 +34,7 @@ Component({
       var stuNumber = that.data.stuNumber;
       var userId = that.data.userId;
       var nickName = that.data.nickName;
+      var phone = that.data.phone;
       wx.getStorage({  //异步获取缓存值stuNumber
         key: 'stuNumber',
         success: function (res) {
@@ -52,9 +53,20 @@ Component({
           })
         }
       })
+      wx.getStorage({  //异步获取缓存值stuNumber
+        key: 'phone',
+        success: function (res) {
+          that.setData({
+            phone: res.data
+          })
+  
+        }
+      })
+
      //get缓存值用户名字，并设置
     try {
       var value = wx.getStorageSync('nickName')
+      console.log("aaa");
       console.log(value);
       if (value) {
         that.setData({
@@ -111,7 +123,8 @@ Component({
           buttonLoading: true
         })
         var that = this;
-        var userName =that.data.nickName;
+        var userName = wx.getStorageSync('nickName')
+        console.log('test:'+userName);
         var phone =that.data.phone;
         var campus = that.data.campus1[that.data.campusIndex];
         var stuNumber =that.data.stuNumber;
@@ -148,6 +161,10 @@ Component({
                   wx.setStorage({
                     key: "userId",// 异步缓存ID
                     data: res.data.data.userId
+                  }),
+                  wx.setStorage({
+                    key: "phone",// 异步缓存电话号码
+                    data: phone
                   }),
                   wx.redirectTo({
                     url: 'pages/personalCenter/personalCenter',

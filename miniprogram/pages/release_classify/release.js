@@ -8,10 +8,11 @@ Page({
    */
   data: {
     // 存放数据
+    thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材","其它","护肤"],
 
     poster:"嗨嗨",
     productId: 0,
-    keyword: '', //接收search传过来的关键字
+    classifier: '', //接收index传过来的关键字类型
 
     goodLastId: '',// 每组数据的最后一个的id
     goodSearchLength: 5,
@@ -106,21 +107,21 @@ Page({
    */
   onShow: function () {
     var that = this;
-    var keyword = that.data.keyword;
+    var classifier = that.data.classifier;
      wx.getStorage({
-       key: 'keyword',
+       key: 'classifier',
        success:function(res){
          that.setData({
-           keyword:res.data,
+          classifier:res.data,
          })
-         keyword=res.data;
-         console.log(keyword);
+         classifier=res.data;
+         console.log(classifier);
          console.log("ssssssssss");
 
          wx.request({
-          url: 'http://localhost/searchByKeyWord.php',
+          url: 'http://localhost/searchByCategory.php',
           data:{
-             keyword:keyword,
+            productCategory:classifier,
           },
           method: "POST",
           header: { 'content-type': 'application/x-www-form-urlencoded ' },
@@ -138,7 +139,7 @@ Page({
 
        }
      })
-     console.log(keyword);
+     console.log(classifier);
      
   },
 

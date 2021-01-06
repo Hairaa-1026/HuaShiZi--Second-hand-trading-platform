@@ -1,6 +1,8 @@
 {
   "pages": [
+
     "pages/index/index",
+    "pages/release_classify/release",
     "pages/show/show",
     "pages/postInfo/postInfo",
     "pages/personalCenter/myCollection/myCollection",

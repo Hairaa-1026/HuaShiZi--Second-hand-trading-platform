@@ -12,7 +12,7 @@ Page({
     postThing: true,
     thingsList: false,
 
-    userId:'',
+    userId:0,
     nickName:'',
     stuNumber:'',
 
@@ -28,7 +28,7 @@ Page({
 
     thingImage: '../../images/tabBar/post.jpg',
     thingName: '',
-    thingType: ["服装", "美妆", "视频", "卡券", "借用", "教材","其它","护肤"],
+    thingType: [ "教材", "卡券", "美妆","护肤","服装","食品", "租借","其它"],
     thingTypeIndex: 0,
     thingConditions: ['全新', '几乎全新', '九成新', '八成新', '五成新', '五成新以下'],
     thingConditions1:['100','95','90','80','50'],
@@ -157,6 +157,7 @@ Page({
       postTypeIndex: e.detail.value
     })
   },
+
   bindDiliveryTypeInput: function(e) { //取货方式
     this.setData({
       diliveryTypeIndex: e.detail.value
@@ -181,11 +182,13 @@ Page({
       thingName: e.detail.value
     })
   },
+
   bindThingTypeInput: function(e) { //商品类型
     this.setData({
       thingTypeIndex: e.detail.value
     })
   },                  
+  
   bindThingConditionsInput: function(e) { //商品成色
     this.setData({
       thingConditionsIndex: e.detail.value
@@ -241,7 +244,7 @@ Page({
       var diliveryTypeIndex = that.data.diliveryTypeIndex; //运送方式索引值
       var diliveryType =that.data.diliveryType1[diliveryTypeIndex]; //运送方式
 
-      var thingImage = ['images/collections/exm1.jpg']; //that.data.thingImage; //图片
+      var thingImage = 'images/collections/exm1.jpg'; //that.data.thingImage; //图片
       var thingName = that.data.thingName; //名字
       var thingTypeIndex = that.data.thingTypeIndex; //物品类型索引值
       var thingType = that.data.thingType[thingTypeIndex]; //物品类型
@@ -263,7 +266,7 @@ Page({
         data: {
           userId:userId,
           type: postType,
-          photo: thingImage,
+          thumbnail: thingImage,
           title: thingName,
           category: thingType,
           quality: thingConditions,
@@ -279,10 +282,10 @@ Page({
         success: function(res) {
           console.log(res);
           if(res.data){
-          //var productId = res.data.data.productId;
-          //console.log(productId);
+          var productId = res.data.data.productId;
+          console.log(productId);
           that.setData({
-            productId: 9,
+            productId: res.data.data.productId,
           })
               wx.showToast({
                 title: '发布成功',
@@ -296,6 +299,13 @@ Page({
                 thingName: '',
                 thingDescribe: '',
                 thingPrice: '',
+              })
+              wx.setStorage({
+                data: res.data.data.productId,
+                key: 'productId',
+              })
+              wx.redirectTo({
+                url: '../show/show',
               })
           }
           else{

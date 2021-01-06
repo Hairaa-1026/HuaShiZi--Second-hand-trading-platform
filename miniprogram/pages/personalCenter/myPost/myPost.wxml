@@ -7,16 +7,16 @@
 
     <block wx:if="{{thingData.length>0}}">
     <view class="weui-panel__bd">
-      <block wx:for="{{postList}}" wx:key="thingInfo">
-      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+      <block wx:for="{{postList}}" wx:key='item'>
+      <navigator url="" class="weui-media-box weui-media-box_appmsg"  hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" data-id='{{item.productId}}' bindtap='toProductDetail'>
           <image class="weui-media-box__thumb" src='{{item.thumbnail}}' />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">{{item.title}}</view>
-          <view class="weui-media-box__desc">{{item.description}}</view>
-          <button class="btn" type="primary" bindtap="">完成交易</button>
-          <button class="btn" type="primary" catchtap="deletePost" bindtap="">删除发布</button>
+          <view class="weui-media-box__title" data-id='{{item.productId}}' bindtap='toProductDetail'>{{item.title}}</view>
+          <view class="weui-media-box__desc"  data-id='{{item.productId}}' bindtap='toProductDetail'>{{item.description}}</view>
+          <view class="btn" bindtap="finishPost" data-id="{{item.productId}}" >完成交易</view>
+          <view class="btn" bindtap="toDelete" data-id="{{item.productId}}" >删除发布</view>
         </view>
       </navigator>
     </block>

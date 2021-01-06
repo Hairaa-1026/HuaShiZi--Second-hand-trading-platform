@@ -18,10 +18,10 @@
 </view>
 <!-- 第一行小圆图标 -->
 <view class = "tags">
-  <view class = "my_tags" ><image mode ="widthFix" src = "../../images/indexIcon/books.png"/></view>
-  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/card.png"/></view>
-  <view class = "my_tags" ><image mode ="widthFix" src = "../../images/indexIcon/cosmetic.png"/></view>
-  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/skinCare.png"/></view>
+  <view class = "my_tags" bindtap='searchGood0' ><image mode ="widthFix" src = "../../images/indexIcon/books.png"/></view>
+  <view class = "my_tags" bindtap='searchGood1' ><image mode ="widthFix" src = "../../images/indexIcon/card.png"/></view>
+  <view class = "my_tags" bindtap='searchGood2'  ><image mode ="widthFix" src = "../../images/indexIcon/cosmetic.png"/></view>
+  <view class = "my_tags" bindtap='searchGood3' ><image mode ="widthFix" src = "../../images/indexIcon/skinCare.png"/></view>
 </view>
 <!-- 第一行小圆图标的文字说明 -->
 <view class = "tags" style="margin-top:0px;">
@@ -32,10 +32,10 @@
 </view>
 <!-- 第二行小圆图标 -->
 <view class = "tags">
-  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/dress.png"/></view>
-  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/food.png"/></view>
-  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/rent.png"/></view>
-  <view class = "my_tags"><image mode ="widthFix" src = "../../images/indexIcon/others.png"/></view>
+  <view class = "my_tags" bindtap='searchGood4' ><image mode ="widthFix" src = "../../images/indexIcon/dress.png"/></view>
+  <view class = "my_tags" bindtap='searchGood5' ><image mode ="widthFix" src = "../../images/indexIcon/food.png"/></view>
+  <view class = "my_tags" bindtap='searchGood6' ><image mode ="widthFix" src = "../../images/indexIcon/rent.png"/></view>
+  <view class = "my_tags" bindtap='searchGood7' ><image mode ="widthFix" src = "../../images/indexIcon/others.png"/></view>
 </view>
 <!-- 第二行小圆图标的文字说明 -->
 <view class = "tags" style="margin-top:0px;">
@@ -47,7 +47,7 @@
 
 <view class="my_goods">
   <block wx:for="{{goodsList}}" wx:key="index">
-    <navigator url="{{item.url}}" open-type="navigate">
+    <navigator open-type="navigate"  data-id='{{item.productId}}' bindtap='toProductDetail'>
       <view class="goods">
         <image src="{{item.thumbnail}}" class = "goods"></image>
         <view style="height:190px"><text>{{item.title}}</text></view>
