@@ -10,11 +10,7 @@
   <block wx:for="{{resultList}}" wx:key="thingInfo">
     <view class='movie-wrapper' data-id='{{item.productId}}' bindtap='toProductDetail'>
       <view class='movie-content'>
-<<<<<<< HEAD
-        <image class='poster' src='{{item.thingImagePath}}'></image>
-=======
         <image class='poster' src='{{item.thumbnail}}'></image>
->>>>>>> e80d59ac820d23ef1d526cadd56039d89322ef9d
         <view class='total'>
           <text class='name'>{{item.title}}</text>
           <text class='desc'>校区：{{item.campus}}</text>
